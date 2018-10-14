@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="抽象类和接口的区别：      答： ​        1.接口只能包含抽象方法，而抽象类可以包含普通方法。           ​        2.接口只能定义静态常量，而抽象类即可以定义普通属性。也可以定义静态常量属性。 ​        3.接口不包含构造方法，抽象类可以包含构造方法。                      hashcode和equals的重要性：      答：">
+<meta name="description" content="连续子数组的最大和HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深圳盒子笔试">
-<meta property="og:url" content="http://yoursite.com/2018/10/12/深圳盒子笔试/index.html">
+<meta property="og:title" content="连续子数组的最大和">
+<meta property="og:url" content="http://yoursite.com/2018/10/14/连续子数组的最大和/index.html">
 <meta property="og:site_name" content="小猪佩琪">
-<meta property="og:description" content="抽象类和接口的区别：      答： ​        1.接口只能包含抽象方法，而抽象类可以包含普通方法。           ​        2.接口只能定义静态常量，而抽象类即可以定义普通属性。也可以定义静态常量属性。 ​        3.接口不包含构造方法，抽象类可以包含构造方法。                      hashcode和equals的重要性：      答：">
+<meta property="og:description" content="连续子数组的最大和HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-12T11:44:56.259Z">
+<meta property="og:updated_time" content="2018-10-14T13:37:02.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深圳盒子笔试">
-<meta name="twitter:description" content="抽象类和接口的区别：      答： ​        1.接口只能包含抽象方法，而抽象类可以包含普通方法。           ​        2.接口只能定义静态常量，而抽象类即可以定义普通属性。也可以定义静态常量属性。 ​        3.接口不包含构造方法，抽象类可以包含构造方法。                      hashcode和equals的重要性：      答：">
+<meta name="twitter:title" content="连续子数组的最大和">
+<meta name="twitter:description" content="连续子数组的最大和HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/12/深圳盒子笔试/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/14/连续子数组的最大和/"/>
 
 
 
 
 
-  <title>深圳盒子笔试 | 小猪佩琪</title>
+  <title>连续子数组的最大和 | 小猪佩琪</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/深圳盒子笔试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/连续子数组的最大和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="佩琪">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深圳盒子笔试</h1>
+          <h1 class="post-title" itemprop="name headline">连续子数组的最大和</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T18:37:53+08:00">
-                2018-10-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-14T21:34:08+08:00">
+                2018-10-14
               </time>
             
 
@@ -299,110 +299,8 @@
       
 
       
-        <ol>
-<li><strong>抽象类和接口的区别：</strong></li>
-</ol>
-<blockquote>
-<p>   答：</p>
-<p>​        1.接口只能包含抽象方法，而抽象类可以包含普通方法。          </p>
-<p>​        2.接口只能定义静态常量，而抽象类即可以定义普通属性。也可以定义静态常量属性。</p>
-<p>​        3.接口不包含构造方法，抽象类可以包含构造方法。                   </p>
-</blockquote>
-<ol start="2">
-<li><strong>hashcode和equals的重要性：</strong></li>
-</ol>
-<blockquote>
-<p>   答：</p>
-<p>   ​        1. 同一个对象无论何时调用hashcode(),得到的返回值必须一样。</p>
-<p>   ​         2.hashcode()返回值相等，对象不一定相同。通过hashcode()和equals()必须唯一确定一个对象。  </p>
-<p>   ​         3.一旦重写equals，必须重写hashcode.</p>
-<p>   ​      </p>
-</blockquote>
-<ol start="3">
-<li><strong>网络七层协议：</strong></li>
-</ol>
-<blockquote>
-<p>答：</p>
-<p>​       1.物理层</p>
-<p>​        2.数据链路层</p>
-<p>​        3.网络层</p>
-<p>​        4.传输层</p>
-<p>​        5.会话层</p>
-<p>​        6.表示层</p>
-<p>​        7.应用层</p>
-</blockquote>
-<p>4.<strong>Tcp/Ip协议族分哪几层</strong></p>
-<blockquote>
-<p>答：</p>
-<ol>
-<li>应用层</li>
-</ol>
-<p>SMTP：简单电子邮件传输协议</p>
-<p>FTP：文件传输协议</p>
-<p>TELNET：网络远程访问协议</p>
-<p>HTTP：超文本传输协议</p>
-<ol start="2">
-<li><p>传输层</p>
-<p>TCP：传输控制协议</p>
-<p>UDP：用户数据报协议</p>
-</li>
-<li><p>互连网络层</p>
-<p>IP</p>
-</li>
-<li><p>网络接口层</p>
-</li>
-</ol>
-</blockquote>
-<p>5.<strong>将一个整形数字转为二进制字符串</strong></p>
-<blockquote>
-<p>答：StringBuilder sBuilder=new StringBuilder();</p>
-<p>for(int i=0;i&lt;32;i++){</p>
-<p>sBuilder.append(number&amp;1);</p>
-<p>number=number&gt;&gt;&gt;1;</p>
-<p>}</p>
-<p>return sBuilder.reverse().toString();</p>
-</blockquote>
-<p>6.<strong>三种排序</strong></p>
-<blockquote>
-<p>答：</p>
-<ol>
-<li>冒泡排序</li>
-</ol>
-<p>for（int i=0;i&lt;length-1;i++）{</p>
-<p>for(int j=0;j&lt;length-1-i;j++){</p>
-<p>if(array[j]&gt;array[j+1]){</p>
-<p>int temp=array[j];</p>
-<p>array[j]=array[j+1];</p>
-<p>array[j+1]=temp;</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<ol start="2">
-<li>选择排序</li>
-</ol>
-<p>for(int i=0;i&lt;length-1;i++){</p>
-<p>int minIndex=i;</p>
-<p>for(int j=i;j&lt;length;j++){</p>
-<p>if(array[minIndex]&gt;array[j])</p>
-<p>minIndex=j;</p>
-<p>}</p>
-<p>int temp=array[i];</p>
-<p>array[i]=array[minIndex];</p>
-<p>array[minIndex]=temp;</p>
-<p>}</p>
-<ol start="3">
-<li>插入排序(是简单快排中最快的)</li>
-</ol>
-<p>for(int i=1;i&lt;length;i++){</p>
-<p>int temp=array[i];</p>
-<p>int leftIndex=i-1;</p>
-<p>while(leftIndex&gt;=0&amp;&amp;array[leftIndex]&gt;temp){</p>
-<p>array[leftIndex+1]=array[leftIndex];</p>
-<p>leftIndex- -;</p>
-<p>}</p>
-<p>array[leftIndex+1]=temp;</p>
-<p>}</p>
-</blockquote>
+        <h2 id="连续子数组的最大和"><a href="#连续子数组的最大和" class="headerlink" title="连续子数组的最大和"></a>连续子数组的最大和</h2><h4 id="HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后-他又发话了-在古老的一维模式识别中-常常需要计算连续子向量的最大和-当向量全为正数的时候-问题很好解决。但是-如果向量中包含负数-是否应该包含某个负数-并期望旁边的正数会弥补它呢？例如-6-3-2-7-15-1-2-2-连续子向量的最大和为8-从第0个开始-到第3个为止-。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？-子向量的长度至少是1"><a href="#HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后-他又发话了-在古老的一维模式识别中-常常需要计算连续子向量的最大和-当向量全为正数的时候-问题很好解决。但是-如果向量中包含负数-是否应该包含某个负数-并期望旁边的正数会弥补它呢？例如-6-3-2-7-15-1-2-2-连续子向量的最大和为8-从第0个开始-到第3个为止-。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？-子向量的长度至少是1" class="headerlink" title="HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)"></a>HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)</h4><p><strong>动态规划</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public  int FindGreatestSumOfSubArray(int[] array) &#123;</span><br><span class="line">	int res=array[0];</span><br><span class="line">	int max=array[0];</span><br><span class="line">	for(int i=1;i&lt;array.length;i++) &#123;</span><br><span class="line">		max=Math.max(array[i]+max, array[i]);</span><br><span class="line">		res=Math.max(res, max);</span><br><span class="line">	&#125;</span><br><span class="line">       return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -427,8 +325,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/11/第二次面试/" rel="next" title="第二次面试">
-                <i class="fa fa-chevron-left"></i> 第二次面试
+              <a href="/2018/10/14/数组中出现次数超过一半的数字/" rel="next" title="数组中出现次数超过一半的数字">
+                <i class="fa fa-chevron-left"></i> 数组中出现次数超过一半的数字
               </a>
             
           </div>
@@ -436,10 +334,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/13/数据结构/" rel="prev" title="数据结构">
-                数据结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -491,8 +385,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,6 +437,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#连续子数组的最大和"><span class="nav-number">1.</span> <span class="nav-text">连续子数组的最大和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后-他又发话了-在古老的一维模式识别中-常常需要计算连续子向量的最大和-当向量全为正数的时候-问题很好解决。但是-如果向量中包含负数-是否应该包含某个负数-并期望旁边的正数会弥补它呢？例如-6-3-2-7-15-1-2-2-连续子向量的最大和为8-从第0个开始-到第3个为止-。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？-子向量的长度至少是1"><span class="nav-number">1.0.1.</span> <span class="nav-text">HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
