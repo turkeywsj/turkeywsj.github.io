@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="JAVA">
+<meta name="description" content="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0.方法一：用hashmap 1234567891011121314151617181920   public int MoreThanHalfNum_Solution(int [] array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组中出现次数超过一半的数字">
 <meta property="og:url" content="http://yoursite.com/2018/10/14/数组中出现次数超过一半的数字/index.html">
 <meta property="og:site_name" content="小猪佩琪">
-<meta property="og:description" content="JAVA">
+<meta property="og:description" content="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0.方法一：用hashmap 1234567891011121314151617181920   public int MoreThanHalfNum_Solution(int [] array">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-14T07:23:51.093Z">
+<meta property="og:updated_time" content="2018-10-14T07:37:12.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组中出现次数超过一半的数字">
-<meta name="twitter:description" content="JAVA">
+<meta name="twitter:description" content="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0.方法一：用hashmap 1234567891011121314151617181920   public int MoreThanHalfNum_Solution(int [] array">
 
 
 
@@ -299,7 +299,11 @@
       
 
       
-        
+        <h4 id="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组-1-2-3-2-2-2-5-4-2-。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0"><a href="#数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组-1-2-3-2-2-2-5-4-2-。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0" class="headerlink" title="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0."></a>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0.</h4><p><strong>方法一：用hashmap</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   public int MoreThanHalfNum_Solution(int [] array) &#123;</span><br><span class="line">HashMap&lt;Integer, Integer&gt; hashMap=new HashMap&lt;&gt;();</span><br><span class="line">for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">	if(!hashMap.containsKey(array[i])) &#123;</span><br><span class="line">		hashMap.put(array[i], 1);</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		int count = hashMap.get(array[i]);</span><br><span class="line">		hashMap.put(array[i], ++count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	Iterator iterator=hashMap.entrySet().iterator();</span><br><span class="line">	while(iterator.hasNext()) &#123;</span><br><span class="line">		Map.Entry&lt;Integer, Integer&gt; entry = (Entry&lt;Integer, Integer&gt;) iterator.next();</span><br><span class="line">		int key=entry.getKey();</span><br><span class="line">		int value=entry.getValue();</span><br><span class="line">		if(value&gt;array.length/2)</span><br><span class="line">			return key;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：利用sort</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int MoreThanHalfNum_Solution1(int [] array) &#123;</span><br><span class="line">		Arrays.sort(array);</span><br><span class="line">		int count = 0;</span><br><span class="line">		for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">			if(array[i]==array[array.length/2]) &#123;</span><br><span class="line">				count++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(count&gt;=array.length/2) &#123;</span><br><span class="line">			return array[array.length/2];</span><br><span class="line">		&#125;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -383,8 +387,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -426,6 +439,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组-1-2-3-2-2-2-5-4-2-。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0"><span class="nav-number">1.</span> <span class="nav-text">数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0.</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
