@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="hello,my name is wanShaoJing.">
+<meta name="description" content="在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007方法：并归排序 public class Solution {      int sum ;      public int InversePairs(int[] array) {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="万少静">
-<meta property="og:url" content="http://yoursite.com/2018/10/10/万少静/index.html">
+<meta property="og:title" content="数组中的逆序对">
+<meta property="og:url" content="http://yoursite.com/2018/10/16/数组中的逆序对/index.html">
 <meta property="og:site_name" content="小猪佩琪">
-<meta property="og:description" content="hello,my name is wanShaoJing.">
+<meta property="og:description" content="在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007方法：并归排序 public class Solution {      int sum ;      public int InversePairs(int[] array) {">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-12T10:38:31.540Z">
+<meta property="og:updated_time" content="2018-10-16T16:00:54.018Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="万少静">
-<meta name="twitter:description" content="hello,my name is wanShaoJing.">
+<meta name="twitter:title" content="数组中的逆序对">
+<meta name="twitter:description" content="在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007方法：并归排序 public class Solution {      int sum ;      public int InversePairs(int[] array) {">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/10/万少静/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/16/数组中的逆序对/"/>
 
 
 
 
 
-  <title>万少静 | 小猪佩琪</title>
+  <title>数组中的逆序对 | 小猪佩琪</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/万少静/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/数组中的逆序对/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="佩琪">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">万少静</h1>
+          <h1 class="post-title" itemprop="name headline">数组中的逆序对</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T21:31:05+08:00">
-                2018-10-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-16T23:56:36+08:00">
+                2018-10-16
               </time>
             
 
@@ -299,7 +299,60 @@
       
 
       
-        <p>hello,my name is wanShaoJing.</p>
+        <h4 id="在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组-求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。-即输出P-1000000007"><a href="#在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组-求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。-即输出P-1000000007" class="headerlink" title="在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007"></a>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007</h4><p><strong>方法：并归排序</strong></p>
+<pre><code>public class Solution {
+
+    int sum ;
+
+    public int InversePairs(int[] array) {
+
+        sum=0;
+
+        if(array!=null)
+
+         mergeSortUp2Down(array, 0, array.length-1);
+
+        return sum;
+
+    }
+
+/**
+ * 并归排序
+ * 
+ * @param array
+ * @return
+ */
+public void mergeSortUp2Down(int a[], int start, int end) {
+    if(start&gt;=end)
+        return;
+    int mid = (start + end) &gt;&gt; 1;
+    mergeSortUp2Down(a,start,mid);
+    mergeSortUp2Down(a, mid+1, end);
+    merge(a,start,mid,end);
+}
+
+public void merge(int a[], int start, int mid, int end) {
+  int b[]=new int[end - start + 1];
+  int i=start,j=mid+1,k=0;
+  while(i&lt;=mid&amp;&amp;j&lt;=end) {
+      if(a[i]&lt;=a[j])
+          b[k++]=a[i++];
+      else{
+          b[k++]=a[j++];
+          sum += mid - i + 1;
+          sum=sum%1000000007;
+      }
+  }
+  while(i&lt;=mid) 
+      b[k++]=a[i++];
+  while(j&lt;=end)
+      b[k++]=a[j++];
+  for(k=0;k&lt;b.length;k++) {
+      a[start+k]=b[k];
+  } 
+}
+}
+</code></pre><p>​    </p>
 
       
     </div>
@@ -324,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/09/我的博客开张了/" rel="next" title="我的博客开张了">
-                <i class="fa fa-chevron-left"></i> 我的博客开张了
+              <a href="/2018/10/16/第一个只出现一次的字符/" rel="next" title="第一个只出现一次的字符">
+                <i class="fa fa-chevron-left"></i> 第一个只出现一次的字符
               </a>
             
           </div>
@@ -334,8 +387,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/11/第二次面试/" rel="prev" title="第二次面试">
-                第二次面试 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/17/学习面试题10-16/" rel="prev" title="学习面试题10/16">
+                学习面试题10/16 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -388,8 +441,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -431,6 +493,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组-求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。-即输出P-1000000007"><span class="nav-number">1.</span> <span class="nav-text">在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
