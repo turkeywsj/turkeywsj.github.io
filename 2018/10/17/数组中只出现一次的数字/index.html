@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="输入两个链表，找出它们的第一个公共结点。思路：    如果这两个链表存在公共节点，那么之后的节点都相同。那么采用栈的先入后出原则，若两个栈的栈顶一致则出栈（stack.pop()–把栈顶元素删除）一直找到两个栈的栈顶不一致的情况，返回此时的栈顶元素。即为公共节点 注：Stack.peek()与Stack.pop()的区别     相同点：大家都返回栈顶的值。     不同点：peek 不改变栈的值">
+<meta name="description" content="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071public class FindNum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="两个链表的第一个公共结点">
-<meta property="og:url" content="http://yoursite.com/2018/10/17/两个链表的第一个公共结点/index.html">
+<meta property="og:title" content="数组中只出现一次的数字">
+<meta property="og:url" content="http://yoursite.com/2018/10/17/数组中只出现一次的数字/index.html">
 <meta property="og:site_name" content="小猪佩琪">
-<meta property="og:description" content="输入两个链表，找出它们的第一个公共结点。思路：    如果这两个链表存在公共节点，那么之后的节点都相同。那么采用栈的先入后出原则，若两个栈的栈顶一致则出栈（stack.pop()–把栈顶元素删除）一直找到两个栈的栈顶不一致的情况，返回此时的栈顶元素。即为公共节点 注：Stack.peek()与Stack.pop()的区别     相同点：大家都返回栈顶的值。     不同点：peek 不改变栈的值">
+<meta property="og:description" content="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071public class FindNum">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-17T01:17:28.401Z">
+<meta property="og:updated_time" content="2018-10-17T13:40:02.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="两个链表的第一个公共结点">
-<meta name="twitter:description" content="输入两个链表，找出它们的第一个公共结点。思路：    如果这两个链表存在公共节点，那么之后的节点都相同。那么采用栈的先入后出原则，若两个栈的栈顶一致则出栈（stack.pop()–把栈顶元素删除）一直找到两个栈的栈顶不一致的情况，返回此时的栈顶元素。即为公共节点 注：Stack.peek()与Stack.pop()的区别     相同点：大家都返回栈顶的值。     不同点：peek 不改变栈的值">
+<meta name="twitter:title" content="数组中只出现一次的数字">
+<meta name="twitter:description" content="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071public class FindNum">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/17/两个链表的第一个公共结点/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/17/数组中只出现一次的数字/"/>
 
 
 
 
 
-  <title>两个链表的第一个公共结点 | 小猪佩琪</title>
+  <title>数组中只出现一次的数字 | 小猪佩琪</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/两个链表的第一个公共结点/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/数组中只出现一次的数字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="佩琪">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">两个链表的第一个公共结点</h1>
+          <h1 class="post-title" itemprop="name headline">数组中只出现一次的数字</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T09:14:05+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T21:37:47+08:00">
                 2018-10-17
               </time>
             
@@ -299,9 +299,7 @@
       
 
       
-        <h4 id="输入两个链表，找出它们的第一个公共结点。"><a href="#输入两个链表，找出它们的第一个公共结点。" class="headerlink" title="输入两个链表，找出它们的第一个公共结点。"></a>输入两个链表，找出它们的第一个公共结点。</h4><p>思路：<br>    如果这两个链表存在公共节点，那么之后的节点都相同。那么采用栈的先入后出原则，若两个栈的栈顶一致则出栈（stack.pop()–把栈顶元素删除）一直找到两个栈的栈顶不一致的情况，返回此时的栈顶元素。即为公共节点</p>
-<p>注：Stack.peek()与Stack.pop()的区别<br>     相同点：大家都返回栈顶的值。<br>     不同点：peek 不改变栈的值(不删除栈顶的值)，pop会把栈顶的值删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) &#123;</span><br><span class="line">		if(pHead1==null||pHead2==null) &#123;</span><br><span class="line">			 return null;</span><br><span class="line">		&#125;</span><br><span class="line">		 Stack&lt;ListNode&gt; stack1=new Stack&lt;&gt;();</span><br><span class="line">		 Stack&lt;ListNode&gt; stack2=new Stack&lt;&gt;();</span><br><span class="line">		 while(pHead1!=null) &#123;</span><br><span class="line">			 stack1.push(pHead1);</span><br><span class="line">			 pHead1=pHead1.next;</span><br><span class="line">		 &#125;</span><br><span class="line">		 while(pHead2!=null) &#123;</span><br><span class="line">			 stack2.push(pHead2);</span><br><span class="line">			 pHead2=pHead2.next;</span><br><span class="line">		 &#125;</span><br><span class="line">		 ListNode commenNode=null;</span><br><span class="line">		 while(!stack1.isEmpty()&amp;&amp;!stack2.isEmpty()&amp;&amp;stack1.peek()==stack2.peek()) &#123;</span><br><span class="line">			 stack1.pop();</span><br><span class="line">			 commenNode=stack2.pop();</span><br><span class="line">		 &#125;</span><br><span class="line">		 return commenNode;</span><br><span class="line">   &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		ListNode l=new ListNode(7);</span><br><span class="line">		ListNode l1=new ListNode(8);</span><br><span class="line">		ListNode l2=new ListNode(3);</span><br><span class="line">		ListNode l3=new ListNode(9);</span><br><span class="line">		ListNode n=new ListNode(1);</span><br><span class="line">		ListNode n1=new ListNode(2);</span><br><span class="line">		l.next=l1;</span><br><span class="line">		l1.next=l2;</span><br><span class="line">		l2.next=l3;</span><br><span class="line">		l3.next=null;</span><br><span class="line">		n.next=n1;</span><br><span class="line">		n1.next=l2;</span><br><span class="line">		System.out.println(new FindFirstCommonNode().FindFirstCommonNode(l, n));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。"><a href="#一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。" class="headerlink" title="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。"></a>一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">public class FindNumsAppearOnce &#123;</span><br><span class="line">	// 一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。</span><br><span class="line">	/**</span><br><span class="line">	 * 方法一：map</span><br><span class="line">	 * </span><br><span class="line">	 * @param array</span><br><span class="line">	 * @param num1</span><br><span class="line">	 * @param num2</span><br><span class="line">	 */</span><br><span class="line">	public void FindNumsAppearOnce(int[] array, int num1[], int num2[]) &#123;</span><br><span class="line">		Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">		for (int i : array) &#123;</span><br><span class="line">			if (!map.containsKey(i)) &#123;</span><br><span class="line">				map.put(i, 1);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				int count = map.get(i);</span><br><span class="line">				map.put(i, ++count);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int count = 0;</span><br><span class="line">		int[] num3 = new int[2];</span><br><span class="line">		for (int i : map.keySet()) &#123;</span><br><span class="line">			if ((map.get(i) % 2) != 0) &#123;</span><br><span class="line">				num3[count] = i;</span><br><span class="line">				++count;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		num1[0] = num3[0];</span><br><span class="line">		num2[0] = num3[1];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 方法二：异或思想</span><br><span class="line">	 *  思路： 1、异或思想，一个数与自己异或为0，一个数与0异或为自己</span><br><span class="line">	 * 2、由于其它数字两两相同，所以所有数异或则得到这两个不同数的异或结果。取这个结果的第一个1作为标志位</span><br><span class="line">	 * 3、这个标志的1，必须是：这两个数在该位一个为0，一个为1</span><br><span class="line">	 * 4、这样可以将数组分为两组，一组在该标志位为1，一组在该标志位为0，这两个不同数字分别在这两组内 5、将两组内的数分别异或，得到两个结果则为这两个不同的数</span><br><span class="line">	 * </span><br><span class="line">	 * @param args</span><br><span class="line">	 */</span><br><span class="line">	public void FindNumsAppearOnce1(int[] array, int num1[], int num2[]) &#123;</span><br><span class="line">		int num=0;//数组的所有异或结果</span><br><span class="line">         for (int i : array) &#123;</span><br><span class="line">			num^=i;</span><br><span class="line">		&#125;</span><br><span class="line">         System.out.println(&quot;num=&quot;+num);</span><br><span class="line">         int count=0;//标志位</span><br><span class="line">         for(;count&lt;array.length;count++) &#123;</span><br><span class="line">        	 if((num&amp;(1&lt;&lt;count))!=0) &#123;</span><br><span class="line">        	 break;</span><br><span class="line">        	 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         num1[0]=0;</span><br><span class="line">         num2[0]=0;</span><br><span class="line">         for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">        	 if((array[i]&amp;(1&lt;&lt;count))==0)</span><br><span class="line">        		 num1[0]^=array[i];</span><br><span class="line">        	 else</span><br><span class="line">        		 num2[0]^=array[i];</span><br><span class="line">         &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int a[] = &#123; 1, 2, 2, 3, 3, 4, 4, 5 &#125;;</span><br><span class="line">		int num1[] = new int[1];</span><br><span class="line">		int num2[] = new int[1];</span><br><span class="line">		//new FindNumsAppearOnce().FindNumsAppearOnce(a, num1, num2);</span><br><span class="line">		new FindNumsAppearOnce().FindNumsAppearOnce1(a, num1, num2);</span><br><span class="line">		System.out.println(num1[0] + &quot; &quot; + num2[0]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -326,8 +324,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/17/学习面试题10-16/" rel="next" title="学习面试题10/16">
-                <i class="fa fa-chevron-left"></i> 学习面试题10/16
+              <a href="/2018/10/17/平衡二叉树/" rel="next" title="平衡二叉树">
+                <i class="fa fa-chevron-left"></i> 平衡二叉树
               </a>
             
           </div>
@@ -335,10 +333,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/17/数字在排序数组中出现的次数/" rel="prev" title="数字在排序数组中出现的次数">
-                数字在排序数组中出现的次数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,7 +446,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入两个链表，找出它们的第一个公共结点。"><span class="nav-number">1.</span> <span class="nav-text">输入两个链表，找出它们的第一个公共结点。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。"><span class="nav-number">1.</span> <span class="nav-text">一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。</span></a></li></ol></div>
             
 
           </div>

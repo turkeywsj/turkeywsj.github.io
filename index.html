@@ -232,6 +232,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/数组中只出现一次的数字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/17/数组中只出现一次的数字/" itemprop="url">数组中只出现一次的数字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T21:37:47+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。"><a href="#一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。" class="headerlink" title="一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。"></a>一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">public class FindNumsAppearOnce &#123;</span><br><span class="line">	// 一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。</span><br><span class="line">	/**</span><br><span class="line">	 * 方法一：map</span><br><span class="line">	 * </span><br><span class="line">	 * @param array</span><br><span class="line">	 * @param num1</span><br><span class="line">	 * @param num2</span><br><span class="line">	 */</span><br><span class="line">	public void FindNumsAppearOnce(int[] array, int num1[], int num2[]) &#123;</span><br><span class="line">		Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">		for (int i : array) &#123;</span><br><span class="line">			if (!map.containsKey(i)) &#123;</span><br><span class="line">				map.put(i, 1);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				int count = map.get(i);</span><br><span class="line">				map.put(i, ++count);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int count = 0;</span><br><span class="line">		int[] num3 = new int[2];</span><br><span class="line">		for (int i : map.keySet()) &#123;</span><br><span class="line">			if ((map.get(i) % 2) != 0) &#123;</span><br><span class="line">				num3[count] = i;</span><br><span class="line">				++count;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		num1[0] = num3[0];</span><br><span class="line">		num2[0] = num3[1];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 方法二：异或思想</span><br><span class="line">	 *  思路： 1、异或思想，一个数与自己异或为0，一个数与0异或为自己</span><br><span class="line">	 * 2、由于其它数字两两相同，所以所有数异或则得到这两个不同数的异或结果。取这个结果的第一个1作为标志位</span><br><span class="line">	 * 3、这个标志的1，必须是：这两个数在该位一个为0，一个为1</span><br><span class="line">	 * 4、这样可以将数组分为两组，一组在该标志位为1，一组在该标志位为0，这两个不同数字分别在这两组内 5、将两组内的数分别异或，得到两个结果则为这两个不同的数</span><br><span class="line">	 * </span><br><span class="line">	 * @param args</span><br><span class="line">	 */</span><br><span class="line">	public void FindNumsAppearOnce1(int[] array, int num1[], int num2[]) &#123;</span><br><span class="line">		int num=0;//数组的所有异或结果</span><br><span class="line">         for (int i : array) &#123;</span><br><span class="line">			num^=i;</span><br><span class="line">		&#125;</span><br><span class="line">         System.out.println(&quot;num=&quot;+num);</span><br><span class="line">         int count=0;//标志位</span><br><span class="line">         for(;count&lt;array.length;count++) &#123;</span><br><span class="line">        	 if((num&amp;(1&lt;&lt;count))!=0) &#123;</span><br><span class="line">        	 break;</span><br><span class="line">        	 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         num1[0]=0;</span><br><span class="line">         num2[0]=0;</span><br><span class="line">         for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">        	 if((array[i]&amp;(1&lt;&lt;count))==0)</span><br><span class="line">        		 num1[0]^=array[i];</span><br><span class="line">        	 else</span><br><span class="line">        		 num2[0]^=array[i];</span><br><span class="line">         &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int a[] = &#123; 1, 2, 2, 3, 3, 4, 4, 5 &#125;;</span><br><span class="line">		int num1[] = new int[1];</span><br><span class="line">		int num2[] = new int[1];</span><br><span class="line">		//new FindNumsAppearOnce().FindNumsAppearOnce(a, num1, num2);</span><br><span class="line">		new FindNumsAppearOnce().FindNumsAppearOnce1(a, num1, num2);</span><br><span class="line">		System.out.println(num1[0] + &quot; &quot; + num2[0]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/平衡二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1392,129 +1512,6 @@ public void merge(int a[], int start, int mid, int end) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/数组中出现次数超过一半的数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/14/数组中出现次数超过一半的数字/" itemprop="url">数组中出现次数超过一半的数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-14T15:23:51+08:00">
-                2018-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组-1-2-3-2-2-2-5-4-2-。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0"><a href="#数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组-1-2-3-2-2-2-5-4-2-。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0" class="headerlink" title="数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0."></a>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0.</h4><p><strong>方法一：用hashmap</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   public int MoreThanHalfNum_Solution(int [] array) &#123;</span><br><span class="line">HashMap&lt;Integer, Integer&gt; hashMap=new HashMap&lt;&gt;();</span><br><span class="line">for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">	if(!hashMap.containsKey(array[i])) &#123;</span><br><span class="line">		hashMap.put(array[i], 1);</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		int count = hashMap.get(array[i]);</span><br><span class="line">		hashMap.put(array[i], ++count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	Iterator iterator=hashMap.entrySet().iterator();</span><br><span class="line">	while(iterator.hasNext()) &#123;</span><br><span class="line">		Map.Entry&lt;Integer, Integer&gt; entry = (Entry&lt;Integer, Integer&gt;) iterator.next();</span><br><span class="line">		int key=entry.getKey();</span><br><span class="line">		int value=entry.getValue();</span><br><span class="line">		if(value&gt;array.length/2)</span><br><span class="line">			return key;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>方法二：利用sort</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int MoreThanHalfNum_Solution1(int [] array) &#123;</span><br><span class="line">		Arrays.sort(array);</span><br><span class="line">		int count = 0;</span><br><span class="line">		for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">			if(array[i]==array[array.length/2]) &#123;</span><br><span class="line">				count++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(count&gt;=array.length/2) &#123;</span><br><span class="line">			return array[array.length/2];</span><br><span class="line">		&#125;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1565,7 +1562,7 @@ public void merge(int a[], int start, int mid, int end) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
