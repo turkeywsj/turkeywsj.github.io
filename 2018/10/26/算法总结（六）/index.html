@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.数组中重复的数字 在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。  分析：常规做法：hashmap键值对保存数与次数，或利用set的唯一性保存数，若重复则返回fasle进而来返">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法总结（六）">
+<meta property="og:url" content="http://yoursite.com/2018/10/26/算法总结（六）/index.html">
+<meta property="og:site_name" content="小猪佩琪">
+<meta property="og:description" content="1.数组中重复的数字 在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。  分析：常规做法：hashmap键值对保存数与次数，或利用set的唯一性保存数，若重复则返回fasle进而来返">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-10-26T14:10:35.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法总结（六）">
+<meta name="twitter:description" content="1.数组中重复的数字 在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。  分析：常规做法：hashmap键值对保存数与次数，或利用set的唯一性保存数，若重复则返回fasle进而来返">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/26/算法总结（六）/"/>
+
+
+
+
+
+  <title>算法总结（六） | 小猪佩琪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小猪佩琪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小猪佩琪的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/算法总结（六）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法总结（六）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-26T14:17:24+08:00">
+                2018-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-数组中重复的数字"><a href="#1-数组中重复的数字" class="headerlink" title="1.数组中重复的数字"></a>1.数组中重复的数字</h4><p> 在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。</p>
+<blockquote>
+<p>分析：常规做法：hashmap键值对保存数与次数，或利用set的唯一性保存数，若重复则返回fasle进而来返回重复的数字。</p>
+<p>该题因为强调了数的大小范围，所以可以将数作为另一个布尔型数组（只占一字节）的下标，并给予标识，通过判断该下标下是否有该表示来判断是否重复。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public boolean duplicate(int numbers[], int length, int[] duplication) &#123;</span><br><span class="line">       boolean[] k = new boolean[length];</span><br><span class="line">       for (int i = 0; i &lt; k.length; i++) &#123;</span><br><span class="line">           if (k[numbers[i]] == true) &#123;</span><br><span class="line">               duplication[0] = numbers[i];</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br><span class="line">           k[numbers[i]] = true;</span><br><span class="line">       &#125;</span><br><span class="line">       return false;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="２．构建乘积数组"><a href="#２．构建乘积数组" class="headerlink" title="２．构建乘积数组"></a>２．构建乘积数组</h4><p>给定一个数组A[0,1,…,n-1],请构建一个数组B[0,1,…,n-1],其中B中的元素B[i]=A[0]<em>A[1]</em>…<em>A[i-1]</em>A[i+1]<em>…</em>A[n-1]。不能使用除法。</p>
+<blockquote>
+<p>分析：B[i]可以看成是矩阵每行的乘积，先算下三角的连乘，在按照上三角的规律把另外一部分也乘进去。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] multiply(int[] A) &#123;</span><br><span class="line">        int length = A.length;</span><br><span class="line">        int[] B = new int[length];</span><br><span class="line">        if(length != 0 )&#123;</span><br><span class="line">            B[0] = 1;</span><br><span class="line">            //计算下三角连乘</span><br><span class="line">            for(int i = 1; i &lt; length; i++)&#123;</span><br><span class="line">                B[i] = B[i-1] * A[i-1];</span><br><span class="line">            &#125;</span><br><span class="line">            int temp = 1;</span><br><span class="line">            //计算上三角</span><br><span class="line">            for(int j = length-2; j &gt;= 0; j--)&#123;</span><br><span class="line">                temp *= A[j+1];</span><br><span class="line">                B[j] *= temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return B;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="３．表示数值的字符串"><a href="#３．表示数值的字符串" class="headerlink" title="３．表示数值的字符串"></a>３．表示数值的字符串</h4><p>请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串”+100”,”5e2”,”-123”,”3.1416”和”-1E-16”都表示数值。 但是”12e”,”1a3.14”,”1.2.3”,”+-5”和”12e+4.3”都不是。</p>
+<blockquote>
+<p>分析：</p>
+<p>１．判断是否为有符号数：在基于当前字符是‘＋’｜｜‘－’的条件下，判断后续的数值是否为无符号整数。</p>
+<p>２．判断是否为无符号整数：判段遍历当前及之后的字符是否为数值（‘０’～‘９’），下标++.若存在返回true,反之为fasle。</p>
+<p>３．判断后续字符是否为‘.’,若是则判断后续字符是否为无符号数。注意”－．３“的正确性，即‘.’之前的无符号数为fasle，只要‘.’后的无符号数为true,则判断当前下标以前的标示为true.</p>
+<p>４．判断后续字符是否为‘ｅ’或’E’,若是则判断后续字符是否为有符号数。</p>
+<p>５．最后通过判断无符号数的返回值和是否遍历完字符串来判断该字符串是否表示数值。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">  private int index = 0;</span><br><span class="line">    public boolean isNumeric(char[] str) &#123;</span><br><span class="line"> if(str.length&lt;1)</span><br><span class="line">			return false;</span><br><span class="line">		boolean b=scanInteger(str);</span><br><span class="line">        if(index&lt;str.length&amp;&amp;str[index]==&apos;.&apos;) &#123;</span><br><span class="line">        	index++;</span><br><span class="line">        	b=scanUnsignedInteger(str)||b;</span><br><span class="line">        &#125;</span><br><span class="line">        if(index&lt;str.length&amp;&amp;(str[index]==&apos;e&apos;||str[index]==&apos;E&apos;)) &#123;</span><br><span class="line">        	index++;</span><br><span class="line">        	b=b&amp;&amp;scanInteger(str);</span><br><span class="line">        &#125;</span><br><span class="line">		return b&amp;&amp;index==str.length;</span><br><span class="line">	&#125;</span><br><span class="line">/**</span><br><span class="line"> * 判断是否为有符号整数</span><br><span class="line"> * @param str</span><br><span class="line"> * @param index</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">	public boolean scanInteger(char[] str) &#123;</span><br><span class="line">        if(index&lt;str.length&amp;&amp;(str[index]==&apos;+&apos;||str[index]==&apos;-&apos;)) &#123;</span><br><span class="line">        	index++;</span><br><span class="line">        &#125;</span><br><span class="line">        return scanUnsignedInteger(str);</span><br><span class="line">	&#125;</span><br><span class="line">/**</span><br><span class="line"> * 判断是否为无符号整数</span><br><span class="line"> * @param str</span><br><span class="line"> * @param index</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">	public boolean scanUnsignedInteger(char[] str) &#123;</span><br><span class="line">		int start=index;</span><br><span class="line">       while(index&lt;str.length&amp;&amp;str[index]&lt;=&apos;9&apos;&amp;&amp;str[index]&gt;=&apos;0&apos;) &#123;</span><br><span class="line">    	   index++;</span><br><span class="line">       &#125;</span><br><span class="line">       return index&gt;start;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-字符流中第一个不重复的字符"><a href="#4-字符流中第一个不重复的字符" class="headerlink" title="4.字符流中第一个不重复的字符"></a>4.字符流中第一个不重复的字符</h4><p>请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。</p>
+<blockquote>
+<p>分析：利用map的键值对存储该数和该数出现的次数</p>
+<p>注：１．以前用的判断是否包含键constainkey()的方法赋值为０或++,现在可以用map.getOrDefault（）来求出该键的值，若有该值则输出，若无则设为默认值。</p>
+<p>２．遍历HashMap或Hashtable时不要求顺序输出，即与顺序无关．但可以用<strong>java.util.LinkedHashMap</strong> 就是按加入时的顺序遍历了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Character, Integer&gt; map = new LinkedHashMap&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	public void Insert(char ch) &#123;</span><br><span class="line">       int c = map.getOrDefault(ch, 0);</span><br><span class="line">       map.put(ch, ++c);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// return the first appearence once char in current stringstream</span><br><span class="line">	public char FirstAppearingOnce() &#123;</span><br><span class="line">       for(Character c:map.keySet()) &#123;</span><br><span class="line">    	   if(map.get(c)==1)</span><br><span class="line">    		   return c;</span><br><span class="line">       &#125;</span><br><span class="line">       return &apos;#&apos;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="５．链表中环的入口结点"><a href="#５．链表中环的入口结点" class="headerlink" title="５．链表中环的入口结点"></a>５．链表中环的入口结点</h4><p>给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。</p>
+<blockquote>
+<p>分析：</p>
+<p>假设x为环前面的路程（黑色路程），a为环入口到相遇点的路程（蓝色路程，假设顺时针走）， c为环的长度（蓝色+橙色路程） </p>
+<p>  当快慢指针相遇的时候： </p>
+<p>  此时慢指针走的路程为Sslow =   x + m <em> c + a<br> 快指针走的路程为Sfast = x + n </em> c + a<br> 2 Sslow =   Sfast<br> 2 <em> ( x + m</em>c + a ) = (x + n <em>c + a)<br> 从而可以推导出：<br> x = (n   - 2 </em> m )<em>c - a<br> = (n - 2 </em>m -1 )*c + c - a<br> 即环前面的路程 =   数个环的长度（为可能为0） + c - a<br> 什么是c - a？这是相遇点后，环后面部分的路程。（橙色路程）<br>   所以，我们可以让一个指针从起点A开始走，让一个指针从相遇点B开始继续往后走，<br>   2个指针速度一样，那么，当从原点的指针走到环入口点的时候（此时刚好走了x）<br> 从相遇点开始走的那个指针也一定刚好到达环入口点。<br>   所以2者会相遇，且恰好相遇在环的入口点。 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public ListNode EntryNodeOfLoop(ListNode pHead)&#123;</span><br><span class="line">      if(pHead==null||pHead.next==null||pHead.next.next==null)&#123;</span><br><span class="line">    	   return null;</span><br><span class="line">       &#125;</span><br><span class="line">       ListNode fast=pHead.next.next;</span><br><span class="line">       ListNode slow=pHead.next;</span><br><span class="line">       while(fast!=slow) &#123;</span><br><span class="line">    	   if(fast.next!=null&amp;&amp;fast.next.next!=null) &#123;</span><br><span class="line">    		   fast=fast.next.next;</span><br><span class="line">    		   slow=slow.next;</span><br><span class="line">    	   &#125;else &#123;</span><br><span class="line">    		   return null;</span><br><span class="line">    	   &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       //此时fast==slow</span><br><span class="line">       fast=pHead;</span><br><span class="line">       while(fast!=slow) &#123;</span><br><span class="line">    	   fast=fast.next;</span><br><span class="line">    	   slow=slow.next;</span><br><span class="line">       &#125;</span><br><span class="line">       return fast;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="６．删除链表中重复的结点"><a href="#６．删除链表中重复的结点" class="headerlink" title="６．删除链表中重复的结点"></a>６．删除链表中重复的结点</h4><p> 在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5</p>
+<blockquote>
+<p>分析：递归法：</p>
+<p>将参数phead当做当前节点普遍化。</p>
+<p>1.phead与下一个节点重复，通过循环判断直到找到与之不重复的节点作为递归参数。</p>
+<p>2.phead与下一个节点不重复，则通过递归继续判断phead下一个节点。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode deleteDuplication(ListNode pHead)</span><br><span class="line">    &#123;</span><br><span class="line"> if(pHead==null||pHead.next==null)</span><br><span class="line">        	 return pHead;</span><br><span class="line">         if(pHead.val==pHead.next.val) &#123;</span><br><span class="line">        	ListNode node=pHead.next;</span><br><span class="line">        	while(node!=null&amp;&amp;node.val==pHead.val) &#123;</span><br><span class="line">        		node=node.next;</span><br><span class="line">        	&#125;</span><br><span class="line">        	return deleteDuplication(node);</span><br><span class="line">         &#125;else &#123;</span><br><span class="line">        	 pHead.next=deleteDuplication(pHead.next);</span><br><span class="line">        	 return pHead;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7-二叉树的下一个结点"><a href="#7-二叉树的下一个结点" class="headerlink" title="7.二叉树的下一个结点"></a>7.二叉树的下一个结点</h4><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
+<blockquote>
+<p>分析：</p>
+<p>1.二叉树为空，则返回空； </p>
+<p>2.节点右孩子存在，则设置一个指针从该节点的右孩子出发，一直沿着指向左子结点的指针找到的叶子节点即为下一个节点； </p>
+<p>3.节点不是根节点。如果该节点是其父节点的左孩子，则返回父节点；否则继续向上遍历其父节点的父节点，重复之前的判断，返回结果。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeLinkNode GetNext(TreeLinkNode pNode)</span><br><span class="line">    &#123;</span><br><span class="line">      if (pNode == null)</span><br><span class="line">			return null;</span><br><span class="line">		// 若右子树存在</span><br><span class="line">		if (pNode.right != null) &#123;</span><br><span class="line">			pNode = pNode.right;</span><br><span class="line">			while (pNode.left != null) &#123;</span><br><span class="line">				pNode = pNode.left;</span><br><span class="line">			&#125;</span><br><span class="line">			return pNode;</span><br><span class="line">		&#125;</span><br><span class="line">		//右子树不存在</span><br><span class="line">		else &#123;</span><br><span class="line">			while(pNode.next!=null) &#123;</span><br><span class="line">				if(pNode.next.left==pNode) &#123;</span><br><span class="line">					return pNode.next;</span><br><span class="line">				&#125;</span><br><span class="line">				pNode=pNode.next;</span><br><span class="line">			&#125;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="8-对称的二叉树"><a href="#8-对称的二叉树" class="headerlink" title="8.对称的二叉树"></a>8.对称的二叉树</h4><p>请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。</p>
+<blockquote>
+<p>分析：首先根节点与左右节点，左子树的右节点与右子树的左子树相同，左子树的左节点与右子树的右节点相同，采用递归即可。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">   boolean isSymmetrical(TreeNode pRoot) &#123;</span><br><span class="line">		if (pRoot == null)</span><br><span class="line">			return true;</span><br><span class="line">		else</span><br><span class="line">			return ff(pRoot.left,pRoot.right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean ff(TreeNode left,TreeNode right) &#123;</span><br><span class="line">      if(left==null&amp;&amp;right==null)</span><br><span class="line">    	  return true;</span><br><span class="line">      if(left!=null&amp;&amp;right!=null) &#123;</span><br><span class="line">    	  return left.val==right.val&amp;&amp;ff(left.left, right.right)&amp;&amp;ff(left.right,right.left);</span><br><span class="line">      &#125;</span><br><span class="line">      return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9-按之字形顺序打印二叉树"><a href="#9-按之字形顺序打印二叉树" class="headerlink" title="9.按之字形顺序打印二叉树"></a>9.按之字形顺序打印二叉树</h4><p>请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。</p>
+<blockquote>
+<p>分析：利用两个栈分别存放奇偶层的元素，遍历逐个出栈每层的元素，并将其左右节点入栈到另一个栈。直至两个栈为空。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Stack;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public ArrayList&lt;ArrayList&lt;Integer&gt; &gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">int c=1;</span><br><span class="line">		Stack&lt;TreeNode&gt; stack1=new Stack&lt;&gt;();</span><br><span class="line">		Stack&lt;TreeNode&gt; stack2=new Stack&lt;&gt;();</span><br><span class="line">		ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list=new ArrayList&lt;&gt;();</span><br><span class="line">		stack1.push(pRoot);</span><br><span class="line">		while(!stack1.isEmpty()||!stack2.isEmpty()) &#123;</span><br><span class="line">			if(c%2!=0) &#123;</span><br><span class="line">				ArrayList&lt;Integer&gt; list1=new ArrayList&lt;&gt;();</span><br><span class="line">				while(!stack1.isEmpty()) &#123;</span><br><span class="line">				TreeNode node=stack1.pop();</span><br><span class="line">				if(node!=null) &#123;</span><br><span class="line">					System.out.print(node.val+&quot; &quot;);</span><br><span class="line">					list1.add(node.val);</span><br><span class="line">					stack2.push(node.left);</span><br><span class="line">					stack2.push(node.right);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">				if(!list1.isEmpty()) &#123;</span><br><span class="line">						list.add(list1);</span><br><span class="line">						c++;</span><br><span class="line">						System.out.println();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				ArrayList&lt;Integer&gt; list2=new ArrayList&lt;&gt;();</span><br><span class="line">				while(!stack2.isEmpty()) &#123;</span><br><span class="line">				TreeNode node1=stack2.pop();</span><br><span class="line">				if(node1!=null) &#123;</span><br><span class="line">					System.out.print(node1.val);</span><br><span class="line">					list2.add(node1.val);</span><br><span class="line">					stack1.push(node1.right);</span><br><span class="line">					stack1.push(node1.left);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">				if(!list2.isEmpty()) &#123;</span><br><span class="line">					list.add(list2);</span><br><span class="line">					c++;</span><br><span class="line">					System.out.println();</span><br><span class="line">			&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return list;</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="10-把二叉树打印成多行"><a href="#10-把二叉树打印成多行" class="headerlink" title="10.把二叉树打印成多行"></a>10.把二叉树打印成多行</h4><p>从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。</p>
+<blockquote>
+<p>分析：与上题大同小异，但输出顺序不同，所以用到的是两个队列来存放奇偶层节点。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.Queue;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Stack;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">      ArrayList&lt;ArrayList&lt;Integer&gt; &gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">	 int c=1;</span><br><span class="line">			Queue&lt;TreeNode&gt; queue1=new LinkedList&lt;&gt;();</span><br><span class="line">			Queue&lt;TreeNode&gt; queue2=new LinkedList&lt;&gt;();</span><br><span class="line">			ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list=new ArrayList&lt;&gt;();</span><br><span class="line">			queue1.add(pRoot);</span><br><span class="line">			while(!queue1.isEmpty()||!queue2.isEmpty()) &#123;</span><br><span class="line">				if(c%2!=0) &#123;</span><br><span class="line">					ArrayList&lt;Integer&gt; list1=new ArrayList&lt;&gt;();</span><br><span class="line">					while(!queue1.isEmpty()) &#123;</span><br><span class="line">					TreeNode node=queue1.poll();</span><br><span class="line">					if(node!=null) &#123;</span><br><span class="line">						System.out.print(node.val+&quot; &quot;);</span><br><span class="line">						list1.add(node.val);</span><br><span class="line">						if(node.left!=null) &#123;</span><br><span class="line">						queue2.add(node.left);</span><br><span class="line">						&#125;</span><br><span class="line">						if(node.right!=null) &#123;</span><br><span class="line">						queue2.add(node.right);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">					if(!list1.isEmpty()) &#123;</span><br><span class="line">							list.add(list1);</span><br><span class="line">							c++;</span><br><span class="line">							System.out.println();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				else &#123;</span><br><span class="line">					ArrayList&lt;Integer&gt; list2=new ArrayList&lt;&gt;();</span><br><span class="line">					while(!queue2.isEmpty()) &#123;</span><br><span class="line">					TreeNode node1=queue2.poll();</span><br><span class="line">					if(node1!=null) &#123;</span><br><span class="line">						System.out.print(node1.val+&quot; &quot;);</span><br><span class="line">						list2.add(node1.val);</span><br><span class="line">						queue1.add(node1.left);</span><br><span class="line">						queue1.add(node1.right);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">					if(!list2.isEmpty()) &#123;</span><br><span class="line">						list.add(list2);</span><br><span class="line">						c++;</span><br><span class="line">						System.out.println();</span><br><span class="line">				&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			return list;</span><br><span class="line">		&#125;</span><br><span class="line">	    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/25/算法总结（五）/" rel="next" title="算法总结（五）">
+                <i class="fa fa-chevron-left"></i> 算法总结（五）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">佩琪</p>
+              <p class="site-description motion-element" itemprop="description">JAVA</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数组中重复的数字"><span class="nav-number">1.</span> <span class="nav-text">1.数组中重复的数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#２．构建乘积数组"><span class="nav-number">2.</span> <span class="nav-text">２．构建乘积数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#３．表示数值的字符串"><span class="nav-number">3.</span> <span class="nav-text">３．表示数值的字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-字符流中第一个不重复的字符"><span class="nav-number">4.</span> <span class="nav-text">4.字符流中第一个不重复的字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#５．链表中环的入口结点"><span class="nav-number">5.</span> <span class="nav-text">５．链表中环的入口结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#６．删除链表中重复的结点"><span class="nav-number">6.</span> <span class="nav-text">６．删除链表中重复的结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-二叉树的下一个结点"><span class="nav-number">7.</span> <span class="nav-text">7.二叉树的下一个结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-对称的二叉树"><span class="nav-number">8.</span> <span class="nav-text">8.对称的二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-按之字形顺序打印二叉树"><span class="nav-number">9.</span> <span class="nav-text">9.按之字形顺序打印二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-把二叉树打印成多行"><span class="nav-number">10.</span> <span class="nav-text">10.把二叉树打印成多行</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">佩琪</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

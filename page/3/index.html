@@ -232,6 +232,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/数字在排序数组中出现的次数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/17/数字在排序数组中出现的次数/" itemprop="url">数字在排序数组中出现的次数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T10:37:03+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="统计一个数字在排序数组中出现的次数。"><a href="#统计一个数字在排序数组中出现的次数。" class="headerlink" title="统计一个数字在排序数组中出现的次数。"></a>统计一个数字在排序数组中出现的次数。</h4><p><strong>方法：二分查找法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">public class Solution &#123;</span><br><span class="line"> public int GetNumberOfK(int[] array, int k) &#123;</span><br><span class="line">		if (array.length == 0)</span><br><span class="line">			return 0;</span><br><span class="line">		int first = First(array, 0, array.length - 1, k);</span><br><span class="line">		int last = last(array, 0, array.length - 1, k);</span><br><span class="line">		System.out.println(&quot;first=&quot; + first + &quot; last=&quot; + last);</span><br><span class="line">		if (first != -1 &amp;&amp; last != -1)</span><br><span class="line">			return (last - first + 1);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 递归</span><br><span class="line">	public int First(int a[], int start, int end, int k) &#123;</span><br><span class="line">		if (start &gt;= end)</span><br><span class="line">			return -1;</span><br><span class="line">		int mid = (start + end) &gt;&gt; 1;</span><br><span class="line">		if (a[mid] &gt; k)</span><br><span class="line">			return First(a, start, mid - 1, k);</span><br><span class="line">		else if (a[mid] &lt; k)</span><br><span class="line">			return First(a, mid + 1, end, k);</span><br><span class="line">		else if (mid - 1 &gt;= 0 &amp;&amp; a[mid - 1] == k)</span><br><span class="line">			return First(a, start, mid - 1, k);</span><br><span class="line">		else</span><br><span class="line">			return mid;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">//循环</span><br><span class="line">	public int last(int a[], int start, int end, int k) &#123;</span><br><span class="line">		int mid = (start + end) &gt;&gt; 1;</span><br><span class="line">		while (start &lt;= end) &#123;</span><br><span class="line">			if (a[mid] &gt; k)</span><br><span class="line">				end = mid - 1;</span><br><span class="line">			else if (a[mid] &lt; k)</span><br><span class="line">				start = mid + 1;</span><br><span class="line">			else if (mid + 1 &lt;= a.length - 1 &amp;&amp; a[mid + 1] == k)</span><br><span class="line">				start = mid + 1;</span><br><span class="line">			else</span><br><span class="line">				return mid;</span><br><span class="line">			mid = (start + end) &gt;&gt; 1;</span><br><span class="line">		&#125;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/两个链表的第一个公共结点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1706,141 +1827,6 @@ public void merge(int a[], int start, int mid, int end) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/第二次面试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/11/第二次面试/" itemprop="url">第二次面试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-11T22:49:05+08:00">
-                2018-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>金证财富面试经验</p>
-<p>今天怀着平常心去了真正意义上的第一次助理java工程师面试，我很清楚自己技术上有特别多的不足，所以我只是纯粹想体验一下被面试的感觉。虽然早就知道自己肯定不会入选，但被无情地淘汰的确有点心疼。嗯，从中吸取点经验教训吧，这才是不枉自己走的这一趟。</p>
-<ol>
-<li><p>好像技术面试官问了我关于协议方面的知识，我并没有回答出来。</p>
-<p><img src="/home/wsj/Pictures/深度截图_选择区域_20181011230042.png" alt="协议"></p>
-</li>
-<li><p>再问了一个关于：如果前台数据无法传输到后台，该如何调试。</p>
-<p><img src="/home/wsj/Pictures/深度截图_选择区域_20181011230950.png" alt="前台数据传递到后台"></p>
-<p><img src="/home/wsj/Pictures/深度截图_选择区域_20181011231721.png" alt="调试工具"></p>
-</li>
-<li><p>再者问我简历上项目经验之谈。我模模糊糊答了一些，却始终没有说清，老实说，原因有二：</p>
-<p>其一在于我的脑子是真的忘了。其二在于我对技术的不熟练。无法达到侃侃而谈的境地。</p>
-<p>心得：</p>
-<p>自己的不足虽然自己清楚，但这次表现的更为明显。我清楚的认识到书本上的知识还是有所用处的，不能完全抛之脑后，比如网络知识。。。然后很多以前犯的错误，即使解决了，也要及时总结和归纳分析。然后对自己做的事情要有责任感。既然自己做过的项目就应该使其发挥优势，而不是表面夸夸其谈。最后关于性格，最关键的缺点在于自信和独立。未来的路，我想我会努力变得独立，通过充实内在使自己变得自信。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1891,7 +1877,7 @@ public void merge(int a[], int start, int mid, int end) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

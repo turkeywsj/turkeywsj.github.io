@@ -232,6 +232,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/不用加减乘除做加法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/18/不用加减乘除做加法/" itemprop="url">不用加减乘除做加法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T16:55:47+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="写一个函数，求两个整数之和，要求在函数体内不得使用-、-、-、-四则运算符号。"><a href="#写一个函数，求两个整数之和，要求在函数体内不得使用-、-、-、-四则运算符号。" class="headerlink" title="写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。"></a>写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 按位与表示两个数的哪些二进制位为1，表示哪些位为进位位，结果需左移，表示进位后的结果。</span><br><span class="line">	 * 异或表示查看两个数哪些二进制位最后一个1，表示非进位位，可以直接加、减，结果表示非进位位进行加操作后的结果</span><br><span class="line">	 * n1&amp;n2是查看有没有进位位了，如果有，需要重复step1、step2；如果没有，保留n1、n2上二进制为1的部分，用或将之合为一个数，即为最后结果</span><br><span class="line">	 * @param num1</span><br><span class="line">	 * @param num2</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	  public int Add(int num1,int num2) &#123;</span><br><span class="line">		  while(num1!=0) &#123;</span><br><span class="line">	        int temp=num1^num2;</span><br><span class="line">	        num1=(num1&amp;num2)&lt;&lt;1;</span><br><span class="line">	        num2=temp;</span><br><span class="line">		  &#125;</span><br><span class="line">		  return num2;</span><br><span class="line">	    &#125;</span><br><span class="line">	  public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(new Add().Add(1, 2));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/求1-2-3-n/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1299,127 +1419,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/数字在排序数组中出现的次数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/17/数字在排序数组中出现的次数/" itemprop="url">数字在排序数组中出现的次数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T10:37:03+08:00">
-                2018-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="统计一个数字在排序数组中出现的次数。"><a href="#统计一个数字在排序数组中出现的次数。" class="headerlink" title="统计一个数字在排序数组中出现的次数。"></a>统计一个数字在排序数组中出现的次数。</h4><p><strong>方法：二分查找法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">public class Solution &#123;</span><br><span class="line"> public int GetNumberOfK(int[] array, int k) &#123;</span><br><span class="line">		if (array.length == 0)</span><br><span class="line">			return 0;</span><br><span class="line">		int first = First(array, 0, array.length - 1, k);</span><br><span class="line">		int last = last(array, 0, array.length - 1, k);</span><br><span class="line">		System.out.println(&quot;first=&quot; + first + &quot; last=&quot; + last);</span><br><span class="line">		if (first != -1 &amp;&amp; last != -1)</span><br><span class="line">			return (last - first + 1);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 递归</span><br><span class="line">	public int First(int a[], int start, int end, int k) &#123;</span><br><span class="line">		if (start &gt;= end)</span><br><span class="line">			return -1;</span><br><span class="line">		int mid = (start + end) &gt;&gt; 1;</span><br><span class="line">		if (a[mid] &gt; k)</span><br><span class="line">			return First(a, start, mid - 1, k);</span><br><span class="line">		else if (a[mid] &lt; k)</span><br><span class="line">			return First(a, mid + 1, end, k);</span><br><span class="line">		else if (mid - 1 &gt;= 0 &amp;&amp; a[mid - 1] == k)</span><br><span class="line">			return First(a, start, mid - 1, k);</span><br><span class="line">		else</span><br><span class="line">			return mid;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">//循环</span><br><span class="line">	public int last(int a[], int start, int end, int k) &#123;</span><br><span class="line">		int mid = (start + end) &gt;&gt; 1;</span><br><span class="line">		while (start &lt;= end) &#123;</span><br><span class="line">			if (a[mid] &gt; k)</span><br><span class="line">				end = mid - 1;</span><br><span class="line">			else if (a[mid] &lt; k)</span><br><span class="line">				start = mid + 1;</span><br><span class="line">			else if (mid + 1 &lt;= a.length - 1 &amp;&amp; a[mid + 1] == k)</span><br><span class="line">				start = mid + 1;</span><br><span class="line">			else</span><br><span class="line">				return mid;</span><br><span class="line">			mid = (start + end) &gt;&gt; 1;</span><br><span class="line">		&#125;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1470,7 +1469,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
