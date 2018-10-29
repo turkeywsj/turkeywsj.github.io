@@ -232,6 +232,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/二叉树的深度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/17/二叉树的深度/" itemprop="url">二叉树的深度</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T14:54:55+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。"><a href="#输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。" class="headerlink" title="输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。"></a>输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 递归法：</span><br><span class="line">	 * </span><br><span class="line">	 * @param root</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	public int TreeDepth(TreeNode root) &#123;</span><br><span class="line">		if (root == null)</span><br><span class="line">			return 0;</span><br><span class="line">		int left = TreeDepth(root.left);</span><br><span class="line">		int right = TreeDepth(root.right);</span><br><span class="line">		return 1 + Math.max(left, right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 非递归法：层次遍历</span><br><span class="line">	 * 解题思路：将每一层的节点加入到队列，</span><br><span class="line">	 * 每弹出队列中的一个节点，就增加向队列其左右节点。</span><br><span class="line">	 * 直至弹完同层中的节点，深度加一。</span><br><span class="line">	 * 判段条件为：count(同层的弹出个数)==nextcount(同层子节点的个数)</span><br><span class="line">	 * @param root</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	public int TreeDepth1(TreeNode root) &#123;</span><br><span class="line">         if(root==null)</span><br><span class="line">        	 return 0;</span><br><span class="line">         Queue&lt;TreeNode&gt; queue=new LinkedList&lt;&gt;();</span><br><span class="line">         queue.add(root);</span><br><span class="line">         int count=0,nextCount=1,depth=0;</span><br><span class="line">         while(queue.size()!=0) &#123;</span><br><span class="line">        	 TreeNode node=queue.poll();//poll方法移除队列首个元素并返回，若队列为空，返回null</span><br><span class="line">        	 count++;</span><br><span class="line">        	 if(node.left!=null)</span><br><span class="line">        		 queue.add(node.left);</span><br><span class="line">        	 if(node.right!=null)</span><br><span class="line">        		 queue.add(node.right);</span><br><span class="line">        	 if(count==nextCount) &#123;</span><br><span class="line">        		 nextCount=queue.size();</span><br><span class="line">        		 count=0;</span><br><span class="line">        		 depth++;</span><br><span class="line">        	 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         return depth;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		TreeNode tree1 = new TreeNode(0);</span><br><span class="line">		TreeNode tree2 = new TreeNode(1);</span><br><span class="line">		TreeNode tree3 = new TreeNode(2);</span><br><span class="line">		TreeNode tree4 = new TreeNode(3);</span><br><span class="line">		TreeNode tree5 = new TreeNode(4);</span><br><span class="line">		TreeNode tree6 = new TreeNode(5);</span><br><span class="line">		tree1.left = tree2;</span><br><span class="line">		tree1.right = tree3;</span><br><span class="line">		tree2.left = tree4;</span><br><span class="line">		tree4.left = tree5;</span><br><span class="line">		tree4.right = tree6;</span><br><span class="line">		System.out.println(new TreeDepth().TreeDepth(tree1));</span><br><span class="line">		System.out.println(new TreeDepth().TreeDepth1(tree1));</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/数字在排序数组中出现的次数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1604,229 +1724,6 @@ public void merge(int a[], int start, int mid, int end) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/深圳盒子笔试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/12/深圳盒子笔试/" itemprop="url">深圳盒子笔试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T18:37:53+08:00">
-                2018-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><strong>抽象类和接口的区别：</strong></li>
-</ol>
-<blockquote>
-<p>   答：</p>
-<p>​        1.接口只能包含抽象方法，而抽象类可以包含普通方法。          </p>
-<p>​        2.接口只能定义静态常量，而抽象类即可以定义普通属性。也可以定义静态常量属性。</p>
-<p>​        3.接口不包含构造方法，抽象类可以包含构造方法。                   </p>
-</blockquote>
-<ol start="2">
-<li><strong>hashcode和equals的重要性：</strong></li>
-</ol>
-<blockquote>
-<p>   答：</p>
-<p>   ​        1. 同一个对象无论何时调用hashcode(),得到的返回值必须一样。</p>
-<p>   ​         2.hashcode()返回值相等，对象不一定相同。通过hashcode()和equals()必须唯一确定一个对象。  </p>
-<p>   ​         3.一旦重写equals，必须重写hashcode.</p>
-<p>   ​      </p>
-</blockquote>
-<ol start="3">
-<li><strong>网络七层协议：</strong></li>
-</ol>
-<blockquote>
-<p>答：</p>
-<p>​       1.物理层</p>
-<p>​        2.数据链路层</p>
-<p>​        3.网络层</p>
-<p>​        4.传输层</p>
-<p>​        5.会话层</p>
-<p>​        6.表示层</p>
-<p>​        7.应用层</p>
-</blockquote>
-<p>4.<strong>Tcp/Ip协议族分哪几层</strong></p>
-<blockquote>
-<p>答：</p>
-<ol>
-<li>应用层</li>
-</ol>
-<p>SMTP：简单电子邮件传输协议</p>
-<p>FTP：文件传输协议</p>
-<p>TELNET：网络远程访问协议</p>
-<p>HTTP：超文本传输协议</p>
-<ol start="2">
-<li><p>传输层</p>
-<p>TCP：传输控制协议</p>
-<p>UDP：用户数据报协议</p>
-</li>
-<li><p>互连网络层</p>
-<p>IP</p>
-</li>
-<li><p>网络接口层</p>
-</li>
-</ol>
-</blockquote>
-<p>5.<strong>将一个整形数字转为二进制字符串</strong></p>
-<blockquote>
-<p>答：StringBuilder sBuilder=new StringBuilder();</p>
-<p>for(int i=0;i&lt;32;i++){</p>
-<p>sBuilder.append(number&amp;1);</p>
-<p>number=number&gt;&gt;&gt;1;</p>
-<p>}</p>
-<p>return sBuilder.reverse().toString();</p>
-</blockquote>
-<p>6.<strong>三种排序</strong></p>
-<blockquote>
-<p>答：</p>
-<ol>
-<li>冒泡排序</li>
-</ol>
-<p>for（int i=0;i&lt;length-1;i++）{</p>
-<p>for(int j=0;j&lt;length-1-i;j++){</p>
-<p>if(array[j]&gt;array[j+1]){</p>
-<p>int temp=array[j];</p>
-<p>array[j]=array[j+1];</p>
-<p>array[j+1]=temp;</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<ol start="2">
-<li>选择排序</li>
-</ol>
-<p>for(int i=0;i&lt;length-1;i++){</p>
-<p>int minIndex=i;</p>
-<p>for(int j=i;j&lt;length;j++){</p>
-<p>if(array[minIndex]&gt;array[j])</p>
-<p>minIndex=j;</p>
-<p>}</p>
-<p>int temp=array[i];</p>
-<p>array[i]=array[minIndex];</p>
-<p>array[minIndex]=temp;</p>
-<p>}</p>
-<ol start="3">
-<li>插入排序(是简单快排中最快的)</li>
-</ol>
-<p>for(int i=1;i&lt;length;i++){</p>
-<p>int temp=array[i];</p>
-<p>int leftIndex=i-1;</p>
-<p>while(leftIndex&gt;=0&amp;&amp;array[leftIndex]&gt;temp){</p>
-<p>array[leftIndex+1]=array[leftIndex];</p>
-<p>leftIndex- -;</p>
-<p>}</p>
-<p>array[leftIndex+1]=temp;</p>
-<p>}</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1877,7 +1774,7 @@ public void merge(int a[], int start, int mid, int end) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
