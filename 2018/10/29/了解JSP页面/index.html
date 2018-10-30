@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="小猪佩琪">
 <meta property="og:description" content="1.了解JSP页面在一个JSP页面中，可以包括指令标识，HTML代码，JavaScript代码，嵌入的Java代码，注释和JSP动作标识等内容。 2.指令标识1.定义：指令标识主要用于设定整个JSP页面范围内都有效的相关信息，它是被服务器解释执行的，不会产生任何内容输出到网页中。 2.语法格式：&amp;lt;%@ 指令名 属性1=“属性值1” 属性2=“属性值2”……%&amp;gt; 指令名：在JSP中包含p">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-29T14:36:20.930Z">
+<meta property="og:updated_time" content="2018-10-30T08:08:15.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP基本语法">
 <meta name="twitter:description" content="1.了解JSP页面在一个JSP页面中，可以包括指令标识，HTML代码，JavaScript代码，嵌入的Java代码，注释和JSP动作标识等内容。 2.指令标识1.定义：指令标识主要用于设定整个JSP页面范围内都有效的相关信息，它是被服务器解释执行的，不会产生任何内容输出到网页中。 2.语法格式：&amp;lt;%@ 指令名 属性1=“属性值1” 属性2=“属性值2”……%&amp;gt; 指令名：在JSP中包含p">
@@ -374,7 +374,24 @@
 <p>&lt;%- 注释内容 -%&gt;</p>
 <p>5.动态注释</p>
 <p>由于HTML注释对JSP嵌入的代码不起作用，因此可以利用他们的组合构成动态的HTML注释文本。</p>
-<!-- <%=new Date()%> -->
+<p>&lt;!– &lt;%=new Date()%&gt; -－&gt;</p>
+<h4 id="5-动作标示"><a href="#5-动作标示" class="headerlink" title="5.动作标示"></a>5.动作标示</h4><h6 id="1-包含文件标识-lt-jsp-include-gt"><a href="#1-包含文件标识-lt-jsp-include-gt" class="headerlink" title="1.包含文件标识&lt;jsp:include &gt;"></a>1.包含文件标识&lt;jsp:include &gt;</h6><p>语法格式：&lt;jsp:include page=”url” flush=”fasle|true”/&gt;</p>
+<p>或&lt;jsp:include page=”url” flush=”false|true”&gt;子动作标示&lt;jsp:param &gt;&lt;/jsp:include &gt;</p>
+<p>page：用于指定被包含文件的相对路径</p>
+<p>flush：可选属性，用于是否刷新缓冲区</p>
+<p>子动作标示&lt;jsp:param &gt;：用于向被包含的动态页面中传递参数</p>
+<p><strong>include指令与&lt;jsp:include &gt;动作标识的区别：</strong></p>
+<ul>
+<li>include指令的file属性不支持任何表达式。而&lt;jsp:include &gt;的page属性支持JSP表达式。</li>
+<li>使用include指令时，被包含的文件内容会原封不动地插入到包含页中，然后JSP编译器再将合成的文件编译成一个Java文件。而使用&lt;jsp:include &gt;包含文件时，当标示被执行时，程序会将请求转发到被包含的页面，并将执行结果输出到浏览器，然后返回包含页继续执行后面的代码。</li>
+<li>使用include指令包含文件，由于被包含的文件终会生成一个文件，所以在被包含文件，包含文件中不能有重名的变量和方法。而&lt;jsp:include &gt;包含文件时，是单独编译的，所以重名的变量和方法是不冲突的。</li>
+</ul>
+<h6 id="2-请求转发标识-lt-jsp-forward-gt"><a href="#2-请求转发标识-lt-jsp-forward-gt" class="headerlink" title="2.请求转发标识&lt;jsp:forward &gt;"></a>2.请求转发标识&lt;jsp:forward &gt;</h6><p>语法：&lt;jsp:forward page=”url” &gt;或</p>
+<p>&lt;jsp:forward page=”url”&gt;</p>
+<p>子动作标识&lt;jsp:param &gt;</p>
+<p>&lt;/jsp:forward &gt;</p>
+<h6 id="3-传递参数标识-lt-jsp-param-gt"><a href="#3-传递参数标识-lt-jsp-param-gt" class="headerlink" title="3.传递参数标识&lt;jsp:param &gt;"></a>3.传递参数标识&lt;jsp:param &gt;</h6><p>语法：&lt;jsp:param name=”参数名” value=”参数值”&gt;</p>
+
       
     </div>
     
@@ -520,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-了解JSP页面"><span class="nav-number">1.</span> <span class="nav-text">1.了解JSP页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-指令标识"><span class="nav-number">2.</span> <span class="nav-text">2.指令标识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-脚本标识"><span class="nav-number">3.</span> <span class="nav-text">3.脚本标识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-JSP注释"><span class="nav-number">4.</span> <span class="nav-text">4.JSP注释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-了解JSP页面"><span class="nav-number">1.</span> <span class="nav-text">1.了解JSP页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-指令标识"><span class="nav-number">2.</span> <span class="nav-text">2.指令标识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-脚本标识"><span class="nav-number">3.</span> <span class="nav-text">3.脚本标识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-JSP注释"><span class="nav-number">4.</span> <span class="nav-text">4.JSP注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-动作标示"><span class="nav-number">5.</span> <span class="nav-text">5.动作标示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-包含文件标识-lt-jsp-include-gt"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.包含文件标识&lt;jsp:include &gt;</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-请求转发标识-lt-jsp-forward-gt"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.请求转发标识&lt;jsp:forward &gt;</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-传递参数标识-lt-jsp-param-gt"><span class="nav-number">5.0.3.</span> <span class="nav-text">3.传递参数标识&lt;jsp:param &gt;</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
