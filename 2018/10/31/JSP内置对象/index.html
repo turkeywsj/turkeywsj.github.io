@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="小猪佩琪">
 <meta property="og:description" content="1.JSP内置对象JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。 2.request对">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-31T14:55:03.097Z">
+<meta property="og:updated_time" content="2018-11-02T12:47:05.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP内置对象">
 <meta name="twitter:description" content="1.JSP内置对象JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。 2.request对">
@@ -365,6 +365,61 @@
 <p>在JSP页面中，调用了response对象的flushBuffer()方法或out对象的flush()方法</p>
 </li>
 </ul>
+<h4 id="4-session对象"><a href="#4-session对象" class="headerlink" title="4.session对象"></a>4.session对象</h4><p>session在网络中被称为会话。通过session可以在应用程序的web页面间进行跳转时，保存用户的状态，使整个用户会话一直存在下去，直到关闭浏览器。</p>
+<ul>
+<li><p>创建及获取客户的会话</p>
+<p>通过session对象可以读取或存储客户相关信息。</p>
+<p>session.setAttribute(String name,Object obj)</p>
+<p>session.getAttribute(String name)</p>
+</li>
+<li><p>从会话中移动指定的绑定对象</p>
+<p>若想要移除存储在session中的对象</p>
+<p>session.removeAtribute(String name)</p>
+</li>
+<li><p>销毁session</p>
+<p>sesssion.invalidate();</p>
+</li>
+<li><p>会话超时的管理</p>
+<p>session.getLastAccessedTime():返回客户端最后一次与会话相关的请求时间。</p>
+<p>session.setMaxInactiveInterval():以秒为单位返回一个会话内两个请求最大时间间隔。</p>
+<p>session.setMaxInactiveInterval():以秒为单位设置session的有效时间。</p>
+</li>
+<li><p>session对象的应用</p>
+<p>session是较常用的内置对象之一，与request对象相比其作用范围更大。</p>
+</li>
+</ul>
+<h4 id="5-application对象"><a href="#5-application对象" class="headerlink" title="5.application对象"></a>5.application对象</h4><p>application对象用于保存所有应用程序中的公有数据。它在服务器启动时自动创建，在服务器停止时销毁。</p>
+<ul>
+<li><p>访问应用程序初始化参数</p>
+<p>应用程序初始化参数在web.xml文件中进行设置。</p>
+<p>application.getInitparameter(String name);</p>
+</li>
+<li><p>管理应用程序环境属性</p>
+<p>getAttributeName():获取所有application对象使用的属性名</p>
+<p>getAttribute(String name)：从application对象中获取指定的对象名</p>
+<p>setAttribute(String key,Object obj):使用指定名称和指定对象在application对象中进行关联</p>
+<p>removeAtrribute(String name)：从application对象中去掉指定名称的属性</p>
+</li>
+</ul>
+<h4 id="6-out对象"><a href="#6-out对象" class="headerlink" title="6.out对象"></a>6.out对象</h4><p>out对象用于在web浏览器内输出信息，并且管理应用服务器上的输出缓冲器。</p>
+<ul>
+<li><p>向客户端输出数据</p>
+<p>print()方法用于向客户浏览器输出信息</p>
+</li>
+<li><p>管理响应缓冲</p>
+<p>clear()清除缓冲区中的内容</p>
+<p>clearBuffer()清除当前缓冲区的内容</p>
+<p>flush()刷新流</p>
+<p>isAutoFlush()检测当前缓冲区已满时是自动清空，还是抛出异常</p>
+<p>getBufferSize()获取缓冲区的大小</p>
+</li>
+</ul>
+<h4 id="7-其它内置对象"><a href="#7-其它内置对象" class="headerlink" title="7.其它内置对象"></a>7.其它内置对象</h4><ul>
+<li>获取会话的pageContext对象</li>
+<li>读取web.xml配置信息的config对象</li>
+<li>应答或请求的page对象</li>
+<li>获取异常信息的exception对象</li>
+</ul>
 
       
     </div>
@@ -511,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JSP内置对象"><span class="nav-number">1.</span> <span class="nav-text">1.JSP内置对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-request对象"><span class="nav-number">2.</span> <span class="nav-text">2.request对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-response对象"><span class="nav-number">3.</span> <span class="nav-text">3.response对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JSP内置对象"><span class="nav-number">1.</span> <span class="nav-text">1.JSP内置对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-request对象"><span class="nav-number">2.</span> <span class="nav-text">2.request对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-response对象"><span class="nav-number">3.</span> <span class="nav-text">3.response对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-session对象"><span class="nav-number">4.</span> <span class="nav-text">4.session对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-application对象"><span class="nav-number">5.</span> <span class="nav-text">5.application对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-out对象"><span class="nav-number">6.</span> <span class="nav-text">6.out对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-其它内置对象"><span class="nav-number">7.</span> <span class="nav-text">7.其它内置对象</span></a></li></ol></div>
             
 
           </div>
