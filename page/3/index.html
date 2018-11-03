@@ -232,6 +232,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/和为S的两个数字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/18/和为S的两个数字/" itemprop="url">和为S的两个数字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T09:11:15+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。"><a href="#输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。" class="headerlink" title="输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。"></a>输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">package com.cn.wsj;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public class FindNumbersWithSum &#123;</span><br><span class="line">	//输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。</span><br><span class="line">	 public ArrayList&lt;Integer&gt; FindNumbersWithSum(int [] array,int sum) &#123;</span><br><span class="line">		 /**</span><br><span class="line">		  * 方法一：暴力求解</span><br><span class="line">		  */</span><br><span class="line">		 ArrayList&lt;Integer&gt; list =new ArrayList&lt;&gt;();</span><br><span class="line">		 int sum3=sum*sum;</span><br><span class="line">	        for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">	        	for(int j=i;j&lt;array.length;j++) &#123;</span><br><span class="line">	        		int sum1=array[i]+array[j];</span><br><span class="line">	        		if(sum1==sum) &#123;</span><br><span class="line">	        			int sum2=array[i]*array[j];</span><br><span class="line">	        			if(sum2&lt;sum3) &#123;</span><br><span class="line">	        				sum3=sum2;</span><br><span class="line">	        				list.clear();</span><br><span class="line">	        				list.add(array[i]);</span><br><span class="line">	        				list.add(array[j]);</span><br><span class="line">	        			&#125;</span><br><span class="line">	        			break;</span><br><span class="line">	        		&#125;</span><br><span class="line">	        		if(sum1&gt;sum) &#123;</span><br><span class="line">	        			break;</span><br><span class="line">	        		&#125;</span><br><span class="line">	        	&#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	        return list;</span><br><span class="line">	    &#125;</span><br><span class="line">	 /**</span><br><span class="line">	  * 方法二：左右夹逼</span><br><span class="line">	  * @param args</span><br><span class="line">	  */</span><br><span class="line">	 public ArrayList&lt;Integer&gt; FindNumbersWithSum1(int [] array,int sum) &#123;</span><br><span class="line">		 ArrayList&lt;Integer&gt; list=new ArrayList&lt;&gt;();</span><br><span class="line">		 int i=0,j=array.length-1;</span><br><span class="line">		 while(i&lt;j) &#123;</span><br><span class="line">			 int sum1=array[i]+array[j];</span><br><span class="line">			 if(sum1==sum) &#123;</span><br><span class="line">				 list.add(array[i]);</span><br><span class="line">				 list.add(array[j]);</span><br><span class="line">				 break;</span><br><span class="line">			 &#125;</span><br><span class="line">			 if(sum1&gt;sum) &#123;</span><br><span class="line">				 j--;</span><br><span class="line">			 &#125;</span><br><span class="line">			 else &#123;</span><br><span class="line">				 i++;</span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">		 return list;</span><br><span class="line">	 &#125;</span><br><span class="line">	 public static void main(String[] args) &#123;</span><br><span class="line">		FindNumbersWithSum findNumbersWithSum =new FindNumbersWithSum();</span><br><span class="line">		int a[]= &#123;1,2,3,4&#125;;</span><br><span class="line">		ArrayList&lt;Integer&gt; list=findNumbersWithSum.FindNumbersWithSum1(a, 5);</span><br><span class="line">		for (Integer integer : list) &#123;</span><br><span class="line">			System.out.print(integer+&quot; &quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/和为S的连续正数序列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/17/和为S的连续正数序列/" itemprop="url">和为S的连续正数序列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T23:26:40+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序"><a href="#输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序" class="headerlink" title="输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序"></a>输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 方法一：暴力求解</span><br><span class="line">	 * </span><br><span class="line">	 * @param sum</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindContinuousSequence(int sum) &#123;</span><br><span class="line">		int count = 1;</span><br><span class="line">		int sum1 = 0;</span><br><span class="line">		int k = 0;</span><br><span class="line">		ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">		while (count &lt;= (sum / 2 + 1)) &#123;</span><br><span class="line">			ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">			for (int i = count; i &lt;= sum / 2 + 1; i++) &#123;</span><br><span class="line">				k = i;</span><br><span class="line">				list1.add(i);</span><br><span class="line">				sum1 = sum1 + i;</span><br><span class="line">				if (sum1 == sum) &#123;</span><br><span class="line">					if (list1.size() &gt;= 2) &#123;</span><br><span class="line">						list.add(list1);</span><br><span class="line">					&#125;</span><br><span class="line">					break;</span><br><span class="line">				&#125; else if (sum1 &gt; sum) &#123;</span><br><span class="line">					sum1 = 0;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			count++;</span><br><span class="line">		&#125;</span><br><span class="line">		return list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 方法二：等差数列求解</span><br><span class="line">	 *  sum=a1*n+n*(n+1)/2*d(此题等差数为1) </span><br><span class="line">	 *  n为奇数时，序列中间的数正好是序列的平均值，所以条件为：(n &amp; 1)== 1 &amp;&amp; sum % n == 0；</span><br><span class="line">	 *  n为偶数时，序列中间两个数的平均值是序列的平均值，而这个平均值的小数部分为0.5，所以条件为：(sum %n) * 2 == n.</span><br><span class="line">	 * @param args</span><br><span class="line">	 */</span><br><span class="line">	public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindContinuousSequence1(int sum) &#123;</span><br><span class="line">		ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">		for (int n = (int) Math.sqrt(2 * sum); n &gt;= 2; n--) &#123;</span><br><span class="line">			if (((n &amp; 1) == 1 &amp;&amp; sum % n == 0) || (sum % n * 2 == n)) &#123;</span><br><span class="line">				ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">				for (int i = 0, k = (sum / n - (n - 1) / 2); i &lt; n; i++, k++) &#123;</span><br><span class="line">					list1.add(k);</span><br><span class="line">				&#125;</span><br><span class="line">				list.add(list1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/数组中只出现一次的数字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1249,269 +1489,6 @@ public void merge(int a[], int start, int mid, int end) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/把数组排成最小的数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/15/把数组排成最小的数/" itemprop="url">把数组排成最小的数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-15T09:30:30+08:00">
-                2018-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组-3，32，321-，则打印出这三个数字能排成的最小数字为321323。"><a href="#输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组-3，32，321-，则打印出这三个数字能排成的最小数字为321323。" class="headerlink" title="输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。"></a>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。</h2><ul>
-<li><p><strong>解题思路：</strong></p>
-<ul>
-<li><p>先将整型数组转换成String数组，然后将String数组排序，最后将排好序的字符串数组拼接出来。关键就是制定排序规则。</p>
-</li>
-<li><p>排序规则如下：</p>
-</li>
-<li><p>若ab &gt; ba 则 a &gt; b，</p>
-</li>
-<li><p>若ab &lt; ba 则 a &lt; b，</p>
-</li>
-<li><p>若ab = ba 则 a = b；</p>
-</li>
-<li><p>解释说明：</p>
-</li>
-<li><p>比如 “3” &lt; “31”但是 “331” &gt; “313”，所以要将二者拼接起来进行比较</p>
-</li>
-<li><p><strong>重点掌握：Arrays.sort(String[] a,Comparator&lt;&gt;(){})的使用。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Comparator;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">   public String PrintMinNumber(int[] numbers) &#123;</span><br><span class="line">		if(numbers==null||numbers.length==0)</span><br><span class="line">			return &quot;&quot;;</span><br><span class="line">		StringBuilder s=new StringBuilder();</span><br><span class="line">		String array[]=new String [numbers.length];</span><br><span class="line">		for(int i=0;i&lt;numbers.length;i++) &#123;</span><br><span class="line">			array[i]=String.valueOf(numbers[i]);//将整型数组转为String数组</span><br><span class="line">			Arrays.sort(array, new Comparator&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">				@Override</span><br><span class="line">				public int compare(String o1, String o2) &#123;</span><br><span class="line">					String s1=o1+o2;</span><br><span class="line">					String s2=o2+o1;</span><br><span class="line">					return s1.compareTo(s2);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		for (String string : array) &#123;</span><br><span class="line">			s.append(string);</span><br><span class="line">		&#125;</span><br><span class="line">		return s.toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/连续子数组的最大和/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/14/连续子数组的最大和/" itemprop="url">连续子数组的最大和</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-14T21:34:08+08:00">
-                2018-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="连续子数组的最大和"><a href="#连续子数组的最大和" class="headerlink" title="连续子数组的最大和"></a>连续子数组的最大和</h2><h4 id="HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后-他又发话了-在古老的一维模式识别中-常常需要计算连续子向量的最大和-当向量全为正数的时候-问题很好解决。但是-如果向量中包含负数-是否应该包含某个负数-并期望旁边的正数会弥补它呢？例如-6-3-2-7-15-1-2-2-连续子向量的最大和为8-从第0个开始-到第3个为止-。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？-子向量的长度至少是1"><a href="#HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后-他又发话了-在古老的一维模式识别中-常常需要计算连续子向量的最大和-当向量全为正数的时候-问题很好解决。但是-如果向量中包含负数-是否应该包含某个负数-并期望旁边的正数会弥补它呢？例如-6-3-2-7-15-1-2-2-连续子向量的最大和为8-从第0个开始-到第3个为止-。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？-子向量的长度至少是1" class="headerlink" title="HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)"></a>HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)</h4><p><strong>方法：动态规划</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public  int FindGreatestSumOfSubArray(int[] array) &#123;</span><br><span class="line">	int res=array[0];</span><br><span class="line">	int max=array[0];</span><br><span class="line">	for(int i=1;i&lt;array.length;i++) &#123;</span><br><span class="line">		max=Math.max(array[i]+max, array[i]);</span><br><span class="line">		res=Math.max(res, max);</span><br><span class="line">	&#125;</span><br><span class="line">       return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1562,7 +1539,7 @@ public void merge(int a[], int start, int mid, int end) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

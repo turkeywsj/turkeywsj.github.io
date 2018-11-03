@@ -232,6 +232,269 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/算法总结（一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/算法总结（一/" itemprop="url">算法总结（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-21T20:38:51+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="１．二维数组中的查找"><a href="#１．二维数组中的查找" class="headerlink" title="１．二维数组中的查找"></a>１．二维数组中的查找</h4><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+<blockquote>
+<p>分析：利用左下角向上递减，向右递增的性质。</p>
+<p>１．先定位左下角坐标[rows-1,0]。</p>
+<p>２．通过while循环查找。若该数比左下角大，则向右移，即列增。小则左移，即行增。相等则返回true。超出while条件范围且没找到该数，则返回false;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public boolean Find(int target, int [][] array) &#123;</span><br><span class="line">       int rows = array.length;</span><br><span class="line">       int cols = array[0].length;</span><br><span class="line">       int i=rows-1,j=0;</span><br><span class="line">       while(i&gt;=0 &amp;&amp; j&lt;cols)&#123;</span><br><span class="line">           if(target&lt;array[i][j])</span><br><span class="line">               i--;</span><br><span class="line">           else if(target&gt;array[i][j])</span><br><span class="line">               j++;</span><br><span class="line">           else</span><br><span class="line">               return true;</span><br><span class="line">       &#125;</span><br><span class="line">       return false;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-替换空格"><a href="#2-替换空格" class="headerlink" title="2.替换空格"></a>2.替换空格</h4><p>请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+<blockquote>
+<p>分析：替换字符串的问题：</p>
+<p>从后往前移位，对每个需要移位的位，计算出需要移位的数量（空格数×与之前字符串长度之差）。</p>
+</blockquote>
+<h4 id="３．从尾到头打印链表"><a href="#３．从尾到头打印链表" class="headerlink" title="３．从尾到头打印链表"></a>３．从尾到头打印链表</h4><p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。</p>
+<blockquote>
+<p>分析：递归法：</p>
+<p>看似是从前往后，实则从后往前</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; arrayList=new ArrayList&lt;Integer&gt;();</span><br><span class="line">    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) &#123;</span><br><span class="line">        if(listNode!=null)&#123;</span><br><span class="line">            this.printListFromTailToHead(listNode.next);</span><br><span class="line">            arrayList.add(listNode.val);</span><br><span class="line">        &#125;</span><br><span class="line">        return arrayList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="４．重建二叉树"><a href="#４．重建二叉树" class="headerlink" title="４．重建二叉树"></a>４．重建二叉树</h4><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
+<p>分析：递归法（重点是建立node.left和node.right分别与node的关系）</p>
+<p>前序：一个整体中，第一个为根节点。</p>
+<p>中序：根节点的左侧为左子树，右侧为右子树。</p>
+<p>然后分别将左右子树作为整体递归，每层返回的值作为左右子树的根节点，即可建立node.left和node.right分别与node的关系。最终返回二叉树的根节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode reConstructBinaryTree(int [] pre,int [] in) &#123;</span><br><span class="line">        TreeNode root=reConstructBinaryTree(pre,0,pre.length-1,in,0,in.length-1);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    //前序遍历&#123;1,2,4,7,3,5,6,8&#125;和中序遍历序列&#123;4,7,2,1,5,3,8,6&#125;</span><br><span class="line">    private TreeNode reConstructBinaryTree(int [] pre,int startPre,int endPre,int [] in,int startIn,int endIn) &#123;</span><br><span class="line">         </span><br><span class="line">        if(startPre&gt;endPre||startIn&gt;endIn)</span><br><span class="line">            return null;</span><br><span class="line">        TreeNode root=new TreeNode(pre[startPre]);</span><br><span class="line">         </span><br><span class="line">        for(int i=startIn;i&lt;=endIn;i++)</span><br><span class="line">            if(in[i]==pre[startPre])&#123;</span><br><span class="line">                root.left=reConstructBinaryTree(pre,startPre+1,startPre+i-startIn,in,startIn,i-1);</span><br><span class="line">                root.right=reConstructBinaryTree(pre,i-startIn+startPre+1,endPre,in,i+1,endIn);</span><br><span class="line">                      break;</span><br><span class="line">            &#125;</span><br><span class="line">                 </span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/删除链表中重复的结点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/20/删除链表中重复的结点/" itemprop="url">删除链表中重复的结点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-20T11:55:25+08:00">
+                2018-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。-例如，链表1-gt-2-gt-3-gt-3-gt-4-gt-4-gt-5-处理后为-1-gt-2-gt-5"><a href="#在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。-例如，链表1-gt-2-gt-3-gt-3-gt-4-gt-4-gt-5-处理后为-1-gt-2-gt-5" class="headerlink" title="在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5"></a>在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public ListNode deleteDuplication(ListNode pHead)</span><br><span class="line">    &#123;</span><br><span class="line">         if(pHead==null||pHead.next==null)</span><br><span class="line">        	 return pHead;</span><br><span class="line">         if(pHead.val==pHead.next.val) &#123;</span><br><span class="line">        	ListNode node=pHead.next;</span><br><span class="line">        	while(node!=null&amp;&amp;node.val==pHead.val) &#123;</span><br><span class="line">        		node=node.next;</span><br><span class="line">        	&#125;</span><br><span class="line">        	return deleteDuplication(node);</span><br><span class="line">         &#125;else &#123;</span><br><span class="line">        	 pHead.next=deleteDuplication(pHead.next);</span><br><span class="line">        	 return pHead;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/字符流中第一个不重复的字符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1179,246 +1442,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/和为S的两个数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/和为S的两个数字/" itemprop="url">和为S的两个数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T09:11:15+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。"><a href="#输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。" class="headerlink" title="输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。"></a>输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">package com.cn.wsj;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public class FindNumbersWithSum &#123;</span><br><span class="line">	//输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。</span><br><span class="line">	 public ArrayList&lt;Integer&gt; FindNumbersWithSum(int [] array,int sum) &#123;</span><br><span class="line">		 /**</span><br><span class="line">		  * 方法一：暴力求解</span><br><span class="line">		  */</span><br><span class="line">		 ArrayList&lt;Integer&gt; list =new ArrayList&lt;&gt;();</span><br><span class="line">		 int sum3=sum*sum;</span><br><span class="line">	        for(int i=0;i&lt;array.length;i++) &#123;</span><br><span class="line">	        	for(int j=i;j&lt;array.length;j++) &#123;</span><br><span class="line">	        		int sum1=array[i]+array[j];</span><br><span class="line">	        		if(sum1==sum) &#123;</span><br><span class="line">	        			int sum2=array[i]*array[j];</span><br><span class="line">	        			if(sum2&lt;sum3) &#123;</span><br><span class="line">	        				sum3=sum2;</span><br><span class="line">	        				list.clear();</span><br><span class="line">	        				list.add(array[i]);</span><br><span class="line">	        				list.add(array[j]);</span><br><span class="line">	        			&#125;</span><br><span class="line">	        			break;</span><br><span class="line">	        		&#125;</span><br><span class="line">	        		if(sum1&gt;sum) &#123;</span><br><span class="line">	        			break;</span><br><span class="line">	        		&#125;</span><br><span class="line">	        	&#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	        return list;</span><br><span class="line">	    &#125;</span><br><span class="line">	 /**</span><br><span class="line">	  * 方法二：左右夹逼</span><br><span class="line">	  * @param args</span><br><span class="line">	  */</span><br><span class="line">	 public ArrayList&lt;Integer&gt; FindNumbersWithSum1(int [] array,int sum) &#123;</span><br><span class="line">		 ArrayList&lt;Integer&gt; list=new ArrayList&lt;&gt;();</span><br><span class="line">		 int i=0,j=array.length-1;</span><br><span class="line">		 while(i&lt;j) &#123;</span><br><span class="line">			 int sum1=array[i]+array[j];</span><br><span class="line">			 if(sum1==sum) &#123;</span><br><span class="line">				 list.add(array[i]);</span><br><span class="line">				 list.add(array[j]);</span><br><span class="line">				 break;</span><br><span class="line">			 &#125;</span><br><span class="line">			 if(sum1&gt;sum) &#123;</span><br><span class="line">				 j--;</span><br><span class="line">			 &#125;</span><br><span class="line">			 else &#123;</span><br><span class="line">				 i++;</span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">		 return list;</span><br><span class="line">	 &#125;</span><br><span class="line">	 public static void main(String[] args) &#123;</span><br><span class="line">		FindNumbersWithSum findNumbersWithSum =new FindNumbersWithSum();</span><br><span class="line">		int a[]= &#123;1,2,3,4&#125;;</span><br><span class="line">		ArrayList&lt;Integer&gt; list=findNumbersWithSum.FindNumbersWithSum1(a, 5);</span><br><span class="line">		for (Integer integer : list) &#123;</span><br><span class="line">			System.out.print(integer+&quot; &quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/和为S的连续正数序列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/17/和为S的连续正数序列/" itemprop="url">和为S的连续正数序列</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T23:26:40+08:00">
-                2018-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序"><a href="#输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序" class="headerlink" title="输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序"></a>输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 方法一：暴力求解</span><br><span class="line">	 * </span><br><span class="line">	 * @param sum</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindContinuousSequence(int sum) &#123;</span><br><span class="line">		int count = 1;</span><br><span class="line">		int sum1 = 0;</span><br><span class="line">		int k = 0;</span><br><span class="line">		ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">		while (count &lt;= (sum / 2 + 1)) &#123;</span><br><span class="line">			ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">			for (int i = count; i &lt;= sum / 2 + 1; i++) &#123;</span><br><span class="line">				k = i;</span><br><span class="line">				list1.add(i);</span><br><span class="line">				sum1 = sum1 + i;</span><br><span class="line">				if (sum1 == sum) &#123;</span><br><span class="line">					if (list1.size() &gt;= 2) &#123;</span><br><span class="line">						list.add(list1);</span><br><span class="line">					&#125;</span><br><span class="line">					break;</span><br><span class="line">				&#125; else if (sum1 &gt; sum) &#123;</span><br><span class="line">					sum1 = 0;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			count++;</span><br><span class="line">		&#125;</span><br><span class="line">		return list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 方法二：等差数列求解</span><br><span class="line">	 *  sum=a1*n+n*(n+1)/2*d(此题等差数为1) </span><br><span class="line">	 *  n为奇数时，序列中间的数正好是序列的平均值，所以条件为：(n &amp; 1)== 1 &amp;&amp; sum % n == 0；</span><br><span class="line">	 *  n为偶数时，序列中间两个数的平均值是序列的平均值，而这个平均值的小数部分为0.5，所以条件为：(sum %n) * 2 == n.</span><br><span class="line">	 * @param args</span><br><span class="line">	 */</span><br><span class="line">	public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindContinuousSequence1(int sum) &#123;</span><br><span class="line">		ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">		for (int n = (int) Math.sqrt(2 * sum); n &gt;= 2; n--) &#123;</span><br><span class="line">			if (((n &amp; 1) == 1 &amp;&amp; sum % n == 0) || (sum % n * 2 == n)) &#123;</span><br><span class="line">				ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">				for (int i = 0, k = (sum / n - (n - 1) / 2); i &lt; n; i++, k++) &#123;</span><br><span class="line">					list1.add(k);</span><br><span class="line">				&#125;</span><br><span class="line">				list.add(list1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1469,7 +1492,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
