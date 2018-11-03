@@ -303,7 +303,59 @@
       
         
           
-            
+            <h3 id="1-servlet基础"><a href="#1-servlet基础" class="headerlink" title="1.servlet基础"></a>1.servlet基础</h3><p>servlet是运行在web服务器端的Java应用程序。</p>
+<h4 id="1-servlet的体系结构"><a href="#1-servlet的体系结构" class="headerlink" title="1.servlet的体系结构"></a>1.servlet的体系结构</h4><p>servlet<interface>  servletConfig<interface>  serializable<interface></interface></interface></interface></p>
+<p>​                                    GenericServlet&lt;抽象类&gt;</p>
+<p>​                                        HttpServlet</p>
+<h4 id="2-servlet技术特点"><a href="#2-servlet技术特点" class="headerlink" title="2.servlet技术特点"></a>2.servlet技术特点</h4><ul>
+<li><p>功能强大</p>
+<p>由于servlet拥有Java提供的API,而且还可以调用servlet分装的servletAPI编程接口。</p>
+</li>
+<li><p>可移植性</p>
+<p>servlet继承了Java语言的优点，程序一次编码，多平台运行，拥有超强的可移植性。</p>
+</li>
+<li><p>性能高效</p>
+<p>servlet对象在servlet容器启动时被初始化，当第一次被请求时，servlet容器将其实例化，此时它贮存于内存中，如果存在多个请求，servlet不会再实例化。因此，    servlet对请求处理的性能是十分高效的。</p>
+</li>
+<li><p>安全性能高</p>
+<p>servlet使用了Java的安全框架，同时servlet容器还可以为servlet提供额外的功能，他的安全性能是非常高的。</p>
+</li>
+<li><p>可扩展</p>
+<p>servlet继承了Java的面向对象的优点，在业务处理中，可以通过封装，继承等来扩展实际的业务需要，其扩展性非常强。</p>
+</li>
+</ul>
+<h4 id="3-servlet与JSP的区别"><a href="#3-servlet与JSP的区别" class="headerlink" title="3.servlet与JSP的区别"></a>3.servlet与JSP的区别</h4><p>1.角色不同</p>
+<p>JSP页面存在HTML与Java代码并存的情况，而servlet需要承担客户请求与业务处理的中间角色，只有调用固定的方法才能将动态内容输出为静态的HTML。</p>
+<p>2.编程方法不同</p>
+<p>servlet开发需要遵从Java的标准，而JSP需要遵循一定的脚本语言规范。在servlet代码中，需要调用servlet提供的相关API接口方法，才可以对HTTP请求及业务进行处理。而JSP页面通过HTML代码与内置对象实现对HTTP请求及页面的处理。</p>
+<p>3.servlet需要编译后运行</p>
+<p>servlet需要在Java编译器编译后才能运行。而JSP由JSP Container对其进行管理，他的编辑过程也由JSP Container对JSP进行自动编辑。</p>
+<p>4.速度不同</p>
+<p>由于JSP Container在每次执行不同内容的动态JSP页面时都需对其自动编译，所以效率低于servlet的执行效率。</p>
+<h4 id="4-servlet的代码结构"><a href="#4-servlet的代码结构" class="headerlink" title="4.servlet的代码结构"></a>4.servlet的代码结构</h4><p>通常所说的servlet是指httpservlet对象。</p>
+<p>该类中包含六个方法，其中init()与destroy()方法为servlet初始化与生命周期结束所调用的方法，其余的四个方法为servlet针对不同的HTTP请求所提供的方法。（doGet(),doPost(),doPut(),doDelete()）</p>
+<h3 id="2-servlet-API-编程常用接口和类"><a href="#2-servlet-API-编程常用接口和类" class="headerlink" title="2.servlet API 编程常用接口和类"></a>2.servlet API 编程常用接口和类</h3><p>1.servlet接口</p>
+<p>2.servletConfig接口</p>
+<p>3.HttpServletRequest接口</p>
+<p>4.HttpServletResonse接口</p>
+<p>5.GenericServlet类</p>
+<p>6.HttpServlet类</p>
+<h3 id="3-servlet开发"><a href="#3-servlet开发" class="headerlink" title="3.servlet开发"></a>3.servlet开发</h3><p>1.servlet创建</p>
+<p>第一种方法：创建一个普通的Java类，使这个类继承HttpServlet类，再手动配置web.xml文件注册Servlet对象。</p>
+<p>第二种方法：直接通过IDE集成开发工具进行创建。</p>
+<p>2.servlet配置</p>
+<p>(1)声明servlet对象</p>
+<p>在web.xml中的声明语句如下：</p>
+<servlet><br><br><servlet-name>SimpleServlet</servlet-name><br><br><servlet-class>com.lyq.SimpleServlet</servlet-class><br><br></servlet>
+
+<p>(2)映射servlet</p>
+<p>在web.xml声明后，需要映射访问servlet的URL。</p>
+<p>其配置方法如下：</p>
+<p><servlet-mapping></servlet-mapping></p>
+<p>​     <servlet-name>SimpleServlet</servlet-name></p>
+<p>​     <url-pattern>SimpleServlet</url-pattern></p>
+<p></p>
+
           
         
       
