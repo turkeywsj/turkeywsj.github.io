@@ -303,8 +303,8 @@
       
         
           
-            <h3 id="1-servlet基础"><a href="#1-servlet基础" class="headerlink" title="1.servlet基础"></a>1.servlet基础</h3><p>servlet是运行在web服务器端的Java应用程序。</p>
-<h4 id="1-servlet的体系结构"><a href="#1-servlet的体系结构" class="headerlink" title="1.servlet的体系结构"></a>1.servlet的体系结构</h4><p>servlet<interface>  servletConfig<interface>  serializable<interface></interface></interface></interface></p>
+            <h2 id="1-servlet基础"><a href="#1-servlet基础" class="headerlink" title="1.servlet基础"></a>1.servlet基础</h2><p>servlet是运行在web服务器端的Java应用程序。</p>
+<h4 id="1-servlet的体系结构"><a href="#1-servlet的体系结构" class="headerlink" title="1.servlet的体系结构"></a>1.servlet的体系结构</h4><p>servlet 《interface》  servletConfig《interface》 serializable《interface》</p>
 <p>​                                    GenericServlet&lt;抽象类&gt;</p>
 <p>​                                        HttpServlet</p>
 <h4 id="2-servlet技术特点"><a href="#2-servlet技术特点" class="headerlink" title="2.servlet技术特点"></a>2.servlet技术特点</h4><ul>
@@ -334,27 +334,29 @@
 <p>由于JSP Container在每次执行不同内容的动态JSP页面时都需对其自动编译，所以效率低于servlet的执行效率。</p>
 <h4 id="4-servlet的代码结构"><a href="#4-servlet的代码结构" class="headerlink" title="4.servlet的代码结构"></a>4.servlet的代码结构</h4><p>通常所说的servlet是指httpservlet对象。</p>
 <p>该类中包含六个方法，其中init()与destroy()方法为servlet初始化与生命周期结束所调用的方法，其余的四个方法为servlet针对不同的HTTP请求所提供的方法。（doGet(),doPost(),doPut(),doDelete()）</p>
-<h3 id="2-servlet-API-编程常用接口和类"><a href="#2-servlet-API-编程常用接口和类" class="headerlink" title="2.servlet API 编程常用接口和类"></a>2.servlet API 编程常用接口和类</h3><p>1.servlet接口</p>
+<h2 id="2-servlet-API-编程常用接口和类"><a href="#2-servlet-API-编程常用接口和类" class="headerlink" title="2.servlet API 编程常用接口和类"></a>2.servlet API 编程常用接口和类</h2><p>1.servlet接口</p>
 <p>2.servletConfig接口</p>
 <p>3.HttpServletRequest接口</p>
 <p>4.HttpServletResonse接口</p>
 <p>5.GenericServlet类</p>
 <p>6.HttpServlet类</p>
-<h3 id="3-servlet开发"><a href="#3-servlet开发" class="headerlink" title="3.servlet开发"></a>3.servlet开发</h3><p>1.servlet创建</p>
+<h2 id="3-servlet开发"><a href="#3-servlet开发" class="headerlink" title="3.servlet开发"></a>3.servlet开发</h2><p>1.servlet创建</p>
 <p>第一种方法：创建一个普通的Java类，使这个类继承HttpServlet类，再手动配置web.xml文件注册Servlet对象。</p>
 <p>第二种方法：直接通过IDE集成开发工具进行创建。</p>
 <p>2.servlet配置</p>
 <p>(1)声明servlet对象</p>
 <p>在web.xml中的声明语句如下：</p>
-<servlet><br><br><servlet-name>SimpleServlet</servlet-name><br><br><servlet-class>com.lyq.SimpleServlet</servlet-class><br><br></servlet>
-
+<p>《servlet》</p>
+<p>《servlet-name》SimpleServlet《/servlet-name》</p>
+<p>《servlet-class》com.lyq.SimpleServlet《/servlet-class》</p>
+<p>《/servlet》</p>
 <p>(2)映射servlet</p>
 <p>在web.xml声明后，需要映射访问servlet的URL。</p>
 <p>其配置方法如下：</p>
-<p><servlet-mapping></servlet-mapping></p>
-<p>​     <servlet-name>SimpleServlet</servlet-name></p>
-<p>​     <url-pattern>SimpleServlet</url-pattern></p>
-<p></p>
+<p>《servlet-mapping&gt;</p>
+<p>​     《servlet-name》SimpleServlet《/servlet-name》</p>
+<p>​     《url-pattern》SimpleServlet《/url-patterns》</p>
+<p>《/servlet-mapping》</p>
 
           
         
