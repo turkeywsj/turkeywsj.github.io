@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="JAVA">
+<meta name="description" content="1.Sevlet过滤器1.什么是过滤器servlet过滤器与servlet十分相似，但它具有拦截客户端请求的功能。 过滤器实质上是在web应用服务器上的web应用组件，用于拦截客户端资源与目标资源的请求。 2.过滤器核心对象过滤器对象放置在javax.servlet包中。  FilterConfig《interface》 该接口由servlet容器实现，主要用于获取过滤器中的配置信息。  Filt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sevlet过滤器">
+<meta property="og:title" content="过滤器和监听器">
 <meta property="og:url" content="http://yoursite.com/2018/11/03/过滤器和监听器/index.html">
 <meta property="og:site_name" content="小猪佩琪">
-<meta property="og:description" content="JAVA">
+<meta property="og:description" content="1.Sevlet过滤器1.什么是过滤器servlet过滤器与servlet十分相似，但它具有拦截客户端请求的功能。 过滤器实质上是在web应用服务器上的web应用组件，用于拦截客户端资源与目标资源的请求。 2.过滤器核心对象过滤器对象放置在javax.servlet包中。  FilterConfig《interface》 该接口由servlet容器实现，主要用于获取过滤器中的配置信息。  Filt">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-03T13:42:07.814Z">
+<meta property="og:updated_time" content="2018-11-04T08:37:54.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sevlet过滤器">
-<meta name="twitter:description" content="JAVA">
+<meta name="twitter:title" content="过滤器和监听器">
+<meta name="twitter:description" content="1.Sevlet过滤器1.什么是过滤器servlet过滤器与servlet十分相似，但它具有拦截客户端请求的功能。 过滤器实质上是在web应用服务器上的web应用组件，用于拦截客户端资源与目标资源的请求。 2.过滤器核心对象过滤器对象放置在javax.servlet包中。  FilterConfig《interface》 该接口由servlet容器实现，主要用于获取过滤器中的配置信息。  Filt">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>Sevlet过滤器 | 小猪佩琪</title>
+  <title>过滤器和监听器 | 小猪佩琪</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sevlet过滤器</h1>
+          <h1 class="post-title" itemprop="name headline">过滤器和监听器</h1>
         
 
         <div class="post-meta">
@@ -299,7 +299,116 @@
       
 
       
-        
+        <h3 id="1-Sevlet过滤器"><a href="#1-Sevlet过滤器" class="headerlink" title="1.Sevlet过滤器"></a>1.Sevlet过滤器</h3><h4 id="1-什么是过滤器"><a href="#1-什么是过滤器" class="headerlink" title="1.什么是过滤器"></a>1.什么是过滤器</h4><p>servlet过滤器与servlet十分相似，但它具有拦截客户端请求的功能。</p>
+<p>过滤器实质上是在web应用服务器上的web应用组件，用于拦截客户端资源与目标资源的请求。</p>
+<h4 id="2-过滤器核心对象"><a href="#2-过滤器核心对象" class="headerlink" title="2.过滤器核心对象"></a>2.过滤器核心对象</h4><p>过滤器对象放置在javax.servlet包中。</p>
+<ul>
+<li><p>FilterConfig《interface》</p>
+<p>该接口由servlet容器实现，主要用于获取过滤器中的配置信息。</p>
+</li>
+<li><p>Filter《interface》  </p>
+<p>每个过滤对象都要直接或间接地实现Filter接口，在filter中定义了三个方法，分别是init(),doFilter(),destroy()方法。</p>
+</li>
+<li><p>FilterChain《interface》</p>
+<p>该接口仍然由servlet容器实现。</p>
+</li>
+</ul>
+<h4 id="3-过滤器的创建与配置"><a href="#3-过滤器的创建与配置" class="headerlink" title="3.过滤器的创建与配置"></a>3.过滤器的创建与配置</h4><p><strong>创建：</strong></p>
+<p>创建一个过滤器对象需要实现Javax.servlet,Filter接口，同时实现Filter接口的三个方法。init():用于对过滤器的初始化进行处理。destroy():过滤器的销毁方法。</p>
+<p>doFilter():用于过滤处理的业务逻辑。</p>
+<p><strong>配置：</strong></p>
+<p>《!–过滤器的声明–》</p>
+<p>《filter》</p>
+<p>《filter-name》MyFilter《/filter-name》</p>
+<p>《filter-class》com.lyq.MyFilter《/filter-class》</p>
+<p>《/filter》</p>
+<p>《!–过滤器映射–》</p>
+<p>《filter-mapping》</p>
+<p>《filter-name》MyFilter《/filter-name》</p>
+<p>《url-pattern》/MyFilter《/url-pattern》</p>
+<p>《/filter-mapping》</p>
+<h3 id="2-servlet监听器"><a href="#2-servlet监听器" class="headerlink" title="2.servlet监听器"></a>2.servlet监听器</h3><h4 id="1-servlet监听器简介"><a href="#1-servlet监听器简介" class="headerlink" title="1.servlet监听器简介"></a>1.servlet监听器简介</h4><p>监听器的作用是监听web容器中的有效事件，因此它是由容器管理的。</p>
+<h4 id="2-servlet监听器的原理"><a href="#2-servlet监听器的原理" class="headerlink" title="2.servlet监听器的原理"></a>2.servlet监听器的原理</h4><p>servlet监听器是当今web开发的重要组成部分，它是在servlet2.3规范中和servlet过滤器一起引入的，并且在servlet2.4规范中进行较大的改进，主要用来对web应用进行监听和控制的，极大增强了web应用处理能力。</p>
+<h4 id="3-servlet上下文监听"><a href="#3-servlet上下文监听" class="headerlink" title="3.servlet上下文监听"></a>3.servlet上下文监听</h4><p>servlet上下文监听可以监听servletContext对象的创建，删除以及属性的添加，删除和修改操作，该监听器需要用到如下两个接口。</p>
+<p><strong>ServletContextListener接口</strong></p>
+<p>该接口存放在javax.servlet包中，主要实现ServletContext的创建和删除。该接口提供了两个方法，也被称为“web应用程序的生命周期方法”</p>
+<p>(1).contextInitialized(ServletContextEvent event)方法：通知正在收听的对象，应用程序已经被加载及初始化。</p>
+<p>(2).contextDestroy(ServletContextEvent event)方法：通知正在收听的对象，应用程序已经被载出，即关闭。</p>
+<p><strong>ServletContextAttributeListener接口</strong></p>
+<p>该接口主要存放在javax.servlet包中，主要实现监听ServletContext属性的挺假，删除和修改。ServletContextAttributeListener接口提供了三个方法。</p>
+<p>(1).attributeAdded(ServletContextAttributeEvent event)方法：当有对象加入到Application的范围时，通知正在收听的对象。</p>
+<p>(2).attributeReplace(ServletContextAttributeEvent event)方法：当在application的范围中有对象取代另一个对象时，通知正在收听的对象。</p>
+<p>(3).attributeRemove(ServletContextAttributeEvent event)方法：当有对象从application范围中移除时，通知正在收听的对象。</p>
+<p><strong>创建监听器</strong>：</p>
+<p>要让web容器启动时通知自定义的监听器，需要在web.xml中使用《listener》元素来配置监听器类。</p>
+<p>eg:</p>
+<p>《listener》</p>
+<p>《listener-class》com.listener.MyContentListener《/listener-class》</p>
+<p>《/listener》</p>
+<h4 id="4-HTTP会话监听"><a href="#4-HTTP会话监听" class="headerlink" title="4.HTTP会话监听"></a>4.HTTP会话监听</h4><p>HTTP会话监听信息，有四个接口可以进行监听。</p>
+<ul>
+<li><p>HttpSessionListener接口</p>
+<p>该接口实现HTTP会话的创建和销毁。该接口提供了以下两个方法：</p>
+<p>(1).sessionCreated(HttpSessionEvent event)方法：通知正在收听的对象，session已经被加载及初始化。</p>
+<p>(2).sessionDestroyed(HttpSessionEvent event)方法：通知正在收听的对象，session已经被载出。</p>
+</li>
+<li><p>HttpSessionActivationListener接口</p>
+</li>
+<li><p>该接口实现监听HTTP会话active和passivate。该接口提供了三个方法：</p>
+<p>(1).attributeAdded(HttpSessionBindingEvent event)方法：当有对象加入到session的范围时，通知正在收听的对象。</p>
+<p>(2).attributeReplaced(HttpSessionBindingEvent event)方法：当在session范围内有对象取代另一个对象时，通知正在收听的对象。</p>
+<p>(3).attributeRemove(HttpSessionBindingEvent event)方法：当有对象从session范围在移除时，通知正在收听的对象。</p>
+</li>
+<li><p>HttpBindingListener接口</p>
+<p>HttpBindingListener接口实现监听HTTP会话中对象的绑定信息。它是唯一不需要在web.xml中设定Listener的。该接口提供了以下两个方法。</p>
+<p>(1).valueBound(HttpSessionBindingEvent event)方法：当有对象加入到session范围时会被自动调用。</p>
+<p>(2).valueUnBound(HttpSessionBindingEvent event)方法：当有对象从session范围内移除时会被自动调用。</p>
+</li>
+<li><p>HttpSessionAttributeListener接口</p>
+<p>该接口实现监听HTTP会话中属性的设置请求。</p>
+<p>(1).sessionDidActivate(HttpSessionEvent event)方法：通知正在收听的对象，他的session已经变为有效状态。</p>
+<p>(2).sessionWillPassivate(HttpSession event)方法：通知正在收听的对象，他的session已经变为无效状态。</p>
+</li>
+</ul>
+<h4 id="5-servlet请求监听"><a href="#5-servlet请求监听" class="headerlink" title="5.servlet请求监听"></a>5.servlet请求监听</h4><ul>
+<li><p>SevletRequestListener接口</p>
+<p>该接口提供了以下两个方法：</p>
+<p>(1).requestInitalized(ServletRequestEvent event)方法:通知正在收听的对象，ServletRequest已经被加载及初始化。</p>
+<p>(2).requestDestroyed(ServletRequestEvent event)方法：通知正在收听的对象，ServletRequest对象已经被载出，即关闭。</p>
+</li>
+<li><p>ServletRequestAttributeListener接口</p>
+<p>该接口提供了以下三个方法：</p>
+<p>(1).attributeAdded(ServletRequestAttributeEvent event)方法：当有对象加入到request的范围时，通知正在收听的对象。</p>
+<p>(2).attributeReplaced(ServletRequestAttributeEvent event)方法：当在request范围内有对象取代另一个对象时，通知正在收听的对象。</p>
+<p>(3).attributeRemove(ServletRequestAttributeEvent event)方法：当有对象从request范围在移除时，通知正在收听的对象。</p>
+</li>
+</ul>
+<h3 id="3-servlet3-0的新特性"><a href="#3-servlet3-0的新特性" class="headerlink" title="3.servlet3.0的新特性"></a>3.servlet3.0的新特性</h3><p>1.新增注释</p>
+<ul>
+<li><p>@WebServlet</p>
+<p>eg:@WebServlet(name=”saveSErvlet” urlPatterns=”/SaveServlet”)</p>
+</li>
+<li><p>@WebFilter</p>
+<p>eg:@WebFilter(filterName=”char”,urlPatterns=”/*”)</p>
+</li>
+<li><p>@WebListener</p>
+<p>eg:@WebListener(“This is only a demo listener”)</p>
+</li>
+<li><p>@WebInitParam</p>
+<p>eg:@WebServlet(urlPatterns=”/simple”,name=”SimpleServlet”,</p>
+<p>initParam={@WebInitParam(name=”username”,value=”tom”)})</p>
+</li>
+</ul>
+<p>2.对文件上传的支持</p>
+<p>实现文件上传需要实现两件事：</p>
+<p>需要添加@MultipartConfig注释</p>
+<p>从request对象中获取Part文件对象</p>
+<p>3.异步处理</p>
+<p>在servlet3.0之前,一个servlet的工作流程是：首先，servlet接收到请求后，需要对请求携带的数据进行一些预处理。接着调用业务接口的某些方法，以完成业务处理。最后，根据处理的结果提交响应。</p>
+<p>现在通过servlet3.0的异步处理机制可以将处理流程调整为以下流程：首先，servlet接收到请求后，需要对请求携带的数据进行一些预处理。接着servlet线程将请求转交给异步线程来执行业务处理，线程本身返回至容器。</p>
+<p>这样，Servlet线程不在一直处于阻塞状态以等待业务逻辑的处理，而是启动异步后可以立即返回。</p>
+<p>异步处理机制可应用于servlet和过滤器两种组件。@WebServlet和@WebFilter注释提供了asyncSupported属性，默认该属性的取值为false,要启动异步处理支持，只需将属性设置为true即可。</p>
+
       
     </div>
     
@@ -323,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/03/Sevlet过滤器/" rel="next" title="过滤器和监听器">
-                <i class="fa fa-chevron-left"></i> 过滤器和监听器
+              <a href="/2018/11/03/Servlet技术/" rel="next" title="Servlet技术">
+                <i class="fa fa-chevron-left"></i> Servlet技术
               </a>
             
           </div>
@@ -383,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -399,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -426,6 +544,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Sevlet过滤器"><span class="nav-number">1.</span> <span class="nav-text">1.Sevlet过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是过滤器"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-过滤器核心对象"><span class="nav-number">1.2.</span> <span class="nav-text">2.过滤器核心对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-过滤器的创建与配置"><span class="nav-number">1.3.</span> <span class="nav-text">3.过滤器的创建与配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-servlet监听器"><span class="nav-number">2.</span> <span class="nav-text">2.servlet监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-servlet监听器简介"><span class="nav-number">2.1.</span> <span class="nav-text">1.servlet监听器简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-servlet监听器的原理"><span class="nav-number">2.2.</span> <span class="nav-text">2.servlet监听器的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-servlet上下文监听"><span class="nav-number">2.3.</span> <span class="nav-text">3.servlet上下文监听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HTTP会话监听"><span class="nav-number">2.4.</span> <span class="nav-text">4.HTTP会话监听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-servlet请求监听"><span class="nav-number">2.5.</span> <span class="nav-text">5.servlet请求监听</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-servlet3-0的新特性"><span class="nav-number">3.</span> <span class="nav-text">3.servlet3.0的新特性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
