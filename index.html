@@ -315,8 +315,8 @@
 <p>《el-ignored》true《/el-ignored》</p>
 <p>《/jsp-property-group》</p>
 <p>《/jsp-config》</p>
-<h4 id="3-保留的关键字"><a href="#3-保留的关键字" class="headerlink" title="3.保留的关键字"></a>3.保留的关键字</h4><p>同Java一样，EL也有自己的保留关键字，再为变量命名时，应该避免使用这些关键字。</p>
-<h4 id="4-EL的运算符及优先级"><a href="#4-EL的运算符及优先级" class="headerlink" title="4.EL的运算符及优先级"></a>4.EL的运算符及优先级</h4><p>[]</p>
+<h3 id="3-保留的关键字"><a href="#3-保留的关键字" class="headerlink" title="3.保留的关键字"></a>3.保留的关键字</h3><p>同Java一样，EL也有自己的保留关键字，再为变量命名时，应该避免使用这些关键字。</p>
+<h3 id="4-EL的运算符及优先级"><a href="#4-EL的运算符及优先级" class="headerlink" title="4.EL的运算符及优先级"></a>4.EL的运算符及优先级</h3><p>[]</p>
 <p>()</p>
 <p>-(负号) not ! empty</p>
 <p>*/ div % mod</p>
@@ -327,15 +327,15 @@
 <p>|| or</p>
 <p>?:</p>
 <p>优先级由高到低</p>
-<h6 id="1-通过EL访问数据"><a href="#1-通过EL访问数据" class="headerlink" title="1.通过EL访问数据"></a>1.通过EL访问数据</h6><p>通常情况下，”[]”和“.”是等价的。</p>
+<h4 id="1-通过EL访问数据"><a href="#1-通过EL访问数据" class="headerlink" title="1.通过EL访问数据"></a>1.通过EL访问数据</h4><p>通常情况下，”[]”和“.”是等价的。</p>
 <p>${userInfo.id}</p>
 <p>${userInfo[id]}</p>
 <p>但当属性名中包含一些特殊符号(-或.)时，就只能用“[]”运算符来访问对象的属性。另外。数组元素或list集合中数据的获取，也应该用“.”运算符。</p>
-<h6 id="2-在EL中进行算术运算"><a href="#2-在EL中进行算术运算" class="headerlink" title="2.在EL中进行算术运算"></a>2.在EL中进行算术运算</h6><p>EL提供了加减乘除和求余五种算术运算。但“+”与Java中的不同，他不能实现两个字符串之间的连接，只能将数值型字符串转换为数值型，在进行加法运算，否则将抛异常。</p>
-<h6 id="3-在EL表达式中判断对象是否为空"><a href="#3-在EL表达式中判断对象是否为空" class="headerlink" title="3.在EL表达式中判断对象是否为空"></a>3.在EL表达式中判断对象是否为空</h6><p>${empty expression}</p>
+<h4 id="2-在EL中进行算术运算"><a href="#2-在EL中进行算术运算" class="headerlink" title="2.在EL中进行算术运算"></a>2.在EL中进行算术运算</h4><p>EL提供了加减乘除和求余五种算术运算。但“+”与Java中的不同，他不能实现两个字符串之间的连接，只能将数值型字符串转换为数值型，在进行加法运算，否则将抛异常。</p>
+<h4 id="3-在EL表达式中判断对象是否为空"><a href="#3-在EL表达式中判断对象是否为空" class="headerlink" title="3.在EL表达式中判断对象是否为空"></a>3.在EL表达式中判断对象是否为空</h4><p>${empty expression}</p>
 <p>判断非空</p>
 <p>${not empty expression}</p>
-<h6 id="4-在EL中进行逻辑关系运算"><a href="#4-在EL中进行逻辑关系运算" class="headerlink" title="4.在EL中进行逻辑关系运算"></a>4.在EL中进行逻辑关系运算</h6><ul>
+<h4 id="4-在EL中进行逻辑关系运算"><a href="#4-在EL中进行逻辑关系运算" class="headerlink" title="4.在EL中进行逻辑关系运算"></a>4.在EL中进行逻辑关系运算</h4><ul>
 <li><p>关系运算符</p>
 <p>== eq</p>
 <p>!= ne</p>
@@ -350,17 +350,17 @@
 <p>! not</p>
 </li>
 </ul>
-<h6 id="5-在EL中进行条件运算"><a href="#5-在EL中进行条件运算" class="headerlink" title="5.在EL中进行条件运算"></a>5.在EL中进行条件运算</h6><p>${条件表达式？表达式一：表达式二}</p>
-<h4 id="5-EL的隐含对象"><a href="#5-EL的隐含对象" class="headerlink" title="5.EL的隐含对象"></a>5.EL的隐含对象</h4><h6 id="1-页面上下文对象"><a href="#1-页面上下文对象" class="headerlink" title="1.页面上下文对象"></a>1.页面上下文对象</h6><p>页面上下文对象为pageContext，用于访问JSP内置对象(如request,response,session,out,page,exception,但不能用于pageContext,config,application)和servletContext。在获取这些内置对象之后，就可以获得其属性值，这些属性值与对象的getXXX()方法相对应，在使用时，去掉方法名中的get,并将首字母改为小写即可。</p>
+<h4 id="5-在EL中进行条件运算"><a href="#5-在EL中进行条件运算" class="headerlink" title="5.在EL中进行条件运算"></a>5.在EL中进行条件运算</h4><p>${条件表达式？表达式一：表达式二}</p>
+<h3 id="5-EL的隐含对象"><a href="#5-EL的隐含对象" class="headerlink" title="5.EL的隐含对象"></a>5.EL的隐含对象</h3><h4 id="1-页面上下文对象"><a href="#1-页面上下文对象" class="headerlink" title="1.页面上下文对象"></a>1.页面上下文对象</h4><p>页面上下文对象为pageContext，用于访问JSP内置对象(如request,response,session,out,page,exception,但不能用于pageContext,config,application)和servletContext。在获取这些内置对象之后，就可以获得其属性值，这些属性值与对象的getXXX()方法相对应，在使用时，去掉方法名中的get,并将首字母改为小写即可。</p>
 <p>eg:访问request对象</p>
 <p>${pageContext.request}</p>
 <p>访问其中的getServerPort()方法</p>
 <p>${pageContext.request.serverPort}</p>
 <p><strong>注：不可以通过pageContext对象获取保存到request范围中的变量。</strong></p>
-<h6 id="2-访问作用域范围的隐含对象"><a href="#2-访问作用域范围的隐含对象" class="headerlink" title="2.访问作用域范围的隐含对象"></a>2.访问作用域范围的隐含对象</h6><p>在EL中提供了四个用于访问作用域范围的隐含对象，即pageScope,requestScope,sessionScope,applicationScope。这四个隐含对象只能取得指定范围内的属性值，而不能取得其他相关信息。</p>
+<h4 id="2-访问作用域范围的隐含对象"><a href="#2-访问作用域范围的隐含对象" class="headerlink" title="2.访问作用域范围的隐含对象"></a>2.访问作用域范围的隐含对象</h4><p>在EL中提供了四个用于访问作用域范围的隐含对象，即pageScope,requestScope,sessionScope,applicationScope。这四个隐含对象只能取得指定范围内的属性值，而不能取得其他相关信息。</p>
 <p>eg:《%request.setAttribute(“userName”,”mr”)%》</p>
 <p>$(requestScope.userName)</p>
-<h6 id="3-访问环境信息的隐含对象"><a href="#3-访问环境信息的隐含对象" class="headerlink" title="3.访问环境信息的隐含对象"></a>3.访问环境信息的隐含对象</h6><p>在EL中提供了留个访问环境的隐含对象。</p>
+<h4 id="3-访问环境信息的隐含对象"><a href="#3-访问环境信息的隐含对象" class="headerlink" title="3.访问环境信息的隐含对象"></a>3.访问环境信息的隐含对象</h4><p>在EL中提供了留个访问环境的隐含对象。</p>
 <ul>
 <li><p>param对象</p>
 <p>用于获取请求参数的值，应用在参数值只有一个的情况。</p>
@@ -399,7 +399,7 @@
 <p>${cookie.user.value}</p>
 </li>
 </ul>
-<h4 id="6-定义和使用EL函数"><a href="#6-定义和使用EL函数" class="headerlink" title="6.定义和使用EL函数"></a>6.定义和使用EL函数</h4><p>(1)编写一个Java类，并在该类中编写公用静态方法，用于实现自定义EL函数的具体功能。</p>
+<h3 id="6-定义和使用EL函数"><a href="#6-定义和使用EL函数" class="headerlink" title="6.定义和使用EL函数"></a>6.定义和使用EL函数</h3><p>(1)编写一个Java类，并在该类中编写公用静态方法，用于实现自定义EL函数的具体功能。</p>
 <p>(2)编写标签库描述文件，对函数进行声明。该文件的拓展名为.tld，被保存到web应用的web-inf文件夹下。</p>
 <p>(3)在JSP页面中引用标签库，并调用定义的EL函数，实现相应的功能。</p>
 
