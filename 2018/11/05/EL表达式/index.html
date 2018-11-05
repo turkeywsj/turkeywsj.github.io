@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.EL表达式概述EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。 1.EL表达式的语法${expression} 2.EL的特点2.与低版本的环境兼容——禁用EL1.使用斜杠“\”符号\ ${expression} 2.使用page指令《%@ page isELIgnored=”布尔值”》 若属">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EL表达式">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/EL表达式/index.html">
+<meta property="og:site_name" content="小猪佩琪">
+<meta property="og:description" content="1.EL表达式概述EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。 1.EL表达式的语法${expression} 2.EL的特点2.与低版本的环境兼容——禁用EL1.使用斜杠“\”符号\ ${expression} 2.使用page指令《%@ page isELIgnored=”布尔值”》 若属">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-05T12:51:36.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EL表达式">
+<meta name="twitter:description" content="1.EL表达式概述EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。 1.EL表达式的语法${expression} 2.EL的特点2.与低版本的环境兼容——禁用EL1.使用斜杠“\”符号\ ${expression} 2.使用page指令《%@ page isELIgnored=”布尔值”》 若属">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/05/EL表达式/"/>
+
+
+
+
+
+  <title>EL表达式 | 小猪佩琪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小猪佩琪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小猪佩琪的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/EL表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">EL表达式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T20:51:21+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-EL表达式概述"><a href="#1-EL表达式概述" class="headerlink" title="1.EL表达式概述"></a>1.EL表达式概述</h3><p>EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。</p>
+<h4 id="1-EL表达式的语法"><a href="#1-EL表达式的语法" class="headerlink" title="1.EL表达式的语法"></a>1.EL表达式的语法</h4><p>${expression}</p>
+<h4 id="2-EL的特点"><a href="#2-EL的特点" class="headerlink" title="2.EL的特点"></a>2.EL的特点</h4><h3 id="2-与低版本的环境兼容——禁用EL"><a href="#2-与低版本的环境兼容——禁用EL" class="headerlink" title="2.与低版本的环境兼容——禁用EL"></a>2.与低版本的环境兼容——禁用EL</h3><h6 id="1-使用斜杠“-”符号"><a href="#1-使用斜杠“-”符号" class="headerlink" title="1.使用斜杠“\”符号"></a>1.使用斜杠“\”符号</h6><p>\ ${expression}</p>
+<h6 id="2-使用page指令"><a href="#2-使用page指令" class="headerlink" title="2.使用page指令"></a>2.使用page指令</h6><p>《%@ page isELIgnored=”布尔值”》</p>
+<p>若属性为true，则表明忽略页面中的EL。</p>
+<h6 id="3-在web-xml文件中配置《el-ignored》元素"><a href="#3-在web-xml文件中配置《el-ignored》元素" class="headerlink" title="3.在web.xml文件中配置《el-ignored》元素"></a>3.在web.xml文件中配置《el-ignored》元素</h6><p>该方法适用于禁用web应用中所有JSP页面中的EL。</p>
+<p>《jsp-config》</p>
+<p>《jsp-property-group》</p>
+<p>《url-pattern》*.jsp《/url-pattern》</p>
+<p>《el-ignored》true《/el-ignored》</p>
+<p>《/jsp-property-group》</p>
+<p>《/jsp-config》</p>
+<h4 id="3-保留的关键字"><a href="#3-保留的关键字" class="headerlink" title="3.保留的关键字"></a>3.保留的关键字</h4><p>同Java一样，EL也有自己的保留关键字，再为变量命名时，应该避免使用这些关键字。</p>
+<h4 id="4-EL的运算符及优先级"><a href="#4-EL的运算符及优先级" class="headerlink" title="4.EL的运算符及优先级"></a>4.EL的运算符及优先级</h4><p>[]</p>
+<p>()</p>
+<p>-(负号) not ! empty</p>
+<p>*/ div % mod</p>
+<p>+(加号)  -(减号)</p>
+<p>&lt; &gt; &lt;= &gt;= lt gt le ge</p>
+<p>== != eq ne</p>
+<p>&amp;&amp; and</p>
+<p>|| or</p>
+<p>?:</p>
+<p>优先级由高到低</p>
+<h6 id="1-通过EL访问数据"><a href="#1-通过EL访问数据" class="headerlink" title="1.通过EL访问数据"></a>1.通过EL访问数据</h6><p>通常情况下，”[]”和“.”是等价的。</p>
+<p>${userInfo.id}</p>
+<p>${userInfo[id]}</p>
+<p>但当属性名中包含一些特殊符号(-或.)时，就只能用“[]”运算符来访问对象的属性。另外。数组元素或list集合中数据的获取，也应该用“.”运算符。</p>
+<h6 id="2-在EL中进行算术运算"><a href="#2-在EL中进行算术运算" class="headerlink" title="2.在EL中进行算术运算"></a>2.在EL中进行算术运算</h6><p>EL提供了加减乘除和求余五种算术运算。但“+”与Java中的不同，他不能实现两个字符串之间的连接，只能将数值型字符串转换为数值型，在进行加法运算，否则将抛异常。</p>
+<h6 id="3-在EL表达式中判断对象是否为空"><a href="#3-在EL表达式中判断对象是否为空" class="headerlink" title="3.在EL表达式中判断对象是否为空"></a>3.在EL表达式中判断对象是否为空</h6><p>${empty expression}</p>
+<p>判断非空</p>
+<p>${not empty expression}</p>
+<h6 id="4-在EL中进行逻辑关系运算"><a href="#4-在EL中进行逻辑关系运算" class="headerlink" title="4.在EL中进行逻辑关系运算"></a>4.在EL中进行逻辑关系运算</h6><ul>
+<li><p>关系运算符</p>
+<p>== eq</p>
+<p>!= ne</p>
+<p>&lt; lt</p>
+<p>大于 gt</p>
+<p>&lt;= le</p>
+<p>大于等于 ge</p>
+</li>
+<li><p>逻辑运算符</p>
+<p>&amp;&amp; and</p>
+<p>|| or</p>
+<p>! not</p>
+</li>
+</ul>
+<h6 id="5-在EL中进行条件运算"><a href="#5-在EL中进行条件运算" class="headerlink" title="5.在EL中进行条件运算"></a>5.在EL中进行条件运算</h6><p>${条件表达式？表达式一：表达式二}</p>
+<h4 id="5-EL的隐含对象"><a href="#5-EL的隐含对象" class="headerlink" title="5.EL的隐含对象"></a>5.EL的隐含对象</h4><h6 id="1-页面上下文对象"><a href="#1-页面上下文对象" class="headerlink" title="1.页面上下文对象"></a>1.页面上下文对象</h6><p>页面上下文对象为pageContext，用于访问JSP内置对象(如request,response,session,out,page,exception,但不能用于pageContext,config,application)和servletContext。在获取这些内置对象之后，就可以获得其属性值，这些属性值与对象的getXXX()方法相对应，在使用时，去掉方法名中的get,并将首字母改为小写即可。</p>
+<p>eg:访问request对象</p>
+<p>${pageContext.request}</p>
+<p>访问其中的getServerPort()方法</p>
+<p>${pageContext.request.serverPort}</p>
+<p><strong>注：不可以通过pageContext对象获取保存到request范围中的变量。</strong></p>
+<h6 id="2-访问作用域范围的隐含对象"><a href="#2-访问作用域范围的隐含对象" class="headerlink" title="2.访问作用域范围的隐含对象"></a>2.访问作用域范围的隐含对象</h6><p>在EL中提供了四个用于访问作用域范围的隐含对象，即pageScope,requestScope,sessionScope,applicationScope。这四个隐含对象只能取得指定范围内的属性值，而不能取得其他相关信息。</p>
+<p>eg:《%request.setAttribute(“userName”,”mr”)%》</p>
+<p>$(requestScope.userName)</p>
+<h6 id="3-访问环境信息的隐含对象"><a href="#3-访问环境信息的隐含对象" class="headerlink" title="3.访问环境信息的隐含对象"></a>3.访问环境信息的隐含对象</h6><p>在EL中提供了留个访问环境的隐含对象。</p>
+<ul>
+<li><p>param对象</p>
+<p>用于获取请求参数的值，应用在参数值只有一个的情况。</p>
+<p>eg:</p>
+<p>《input name=”name” value=”text”》</p>
+<p>${param.name}</p>
+</li>
+<li><p>paramValues对象</p>
+<p>应用与请求参数名对应多个值时，返回结果为数组。</p>
+<p>eg:</p>
+<p>《input name=”name” value=”text”》</p>
+<p>《input name=”name” value=”text”》</p>
+<p>${paramValues.name[0]}</p>
+<p><strong>注：在应用param和paramValues对象时，若果指定参数不存在，则返回空的字符串。而不是null。</strong></p>
+</li>
+<li><p>header和headerValues对象</p>
+<p>header对象用于获取HTTP请求的一个具体的header的值。若可能存在同一个header拥有多个不同的情况，这就必须用headerValues对象。</p>
+<p>eg:要获取HTTP请求的header的connection(是否持久连接)属性</p>
+<p>${header.connection}</p>
+</li>
+<li><p>initParam对象</p>
+<p>该对象用于获取web应用初始化参数。</p>
+<p>eg:获取web应用的web.xml文件中设置一个初始化参数author，用于指定作者。</p>
+<p>《context-param》</p>
+<p>《param-name》author《/param-name》</p>
+<p>《param-value》mr《/param-value》</p>
+<p>《/context-param》</p>
+<p>${initParam.author}</p>
+</li>
+<li><p>cookie对象</p>
+<p>虽然EL中，并没有提供向cookie中保存值的方法，但是它提供了访问由请求设置的cookie的方法，这可以通过cookie的隐含对象实现。</p>
+<p>eg:使用response对象设置一个请求有效的cookie对象，然后在使用EL获取该cookie的值。</p>
+<p>《%Cookie cookie=new Cookie(“user”,”mr”)</p>
+<p>response.addCookie(cookie);</p>
+<p>%》</p>
+<p>${cookie.user.value}</p>
+</li>
+</ul>
+<h4 id="6-定义和使用EL函数"><a href="#6-定义和使用EL函数" class="headerlink" title="6.定义和使用EL函数"></a>6.定义和使用EL函数</h4><p>(1)编写一个Java类，并在该类中编写公用静态方法，用于实现自定义EL函数的具体功能。</p>
+<p>(2)编写标签库描述文件，对函数进行声明。该文件的拓展名为.tld，被保存到web应用的web-inf文件夹下。</p>
+<p>(3)在JSP页面中引用标签库，并调用定义的EL函数，实现相应的功能。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/04/java-web的数据库操作/" rel="next" title="java web的数据库操作">
+                <i class="fa fa-chevron-left"></i> java web的数据库操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">佩琪</p>
+              <p class="site-description motion-element" itemprop="description">JAVA</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-EL表达式概述"><span class="nav-number">1.</span> <span class="nav-text">1.EL表达式概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-EL表达式的语法"><span class="nav-number">1.1.</span> <span class="nav-text">1.EL表达式的语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-EL的特点"><span class="nav-number">1.2.</span> <span class="nav-text">2.EL的特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-与低版本的环境兼容——禁用EL"><span class="nav-number">2.</span> <span class="nav-text">2.与低版本的环境兼容——禁用EL</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-使用斜杠“-”符号"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1.使用斜杠“\”符号</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-使用page指令"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2.使用page指令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-在web-xml文件中配置《el-ignored》元素"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3.在web.xml文件中配置《el-ignored》元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-保留的关键字"><span class="nav-number">2.1.</span> <span class="nav-text">3.保留的关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-EL的运算符及优先级"><span class="nav-number">2.2.</span> <span class="nav-text">4.EL的运算符及优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-通过EL访问数据"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">1.通过EL访问数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-在EL中进行算术运算"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">2.在EL中进行算术运算</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-在EL表达式中判断对象是否为空"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">3.在EL表达式中判断对象是否为空</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-在EL中进行逻辑关系运算"><span class="nav-number">2.2.0.4.</span> <span class="nav-text">4.在EL中进行逻辑关系运算</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-在EL中进行条件运算"><span class="nav-number">2.2.0.5.</span> <span class="nav-text">5.在EL中进行条件运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-EL的隐含对象"><span class="nav-number">2.3.</span> <span class="nav-text">5.EL的隐含对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-页面上下文对象"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">1.页面上下文对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-访问作用域范围的隐含对象"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">2.访问作用域范围的隐含对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-访问环境信息的隐含对象"><span class="nav-number">2.3.0.3.</span> <span class="nav-text">3.访问环境信息的隐含对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-定义和使用EL函数"><span class="nav-number">2.4.</span> <span class="nav-text">6.定义和使用EL函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">佩琪</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
