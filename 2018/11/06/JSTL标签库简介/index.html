@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.标签库简介标准标签库实际上是由五个功能不同的标签库组成。分别是：核心标签库，格式标签库，SQL标签库，XML标签库和函数标签库。 核心标签库主要用于完成JSP页面的常用功能，包括jstl的表达式标签，url标签，流程控制标签，循环标签。 2.JSTL的配置由于jstl还不是JSP2.0中的一部分，所以使用之前需要安装并配置jstl。 现在oracle公司官网上下载，然后就可以在web应用中进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSTL标签库简介">
+<meta property="og:url" content="http://yoursite.com/2018/11/06/JSTL标签库简介/index.html">
+<meta property="og:site_name" content="小猪佩琪">
+<meta property="og:description" content="1.标签库简介标准标签库实际上是由五个功能不同的标签库组成。分别是：核心标签库，格式标签库，SQL标签库，XML标签库和函数标签库。 核心标签库主要用于完成JSP页面的常用功能，包括jstl的表达式标签，url标签，流程控制标签，循环标签。 2.JSTL的配置由于jstl还不是JSP2.0中的一部分，所以使用之前需要安装并配置jstl。 现在oracle公司官网上下载，然后就可以在web应用中进行">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-06T16:03:45.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSTL标签库简介">
+<meta name="twitter:description" content="1.标签库简介标准标签库实际上是由五个功能不同的标签库组成。分别是：核心标签库，格式标签库，SQL标签库，XML标签库和函数标签库。 核心标签库主要用于完成JSP页面的常用功能，包括jstl的表达式标签，url标签，流程控制标签，循环标签。 2.JSTL的配置由于jstl还不是JSP2.0中的一部分，所以使用之前需要安装并配置jstl。 现在oracle公司官网上下载，然后就可以在web应用中进行">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/06/JSTL标签库简介/"/>
+
+
+
+
+
+  <title>JSTL标签库简介 | 小猪佩琪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小猪佩琪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小猪佩琪的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/JSTL标签库简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSTL标签库简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T22:03:56+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-标签库简介"><a href="#1-标签库简介" class="headerlink" title="1.标签库简介"></a><em>1.标签库简介</em></h3><p>标准标签库实际上是由五个功能不同的标签库组成。分别是：核心标签库，格式标签库，SQL标签库，XML标签库和函数标签库。</p>
+<p>核心标签库主要用于完成JSP页面的常用功能，包括jstl的表达式标签，url标签，流程控制标签，循环标签。</p>
+<h3 id="2-JSTL的配置"><a href="#2-JSTL的配置" class="headerlink" title="2.JSTL的配置"></a><em>2.JSTL的配置</em></h3><p>由于jstl还不是JSP2.0中的一部分，所以使用之前需要安装并配置jstl。</p>
+<p>现在oracle公司官网上下载，然后就可以在web应用中进行配置。配置一共有两种方法：一种是直接将jstl-api-1.2.jar和jstl.impl-1.2.jar复制到web-inf\lib目录，另一种是在eclipse中通过配置构建路径的方法进行添加。</p>
+<h3 id="3-表达式标签"><a href="#3-表达式标签" class="headerlink" title="3.表达式标签"></a><em>3.表达式标签</em></h3><h5 id="1-《c-out》输出标签"><a href="#1-《c-out》输出标签" class="headerlink" title="1.《c:out》输出标签"></a>1.《c:out》输出标签</h5><p>语法一——没有标签体</p>
+<p>《c:out value=”expression” [escapeXml=”true|false” [default=”true|false”]》</p>
+<p>语法二——有标签体</p>
+<p>《c:out value=”expression” [escapeXml=”true|false”] /》</p>
+<p>   defalutValue</p>
+<p>《/c:out》</p>
+<p>value:用于指定将要输出的变量或表达式</p>
+<p>escapeXml:可选属性，用于指定是否转换为特殊字符。</p>
+<p>default:可选属性，用于指定value属性值等于nul时，将要显示的默认值。</p>
+<h5 id="2-《c-set》变量设置标签"><a href="#2-《c-set》变量设置标签" class="headerlink" title="2.《c:set》变量设置标签"></a>2.《c:set》变量设置标签</h5><p>语法一——在scope指定的范围内将变量值存储到变量中</p>
+<p>《c:set var=”name” value=”value” [scope=”范围”]/》</p>
+<p>语法二——在scope指定的范围内将标签体存储到变量中</p>
+<p>《c:set var=”name” [scope=”page|request|session|application”]》</p>
+<p>标签体</p>
+<p>《/c:set》</p>
+<p>语法三——将变量值存储在target属性指定的目标对象的propName属性中。</p>
+<p>《c:set value=”value” target=”object” property=”proName”/》</p>
+<p>语法四——将标签体存储到target属性指定的目标对象的propName属性中。</p>
+<p>《c:set target=”object” property=”proName”》</p>
+<p>标签体</p>
+<p>《/c:set》</p>
+<p>var:用于指定变量名</p>
+<p>value：用于指定变量值</p>
+<p>scope：用于指定变量的作用域</p>
+<p>target:用于指定存储变量值或者标签体的目标对象</p>
+<p>property:用于指定目标对象存储数据的属性名</p>
+<h5 id="3-《c-remove》变量移除标签"><a href="#3-《c-remove》变量移除标签" class="headerlink" title="3.《c:remove》变量移除标签"></a>3.《c:remove》变量移除标签</h5><p>《c:remove var=”name” [scope=”范围”]》</p>
+<p>var:用于指定要移除的变量名</p>
+<p>scope:用于指定变量的有效范围</p>
+<h5 id="4-《c-catch》捕获异常标签"><a href="#4-《c-catch》捕获异常标签" class="headerlink" title="4.《c:catch》捕获异常标签"></a>4.《c:catch》捕获异常标签</h5><p>该标签用于捕获程序中出现的异常，该标签与Java中的try…catch语句类似。</p>
+<p>《c:catch [var=”exception”]》</p>
+<p>…//可能存在异常的代码</p>
+<p>《/c:catch》</p>
+<p>var:可选属性，用于指定存储异常信息的变量，如果不需要保存异常信息，可以忽略该属性。</p>
+<h3 id="4-URL相关标签"><a href="#4-URL相关标签" class="headerlink" title="4.URL相关标签"></a><em>4.URL相关标签</em></h3><h5 id="1-《c-import》导入标签"><a href="#1-《c-import》导入标签" class="headerlink" title="1.《c:import》导入标签"></a>1.《c:import》导入标签</h5><p>语法一：</p>
+<p>《c:import url=”url” [context=”context” [var=”name” [scope=”范围” [charEncoding=”encoding”]》</p>
+<p>[标签体]</p>
+<p>《/c:import》</p>
+<p>语法二：</p>
+<p>《c:import url=”url” varReader=”name” [context=”context” [charEncoding=”encoding”]》</p>
+<p>[标签体]</p>
+<p>《/c:import》</p>
+<p>url:用于指定被导入文件资源的url地址</p>
+<p>context：上下文路径，用于访问同一服务器的其他web应用，其值必须以“/”开头，如果指定了该属性，那么url属性值也必须以“/“开头。</p>
+<p>var:用于指定变量名称</p>
+<p>scope；用于指定变量的存在范围，默认值是page。可选值为page,session,request,application.</p>
+<p>varReader:定义一个变量名，该变量用于以reader类型存储被包含文件内容。</p>
+<p>charEncoding:用于指定被导入文件的编码格式。</p>
+<p>标签体：可选，如果需要为导入的文件传递参数，则可以在标签提的位置通过《c:param》标签设置参数。</p>
+<h5 id="2-《c-url》动态生成URL标签"><a href="#2-《c-url》动态生成URL标签" class="headerlink" title="2.《c:url》动态生成URL标签"></a>2.《c:url》动态生成URL标签</h5><p>语法一：</p>
+<p>《c:url value=”url” [var=”name” [scope=”范围” [context=”context”]/》</p>
+<p>语法二：</p>
+<p>《c:url value=”url” [var=”name” [scope=”范围” [context=”context”]》</p>
+<p>《c:param/》</p>
+<p>…</p>
+<p>《/c:url》</p>
+<p>value:用于指定将要处理的url地址</p>
+<p>context：上下文路径，用于访问同一服务器的其他web应用，其值必须以“/”开头，如果指定了该属性，那么url属性值也必须以“/“开头。</p>
+<p>var:用于指定变量名称</p>
+<p>scope；用于指定变量的存在范围，默认值是page。可选值为page,session,request,application.</p>
+<h5 id="3-《c-redirect》重定向标签"><a href="#3-《c-redirect》重定向标签" class="headerlink" title="3.《c:redirect》重定向标签"></a>3.《c:redirect》重定向标签</h5><p>语法一：</p>
+<p>《c:redirect url=”url” [context=”context”]/》</p>
+<p>语法二：</p>
+<p>《c:redirect url=”url” [context=”context”]》</p>
+<p>《c:param/》</p>
+<p>《/c:redirect》</p>
+<p>url:必选属性，用于指定待定向资源的URL，可以使用EL.</p>
+<p>context:用于在使用相对路径访问外部context资源时，指定资源的名字。</p>
+<h5 id="4-《c-param》传递参数标签"><a href="#4-《c-param》传递参数标签" class="headerlink" title="4.《c:param》传递参数标签"></a>4.《c:param》传递参数标签</h5><p>《c:param name=”paramName” value=”paramValue”/》</p>
+<p>name:用于指定参数名</p>
+<p>value:用于指定参数值</p>
+<h3 id="5-流程控制标签"><a href="#5-流程控制标签" class="headerlink" title="5.流程控制标签"></a><em>5.流程控制标签</em></h3><h5 id="1-《c-if》条件判断标签"><a href="#1-《c-if》条件判断标签" class="headerlink" title="1.《c:if》条件判断标签"></a>1.《c:if》条件判断标签</h5><p>语法一：</p>
+<p>《c:if test=”condition” var=”name” [scope=page|session|request|session|application]/》</p>
+<p>语法二：</p>
+<p>《c:if test=”condition” var=”name” [scope=page|session|request|session|application]》</p>
+<p>标签体</p>
+<p>《/c:if》</p>
+<h5 id="2-《c-choose》条件选择标签"><a href="#2-《c-choose》条件选择标签" class="headerlink" title="2.《c:choose》条件选择标签"></a>2.《c:choose》条件选择标签</h5><p>《c:choose》</p>
+<p>标签体 ——由《c:when》和《c:otherwise》标签组成</p>
+<p>《/c:choose》</p>
+<h5 id="3-《c-when》条件测试标签"><a href="#3-《c-when》条件测试标签" class="headerlink" title="3.《c:when》条件测试标签"></a>3.《c:when》条件测试标签</h5><p>《c:when test=”condition”》</p>
+<p>标签体</p>
+<p>《/c:when》</p>
+<h5 id="4-《c-otherwise》其他条件标签"><a href="#4-《c-otherwise》其他条件标签" class="headerlink" title="4.《c:otherwise》其他条件标签"></a>4.《c:otherwise》其他条件标签</h5><p>《c:otherwise》</p>
+<p>标签体</p>
+<p>《/c:otherwise》</p>
+<h3 id="6-循环标签"><a href="#6-循环标签" class="headerlink" title="6.循环标签"></a><em>6.循环标签</em></h3><h5 id="1-《c-forEach》循环标签"><a href="#1-《c-forEach》循环标签" class="headerlink" title="1.《c:forEach》循环标签"></a>1.《c:forEach》循环标签</h5><p>语法一：集合成员迭代</p>
+<p>《c:forEach items=”data” [var=”name” [begin=”start” [end=”finish” [step=”step” [varStatus=”statusName”》</p>
+<p>标签体</p>
+<p>《/c:foEach》</p>
+<p>语法二：数字索引迭代</p>
+<p>《c:forEach begin=”start” end=”finish” [var=”name” [varStatus=”statusName” [step=”step”]》</p>
+<p>标签体</p>
+<p>《/c:forEach》</p>
+<p>items；用于指定被循环遍历对象</p>
+<p>var:用于指定循环体的变量名</p>
+<p>begin:用于指定循环的起始位置</p>
+<p>end:用于指定循环的终止位置</p>
+<p>step:用于指定循环的步长</p>
+<p>varStatus:用于指定循环的状态变量，有四个状态属性</p>
+<p>如下：</p>
+<p>index——当前循环的索引值(Int)</p>
+<p>count——当前循环的循环计数(Int)</p>
+<p>first——是否为第一次循环(boolean)</p>
+<p>last——是否为最后一次循环(boolean)</p>
+<h5 id="2-《c-forTokens》迭代标签"><a href="#2-《c-forTokens》迭代标签" class="headerlink" title="2.《c:forTokens》迭代标签"></a>2.《c:forTokens》迭代标签</h5><p>该标签可以用指定的分隔符将一个字符串分隔开，根据分割的数量确定循环的次数。</p>
+<p>《c:forTokens items=”String” delim=”char” [var=”name” [begin=”start” [end=”end” [step=”len” [varStatus=”statusName”]》</p>
+<p>标签体</p>
+<p>《/c:forTokens》</p>
+<p>items:用于指定要迭代的String对象</p>
+<p>delims:用于指定分割字符串的分隔符,可以同时有多个分隔符</p>
+<p>var:用于指定变量名，该变量中保存了分割后的字符串</p>
+<p>begin:用于指定迭代开始的位置，索引值从开始</p>
+<p>end:用于指定迭代结束的位置</p>
+<p>step:用于指定迭代的步长，默认为1</p>
+<p>varStatus：用于指定循环的状态变量，同《c:forEach》一样,该属性也有四个状态变量。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/05/EL表达式/" rel="next" title="EL表达式">
+                <i class="fa fa-chevron-left"></i> EL表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">佩琪</p>
+              <p class="site-description motion-element" itemprop="description">JAVA</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-标签库简介"><span class="nav-number">1.</span> <span class="nav-text">1.标签库简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-JSTL的配置"><span class="nav-number">2.</span> <span class="nav-text">2.JSTL的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-表达式标签"><span class="nav-number">3.</span> <span class="nav-text">3.表达式标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-《c-out》输出标签"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.《c:out》输出标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-《c-set》变量设置标签"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.《c:set》变量设置标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-《c-remove》变量移除标签"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.《c:remove》变量移除标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-《c-catch》捕获异常标签"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.《c:catch》捕获异常标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-URL相关标签"><span class="nav-number">4.</span> <span class="nav-text">4.URL相关标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-《c-import》导入标签"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.《c:import》导入标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-《c-url》动态生成URL标签"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.《c:url》动态生成URL标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-《c-redirect》重定向标签"><span class="nav-number">4.0.3.</span> <span class="nav-text">3.《c:redirect》重定向标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-《c-param》传递参数标签"><span class="nav-number">4.0.4.</span> <span class="nav-text">4.《c:param》传递参数标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-流程控制标签"><span class="nav-number">5.</span> <span class="nav-text">5.流程控制标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-《c-if》条件判断标签"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.《c:if》条件判断标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-《c-choose》条件选择标签"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.《c:choose》条件选择标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-《c-when》条件测试标签"><span class="nav-number">5.0.3.</span> <span class="nav-text">3.《c:when》条件测试标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-《c-otherwise》其他条件标签"><span class="nav-number">5.0.4.</span> <span class="nav-text">4.《c:otherwise》其他条件标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-循环标签"><span class="nav-number">6.</span> <span class="nav-text">6.循环标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-《c-forEach》循环标签"><span class="nav-number">6.0.1.</span> <span class="nav-text">1.《c:forEach》循环标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-《c-forTokens》迭代标签"><span class="nav-number">6.0.2.</span> <span class="nav-text">2.《c:forTokens》迭代标签</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">佩琪</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

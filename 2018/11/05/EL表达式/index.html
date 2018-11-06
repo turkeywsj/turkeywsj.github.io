@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="小猪佩琪">
 <meta property="og:description" content="1.EL表达式概述EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。 1.EL表达式的语法${expression} 2.EL的特点2.与低版本的环境兼容——禁用EL1.使用斜杠“\”符号\ ${expression} 2.使用page指令《%@ page isELIgnored=”布尔值”》 若属">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-05T12:55:22.143Z">
+<meta property="og:updated_time" content="2018-11-05T13:05:07.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EL表达式">
 <meta name="twitter:description" content="1.EL表达式概述EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。 1.EL表达式的语法${expression} 2.EL的特点2.与低版本的环境兼容——禁用EL1.使用斜杠“\”符号\ ${expression} 2.使用page指令《%@ page isELIgnored=”布尔值”》 若属">
@@ -299,9 +299,9 @@
       
 
       
-        <h3 id="1-EL表达式概述"><a href="#1-EL表达式概述" class="headerlink" title="1.EL表达式概述"></a>1.EL表达式概述</h3><p>EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。</p>
+        <h3 id="1-EL表达式概述"><a href="#1-EL表达式概述" class="headerlink" title="1.EL表达式概述"></a><em>1.EL表达式概述</em></h3><p>EL是表达式语言，它是JSP2.0中引入的一个新内容。通过EL表达式可以简化在JSP开发中对对象的引用，从而规范页面代码，增加程序的可读性及可维护性。</p>
 <h4 id="1-EL表达式的语法"><a href="#1-EL表达式的语法" class="headerlink" title="1.EL表达式的语法"></a>1.EL表达式的语法</h4><p>${expression}</p>
-<h4 id="2-EL的特点"><a href="#2-EL的特点" class="headerlink" title="2.EL的特点"></a>2.EL的特点</h4><h3 id="2-与低版本的环境兼容——禁用EL"><a href="#2-与低版本的环境兼容——禁用EL" class="headerlink" title="2.与低版本的环境兼容——禁用EL"></a>2.与低版本的环境兼容——禁用EL</h3><h6 id="1-使用斜杠“-”符号"><a href="#1-使用斜杠“-”符号" class="headerlink" title="1.使用斜杠“\”符号"></a>1.使用斜杠“\”符号</h6><p>\ ${expression}</p>
+<h4 id="2-EL的特点"><a href="#2-EL的特点" class="headerlink" title="2.EL的特点"></a>2.EL的特点</h4><h3 id="2-与低版本的环境兼容——禁用EL"><a href="#2-与低版本的环境兼容——禁用EL" class="headerlink" title="2.与低版本的环境兼容——禁用EL"></a><em>2.与低版本的环境兼容——禁用EL</em></h3><h6 id="1-使用斜杠“-”符号"><a href="#1-使用斜杠“-”符号" class="headerlink" title="1.使用斜杠“\”符号"></a>1.使用斜杠“\”符号</h6><p>\ ${expression}</p>
 <h6 id="2-使用page指令"><a href="#2-使用page指令" class="headerlink" title="2.使用page指令"></a>2.使用page指令</h6><p>《%@ page isELIgnored=”布尔值”》</p>
 <p>若属性为true，则表明忽略页面中的EL。</p>
 <h6 id="3-在web-xml文件中配置《el-ignored》元素"><a href="#3-在web-xml文件中配置《el-ignored》元素" class="headerlink" title="3.在web.xml文件中配置《el-ignored》元素"></a>3.在web.xml文件中配置《el-ignored》元素</h6><p>该方法适用于禁用web应用中所有JSP页面中的EL。</p>
@@ -311,8 +311,8 @@
 <p>《el-ignored》true《/el-ignored》</p>
 <p>《/jsp-property-group》</p>
 <p>《/jsp-config》</p>
-<h3 id="3-保留的关键字"><a href="#3-保留的关键字" class="headerlink" title="3.保留的关键字"></a>3.保留的关键字</h3><p>同Java一样，EL也有自己的保留关键字，再为变量命名时，应该避免使用这些关键字。</p>
-<h3 id="4-EL的运算符及优先级"><a href="#4-EL的运算符及优先级" class="headerlink" title="4.EL的运算符及优先级"></a>4.EL的运算符及优先级</h3><p>[]</p>
+<h3 id="3-保留的关键字"><a href="#3-保留的关键字" class="headerlink" title="3.保留的关键字"></a><em>3.保留的关键字</em></h3><p>同Java一样，EL也有自己的保留关键字，再为变量命名时，应该避免使用这些关键字。</p>
+<h3 id="4-EL的运算符及优先级"><a href="#4-EL的运算符及优先级" class="headerlink" title="4.EL的运算符及优先级"></a><em>4.EL的运算符及优先级</em></h3><p>[]</p>
 <p>()</p>
 <p>-(负号) not ! empty</p>
 <p>*/ div % mod</p>
@@ -347,7 +347,7 @@
 </li>
 </ul>
 <h4 id="5-在EL中进行条件运算"><a href="#5-在EL中进行条件运算" class="headerlink" title="5.在EL中进行条件运算"></a>5.在EL中进行条件运算</h4><p>${条件表达式？表达式一：表达式二}</p>
-<h3 id="5-EL的隐含对象"><a href="#5-EL的隐含对象" class="headerlink" title="5.EL的隐含对象"></a>5.EL的隐含对象</h3><h4 id="1-页面上下文对象"><a href="#1-页面上下文对象" class="headerlink" title="1.页面上下文对象"></a>1.页面上下文对象</h4><p>页面上下文对象为pageContext，用于访问JSP内置对象(如request,response,session,out,page,exception,但不能用于pageContext,config,application)和servletContext。在获取这些内置对象之后，就可以获得其属性值，这些属性值与对象的getXXX()方法相对应，在使用时，去掉方法名中的get,并将首字母改为小写即可。</p>
+<h3 id="5-EL的隐含对象"><a href="#5-EL的隐含对象" class="headerlink" title="5.EL的隐含对象"></a><em>5.EL的隐含对象</em></h3><h4 id="1-页面上下文对象"><a href="#1-页面上下文对象" class="headerlink" title="1.页面上下文对象"></a>1.页面上下文对象</h4><p>页面上下文对象为pageContext，用于访问JSP内置对象(如request,response,session,out,page,exception,但不能用于pageContext,config,application)和servletContext。在获取这些内置对象之后，就可以获得其属性值，这些属性值与对象的getXXX()方法相对应，在使用时，去掉方法名中的get,并将首字母改为小写即可。</p>
 <p>eg:访问request对象</p>
 <p>${pageContext.request}</p>
 <p>访问其中的getServerPort()方法</p>
@@ -395,7 +395,7 @@
 <p>${cookie.user.value}</p>
 </li>
 </ul>
-<h3 id="6-定义和使用EL函数"><a href="#6-定义和使用EL函数" class="headerlink" title="6.定义和使用EL函数"></a>6.定义和使用EL函数</h3><p>(1)编写一个Java类，并在该类中编写公用静态方法，用于实现自定义EL函数的具体功能。</p>
+<h3 id="6-定义和使用EL函数"><a href="#6-定义和使用EL函数" class="headerlink" title="6.定义和使用EL函数"></a><em>6.定义和使用EL函数</em></h3><p>(1)编写一个Java类，并在该类中编写公用静态方法，用于实现自定义EL函数的具体功能。</p>
 <p>(2)编写标签库描述文件，对函数进行声明。该文件的拓展名为.tld，被保存到web应用的web-inf文件夹下。</p>
 <p>(3)在JSP页面中引用标签库，并调用定义的EL函数，实现相应的功能。</p>
 
@@ -431,6 +431,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/06/JSTL标签库简介/" rel="prev" title="JSTL标签库简介">
+                JSTL标签库简介 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -507,7 +511,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

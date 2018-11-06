@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="小猪佩琪">
 <meta property="og:description" content="1.JSP内置对象JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。 2.request对">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-02T12:47:05.486Z">
+<meta property="og:updated_time" content="2018-11-05T13:06:28.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP内置对象">
 <meta name="twitter:description" content="1.JSP内置对象JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。 2.request对">
@@ -299,8 +299,8 @@
       
 
       
-        <h4 id="1-JSP内置对象"><a href="#1-JSP内置对象" class="headerlink" title="1.JSP内置对象"></a>1.JSP内置对象</h4><p>JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。</p>
-<h4 id="2-request对象"><a href="#2-request对象" class="headerlink" title="2.request对象"></a>2.request对象</h4><p>request对象封装了由客户端生成的http请求的所有细节，包含http头信息，系统信息，请求方式，请求参数等。</p>
+        <h4 id="1-JSP内置对象"><a href="#1-JSP内置对象" class="headerlink" title="1.JSP内置对象"></a><em>1.JSP内置对象</em></h4><p>JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。</p>
+<h4 id="2-request对象"><a href="#2-request对象" class="headerlink" title="2.request对象"></a><em>2.request对象</em></h4><p>request对象封装了由客户端生成的http请求的所有细节，包含http头信息，系统信息，请求方式，请求参数等。</p>
 <ul>
 <li><p>访问请求参数</p>
 <p>在使用request的getParameter()方法获取传递的参数值时，如果指定的参数不存在，将返回null；如果指定了参数名，但未指定参数值，则返回“‘。</p>
@@ -338,7 +338,7 @@
 <p>浏览器可以通过accept-language的HTTP报头向web服务器指明它所使用的本地语言。request对象中的getLocale()和getLocales()方法允许JSP开发人员获取这一信息，获取的信息属于java.util.Local类型。</p>
 </li>
 </ul>
-<h4 id="3-response对象"><a href="#3-response对象" class="headerlink" title="3.response对象"></a>3.response对象</h4><p>response对象用于响应客户请求，向客户端输出信息。它封装了JSP产生的响应，并发送到客户端以响应客户端的请求。</p>
+<h4 id="3-response对象"><a href="#3-response对象" class="headerlink" title="3.response对象"></a><em>3.response对象</em></h4><p>response对象用于响应客户请求，向客户端输出信息。它封装了JSP产生的响应，并发送到客户端以响应客户端的请求。</p>
 <ul>
 <li><p>重定向网页</p>
 <p>response.sendRedirect(String url);</p>
@@ -365,7 +365,7 @@
 <p>在JSP页面中，调用了response对象的flushBuffer()方法或out对象的flush()方法</p>
 </li>
 </ul>
-<h4 id="4-session对象"><a href="#4-session对象" class="headerlink" title="4.session对象"></a>4.session对象</h4><p>session在网络中被称为会话。通过session可以在应用程序的web页面间进行跳转时，保存用户的状态，使整个用户会话一直存在下去，直到关闭浏览器。</p>
+<h4 id="4-session对象"><a href="#4-session对象" class="headerlink" title="4.session对象"></a><em>4.session对象</em></h4><p>session在网络中被称为会话。通过session可以在应用程序的web页面间进行跳转时，保存用户的状态，使整个用户会话一直存在下去，直到关闭浏览器。</p>
 <ul>
 <li><p>创建及获取客户的会话</p>
 <p>通过session对象可以读取或存储客户相关信息。</p>
@@ -388,7 +388,7 @@
 <p>session是较常用的内置对象之一，与request对象相比其作用范围更大。</p>
 </li>
 </ul>
-<h4 id="5-application对象"><a href="#5-application对象" class="headerlink" title="5.application对象"></a>5.application对象</h4><p>application对象用于保存所有应用程序中的公有数据。它在服务器启动时自动创建，在服务器停止时销毁。</p>
+<h4 id="5-application对象"><a href="#5-application对象" class="headerlink" title="5.application对象"></a><em>5.application对象</em></h4><p>application对象用于保存所有应用程序中的公有数据。它在服务器启动时自动创建，在服务器停止时销毁。</p>
 <ul>
 <li><p>访问应用程序初始化参数</p>
 <p>应用程序初始化参数在web.xml文件中进行设置。</p>
@@ -401,7 +401,7 @@
 <p>removeAtrribute(String name)：从application对象中去掉指定名称的属性</p>
 </li>
 </ul>
-<h4 id="6-out对象"><a href="#6-out对象" class="headerlink" title="6.out对象"></a>6.out对象</h4><p>out对象用于在web浏览器内输出信息，并且管理应用服务器上的输出缓冲器。</p>
+<h4 id="6-out对象"><a href="#6-out对象" class="headerlink" title="6.out对象"></a><em>6.out对象</em></h4><p>out对象用于在web浏览器内输出信息，并且管理应用服务器上的输出缓冲器。</p>
 <ul>
 <li><p>向客户端输出数据</p>
 <p>print()方法用于向客户浏览器输出信息</p>
@@ -414,7 +414,7 @@
 <p>getBufferSize()获取缓冲区的大小</p>
 </li>
 </ul>
-<h4 id="7-其它内置对象"><a href="#7-其它内置对象" class="headerlink" title="7.其它内置对象"></a>7.其它内置对象</h4><ul>
+<h4 id="7-其它内置对象"><a href="#7-其它内置对象" class="headerlink" title="7.其它内置对象"></a><em>7.其它内置对象</em></h4><ul>
 <li>获取会话的pageContext对象</li>
 <li>读取web.xml配置信息的config对象</li>
 <li>应答或请求的page对象</li>
@@ -533,7 +533,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
