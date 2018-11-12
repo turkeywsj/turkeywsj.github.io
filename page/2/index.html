@@ -232,6 +232,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/27/算法总结（七）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/算法总结（七）/" itemprop="url">算法总结（七）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-27T09:41:45+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-序列化二叉树"><a href="#1-序列化二叉树" class="headerlink" title="1.序列化二叉树"></a>1.序列化二叉树</h4><p>请实现两个函数，分别用来序列化和反序列化二叉树</p>
+<blockquote>
+<p>分析:根据前序遍历规则完成序列化与反序列化。所谓序列化指的是遍历二叉树为字符串；所谓反序列化指的是依据字符串重新构造成二叉树。</p>
+<p>依据前序遍历序列来序列化二叉树，因为前序遍历序列是从根结点开始的。当在遍历二叉树时碰到Null指针时，这些Null指针被序列化为一个特殊的字符“#”。</p>
+<p>另外，结点之间的数值用逗号隔开.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">  int index=-1;</span><br><span class="line">	String Serialize(TreeNode root) &#123;</span><br><span class="line">		StringBuilder sb = new StringBuilder();</span><br><span class="line">		if (root == null) &#123;</span><br><span class="line">			sb.append(&quot;#,&quot;);</span><br><span class="line">			return sb.toString();</span><br><span class="line">		&#125;</span><br><span class="line">		sb.append(root.val+&quot;,&quot;);</span><br><span class="line">		sb.append(Serialize(root.left));</span><br><span class="line">		sb.append(Serialize(root.right));</span><br><span class="line">		return sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	TreeNode Deserialize(String str) &#123;</span><br><span class="line">     String []s=str.split(&quot;,&quot;);</span><br><span class="line">     index++;</span><br><span class="line">     TreeNode node=null;</span><br><span class="line">     if(!s[index].equals(&quot;#&quot;)) &#123;</span><br><span class="line">    	 node=new TreeNode(Integer.valueOf(s[index]));</span><br><span class="line">    	 node.left=Deserialize(str);</span><br><span class="line">    	 node.right=Deserialize(str);</span><br><span class="line">     &#125;</span><br><span class="line">     return node;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-二叉搜索树的第k个结点"><a href="#2-二叉搜索树的第k个结点" class="headerlink" title="2.二叉搜索树的第k个结点"></a>2.二叉搜索树的第k个结点</h4><p>给定一棵二叉搜索树，请找出其中的第k小的结点。例如， （5，3，7，2，4，6，8）    中，按结点数值大小顺序第三小结点的值为4。</p>
+<blockquote>
+<p>分析：二叉搜索树按照中序遍历的顺序打印出来正好就是排序好的顺序。</p>
+<p>  所以，按照中序遍历顺序找到第k个结点就是结果。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">   int index = 0; //计数器</span><br><span class="line">    TreeNode KthNode(TreeNode root, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        if(root != null)&#123; //中序遍历寻找第k个</span><br><span class="line">            TreeNode node = KthNode(root.left,k);</span><br><span class="line">            if(node != null)</span><br><span class="line">                return node;</span><br><span class="line">            index ++;</span><br><span class="line">            if(index == k)</span><br><span class="line">                return root;</span><br><span class="line">            node = KthNode(root.right,k);</span><br><span class="line">            if(node != null)</span><br><span class="line">                return node;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-数据流中的中位数"><a href="#3-数据流中的中位数" class="headerlink" title="3.数据流中的中位数"></a>3.数据流中的中位数</h4><p>如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。我们使用Insert()方法读取数据流，使用GetMedian()方法获取当前读取数据的中位数。</p>
+<blockquote>
+<p>分析：利用两个PriorityQueue优先队列，一个栈A采用默认第一个是最小值，另一个栈B重写比较方法改为第一个是最大值。通过出入栈控制B中的数量大于栈A1个或0个。根据一共入栈的数量的奇偶数，分别计算出中位数。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">   PriorityQueue&lt;Integer&gt; q2 = new PriorityQueue&lt;&gt;();</span><br><span class="line">	PriorityQueue&lt;Integer&gt; q1 = new PriorityQueue&lt;&gt;(new Comparator&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Integer o1, Integer o2) &#123;</span><br><span class="line">			// TODO Auto-generated method stub</span><br><span class="line">			return o2 - o1;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	public void Insert(Integer num) &#123;</span><br><span class="line">    if(q1.isEmpty()||num&lt;=q1.peek()) &#123;</span><br><span class="line">    	q1.add(num);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    	q2.add(num);</span><br><span class="line">    &#125;</span><br><span class="line">    if(q1.size()+1==q2.size()) &#123;</span><br><span class="line">    	q1.add(q2.poll());</span><br><span class="line">    &#125;</span><br><span class="line">    if(q1.size()==q2.size()+2) &#123;</span><br><span class="line">    	q2.add(q1.poll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public Double GetMedian() &#123;</span><br><span class="line">        System.out.println(&quot;队列１&quot;+q1);</span><br><span class="line">		System.out.println(&quot;队列2&quot;+q2);</span><br><span class="line">       if(q1.size()==q2.size()) &#123;</span><br><span class="line">    	   return (q1.peek()+q2.peek())/2.0;</span><br><span class="line">       &#125;</span><br><span class="line">       else &#123;</span><br><span class="line">    	   return  Double.valueOf(q1.peek())  ;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/算法总结（六）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1723,126 +1860,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/数组中重复的数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/数组中重复的数字/" itemprop="url">数组中重复的数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T20:03:30+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="在一个长度为n的数组里的所有数字都在0到n-1的范围内。-数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。-例如，如果输入长度为7的数组-2-3-1-0-2-5-3-，那么对应的输出是第一个重复的数字2。"><a href="#在一个长度为n的数组里的所有数字都在0到n-1的范围内。-数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。-例如，如果输入长度为7的数组-2-3-1-0-2-5-3-，那么对应的输出是第一个重复的数字2。" class="headerlink" title="在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。"></a>在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public boolean duplicate(int numbers[], int length, int[] duplication) &#123;</span><br><span class="line">		Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">		for (int i=0;i&lt;length;i++) &#123;</span><br><span class="line">			if (!map.containsKey(numbers[i]))</span><br><span class="line">				map.put(numbers[i], 1);</span><br><span class="line">			else &#123;</span><br><span class="line">				System.out.println(numbers[i]);</span><br><span class="line">				int count = map.get(numbers[i]);</span><br><span class="line">				map.put(numbers[i], ++count);</span><br><span class="line">				duplication[0]=numbers[i];</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		duplication[0]=-1;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	 * 方法二：利用set，因为set不允许重复，所以set.add()--返回通过boolean型来判断是否能添加</span><br><span class="line">	 * @param args</span><br><span class="line">	 */</span><br><span class="line">	public boolean duplicate1(int numbers[], int length, int[] duplication) &#123;</span><br><span class="line">		Set&lt;Integer&gt; set=new HashSet&lt;&gt;();</span><br><span class="line">		for(int i=0;i&lt;length;i++) &#123;</span><br><span class="line">			if(!set.add(numbers[i])) &#123;</span><br><span class="line">				duplication[0]=numbers[i];</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1893,7 +1910,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
