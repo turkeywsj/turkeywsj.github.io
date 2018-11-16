@@ -232,6 +232,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/JSP内置对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/JSP内置对象/" itemprop="url">JSP内置对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T21:38:55+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-JSP内置对象"><a href="#1-JSP内置对象" class="headerlink" title="1.JSP内置对象"></a><em>1.JSP内置对象</em></h4><p>JSP提供了由容器实现和管理的内置对象，也可以称之为隐含对象。这些对象不需要通过JSP页面编写来实例化，在所有的JSP页面中都可以直接使用，它起到了简化页面的作用。在JSP中一共预定义了9个这样的对象。分别为：request，response，session，application，out，page，pageContext,config,exception。</p>
+<h4 id="2-request对象"><a href="#2-request对象" class="headerlink" title="2.request对象"></a><em>2.request对象</em></h4><p>request对象封装了由客户端生成的http请求的所有细节，包含http头信息，系统信息，请求方式，请求参数等。</p>
+<ul>
+<li><p>访问请求参数</p>
+<p>在使用request的getParameter()方法获取传递的参数值时，如果指定的参数不存在，将返回null；如果指定了参数名，但未指定参数值，则返回“‘。</p>
+</li>
+<li><p>在作用域中管理属性</p>
+<p>在进行请求转发时，需要把一些数据传递到转发后的页面进行处理。这时就需要使用request对象的setAttribute()方法将数据保存到request范围内的变量中。</p>
+<p>request.setAttribute(String name,Object obj);</p>
+<p>将数据保存到request范围内的变量中，可以通过request对象的getAttribute()的方法获取该变量的值。</p>
+<p>request.getAttribute(String name);</p>
+</li>
+<li><p>获取cookie</p>
+<p>cookie是小段的文本信息，在网络服务器上生成，并发送给浏览器，通过使用cookie可以标识用户身份，记录用户名和密码，跟踪重复用户等。浏览器将cookie以key/value的形式保存到客户机的某个指定目录中。</p>
+<p>cookie的getCookies()方法可获取所有对象的集合；通过cookie对象的getName()可获取指定名称的cookie;通过getValue可获得cookie对象的值。另外将一个cookie对象发送到客户端，使用request的addCookie()方法。</p>
+</li>
+<li><p>解决中文乱码</p>
+<p>为了解决请求参数的文字编码方式（一般都是ISO-8859-1）与页面的编码方式（UTF-8)不一致所造成的乱码。只要将获取到的数据通过String的构造方法使用指定的编码类型重新构造一个String对象，即可正确的显示出中文信息。</p>
+<p>eg:&lt;%=new String(request.getParamater(“name”).getBytes(“ISO-8859-1”),”UTF-8”)%&gt;</p>
+</li>
+<li><p>获取客户端信息</p>
+<p>getHeader(String name)     获取HTTP协议定义的文件头信息</p>
+<p>getHeaders(String name)    返回指定名字的request Header的所有值，其结果是一个枚举型的实例</p>
+<p>getHeadersName()    返回所有request Header的名字，其结果是一个枚举型的实例</p>
+<p>getMethod()   获取客户端向服务端传送数据的方法，如get,post,header,trace等</p>
+<p>getProtocol   获取客户端向服务器传送数据所依据的协议的名称</p>
+<p>getRequestURI()  获取发出请求字符串的客户端地址，不包括请求参数</p>
+<p>getRequestURL()  获取发出请求字符串的客户端地址</p>
+<p>getRealPath()  返回当前请求文件的绝对路径</p>
+<p>getRemoteAddr()  获取客户端的IP地址</p>
+<p>getRemoteHost()  获取客户端的主机名</p>
+<p>getServerName()  获取服务器的名字</p>
+<p>getServerPath()   获取客户端所请求的脚本文件的文件路径</p>
+<p>getServerPort()  获取服务器的端口号</p>
+</li>
+<li><p>显示国际化信息</p>
+<p>浏览器可以通过accept-language的HTTP报头向web服务器指明它所使用的本地语言。request对象中的getLocale()和getLocales()方法允许JSP开发人员获取这一信息，获取的信息属于java.util.Local类型。</p>
+</li>
+</ul>
+<h4 id="3-response对象"><a href="#3-response对象" class="headerlink" title="3.response对象"></a><em>3.response对象</em></h4><p>response对象用于响应客户请求，向客户端输出信息。它封装了JSP产生的响应，并发送到客户端以响应客户端的请求。</p>
+<ul>
+<li><p>重定向网页</p>
+<p>response.sendRedirect(String url);</p>
+</li>
+<li><p>处理HTTP文件头</p>
+<p>禁用缓存</p>
+<p>eg:&lt;%</p>
+<p>response.setHeader(“Cache-Control”,”no-store”);</p>
+<p>response.setDateHeader(“Expires”,0);</p>
+<p>%&gt;</p>
+<p>设置页面自动刷新</p>
+<p>eg:&lt;%</p>
+<p>response.setHeader(“refresh”,”10”);</p>
+<p>%&gt;</p>
+<p>定时跳转页面</p>
+<p>eg:&lt;%</p>
+<p>response.setHeader(“refresh”,”5;URL=login.jsp”);</p>
+<p>%&gt;</p>
+</li>
+<li><p>设置输出缓冲</p>
+<p>当满足以下三种情形之一，就会把缓冲区的内容写到客户端。</p>
+<p>JSP页面的输出信息已经全部写到缓冲区</p>
+<p>缓冲区已满</p>
+<p>在JSP页面中，调用了response对象的flushBuffer()方法或out对象的flush()方法</p>
+</li>
+</ul>
+<h4 id="4-session对象"><a href="#4-session对象" class="headerlink" title="4.session对象"></a><em>4.session对象</em></h4><p>session在网络中被称为会话。通过session可以在应用程序的web页面间进行跳转时，保存用户的状态，使整个用户会话一直存在下去，直到关闭浏览器。</p>
+<ul>
+<li><p>创建及获取客户的会话</p>
+<p>通过session对象可以读取或存储客户相关信息。</p>
+<p>session.setAttribute(String name,Object obj)</p>
+<p>session.getAttribute(String name)</p>
+</li>
+<li><p>从会话中移动指定的绑定对象</p>
+<p>若想要移除存储在session中的对象</p>
+<p>session.removeAtribute(String name)</p>
+</li>
+<li><p>销毁session</p>
+<p>sesssion.invalidate();</p>
+</li>
+<li><p>会话超时的管理</p>
+<p>session.getLastAccessedTime():返回客户端最后一次与会话相关的请求时间。</p>
+<p>session.setMaxInactiveInterval():以秒为单位返回一个会话内两个请求最大时间间隔。</p>
+<p>session.setMaxInactiveInterval():以秒为单位设置session的有效时间。</p>
+</li>
+<li><p>session对象的应用</p>
+<p>session是较常用的内置对象之一，与request对象相比其作用范围更大。</p>
+</li>
+</ul>
+<h4 id="5-application对象"><a href="#5-application对象" class="headerlink" title="5.application对象"></a><em>5.application对象</em></h4><p>application对象用于保存所有应用程序中的公有数据。它在服务器启动时自动创建，在服务器停止时销毁。</p>
+<ul>
+<li><p>访问应用程序初始化参数</p>
+<p>应用程序初始化参数在web.xml文件中进行设置。</p>
+<p>application.getInitparameter(String name);</p>
+</li>
+<li><p>管理应用程序环境属性</p>
+<p>getAttributeName():获取所有application对象使用的属性名</p>
+<p>getAttribute(String name)：从application对象中获取指定的对象名</p>
+<p>setAttribute(String key,Object obj):使用指定名称和指定对象在application对象中进行关联</p>
+<p>removeAtrribute(String name)：从application对象中去掉指定名称的属性</p>
+</li>
+</ul>
+<h4 id="6-out对象"><a href="#6-out对象" class="headerlink" title="6.out对象"></a><em>6.out对象</em></h4><p>out对象用于在web浏览器内输出信息，并且管理应用服务器上的输出缓冲器。</p>
+<ul>
+<li><p>向客户端输出数据</p>
+<p>print()方法用于向客户浏览器输出信息</p>
+</li>
+<li><p>管理响应缓冲</p>
+<p>clear()清除缓冲区中的内容</p>
+<p>clearBuffer()清除当前缓冲区的内容</p>
+<p>flush()刷新流</p>
+<p>isAutoFlush()检测当前缓冲区已满时是自动清空，还是抛出异常</p>
+<p>getBufferSize()获取缓冲区的大小</p>
+</li>
+</ul>
+<h4 id="7-其它内置对象"><a href="#7-其它内置对象" class="headerlink" title="7.其它内置对象"></a><em>7.其它内置对象</em></h4><ul>
+<li>获取会话的pageContext对象</li>
+<li>读取web.xml配置信息的config对象</li>
+<li>应答或请求的page对象</li>
+<li>获取异常信息的exception对象</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/了解JSP页面/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1823,126 +2063,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/字符流中第一个不重复的字符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/20/字符流中第一个不重复的字符/" itemprop="url">字符流中第一个不重复的字符</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-20T10:37:01+08:00">
-                2018-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。"><a href="#请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。" class="headerlink" title="请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。"></a>请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * HashMap 是一个最常用的Map,它根据键的HashCode 值存储数据,根据键可以直接获取它的值，具有很快的访问速度。</span><br><span class="line">	 * HashMap最多只允许一条记录的键为Null;允许多条记录的值为 Null;</span><br><span class="line">	 * HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap; 可能会导致数据的不一致。如果需要同步，可以用</span><br><span class="line">	 * Collections的synchronizedMap方法使HashMap具有同步的能力。</span><br><span class="line">	 *  LinkedHashMap</span><br><span class="line">	 * LinkedHashMap也是一个HashMap,但是内部维持了一个双向链表,可以保持顺序</span><br><span class="line">	 * </span><br><span class="line">	 * @param ch</span><br><span class="line">	 */</span><br><span class="line">	Map&lt;Character, Integer&gt; map = new LinkedHashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	public void Insert(char ch) &#123;</span><br><span class="line">		int c = map.getOrDefault(ch, 0);</span><br><span class="line">		map.put(ch, ++c);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// return the first appearence once char in current stringstream</span><br><span class="line">	public char FirstAppearingOnce() &#123;</span><br><span class="line">		for (Character c : map.keySet()) &#123;</span><br><span class="line">			if (map.get(c) == 1)</span><br><span class="line">				return c;</span><br><span class="line">		&#125;</span><br><span class="line">		return &apos;#&apos;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1993,7 +2113,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
