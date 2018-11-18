@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="小猪佩琪">
 <meta property="og:description" content="1.Class类与java反射java反射机制是在运行的过程中，对于任意一个类，都能知道这个类的所有属性和方法；对于任意一个对象，都能调用它的任意一个方法和属性，这种动态获取的信息以及动态调用对象的属性和方法的功能称为Java语言的反射机制。 1.class类Class类的实例表示正在运行的Java应用程序中的类和接口，它没有公共构造方法，要创建class对象，有以下三种方法： (1)使用类的cl">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-16T15:18:54.965Z">
+<meta property="og:updated_time" content="2018-11-18T14:48:32.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反射">
 <meta name="twitter:description" content="1.Class类与java反射java反射机制是在运行的过程中，对于任意一个类，都能知道这个类的所有属性和方法；对于任意一个对象，都能调用它的任意一个方法和属性，这种动态获取的信息以及动态调用对象的属性和方法的功能称为Java语言的反射机制。 1.class类Class类的实例表示正在运行的Java应用程序中的类和接口，它没有公共构造方法，要创建class对象，有以下三种方法： (1)使用类的cl">
@@ -492,43 +492,99 @@
 <td style="text-align:center">获取指定对象obj中成员变量的值</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">set(Object obj,Object value)</td>
+<td style="text-align:center">将指定对象obj中的成员变量的值设置为value</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">getInt(Object obj)</td>
+<td style="text-align:center">获取指定对象obj中类型为int的成员变量的值</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">setInt(Object obj,int i)</td>
+<td style="text-align:center">将指定对象obj中类型为int的成员变量的值设置为i</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">getFloat(Object obj)</td>
+<td style="text-align:center">获取指定对象obj中类型为float的成员变量的值</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">setFloat(Object obj,float f)</td>
+<td style="text-align:center">将指定对象obj中类型为float的成员变量的值设置为i</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">getBoolean(Object obj)</td>
+<td style="text-align:center">获取指定对象obj中类型为boolean的成员变量的值</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">setBoolean(Object obj,boolean z)</td>
+<td style="text-align:center">将指定对象obj中类型为boolean的成员变量的值设置为i</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">setAccessible(boolean flag)</td>
+<td style="text-align:center">此方法可以设置是否忽略权限限制直接访问private等私有权限的成员变量</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">getModifiers()</td>
+<td style="text-align:center">获得可以解析出该成员变量所采用修饰符的整数</td>
 </tr>
 </tbody>
 </table>
-<h4 id="4-获取方法"><a href="#4-获取方法" class="headerlink" title="4.获取方法"></a>4.获取方法</h4><h3 id="2-Annotation注解"><a href="#2-Annotation注解" class="headerlink" title="2.Annotation注解"></a><em>2.Annotation注解</em></h3><h4 id="1-内置注解"><a href="#1-内置注解" class="headerlink" title="1.内置注解"></a>1.内置注解</h4><h4 id="2-自定义注解"><a href="#2-自定义注解" class="headerlink" title="2.自定义注解"></a>2.自定义注解</h4>
+<h4 id="4-获取方法"><a href="#4-获取方法" class="headerlink" title="4.获取方法"></a>4.获取方法</h4><p>每个Method对象代表一个方法，利用Method对象可以操纵相应的方法。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">getName()</td>
+<td style="text-align:center">获得该方法的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">getParameterTypes()</td>
+<td style="text-align:center">按照声明顺序以Class数组形式获得该方法的各个参数类型</td>
+</tr>
+<tr>
+<td style="text-align:center">getReturnType()</td>
+<td style="text-align:center">以Class对象的形式获得该方法的返回值的类型</td>
+</tr>
+<tr>
+<td style="text-align:center">getExceptionTypes()</td>
+<td style="text-align:center">以Class对象的形式获得该方法可能抛出的异常类型</td>
+</tr>
+<tr>
+<td style="text-align:center">invoke(Object obj,Object …args)</td>
+<td style="text-align:center">利用指定参数args执行指定对象obj中的该方法，返回值为Object型</td>
+</tr>
+<tr>
+<td style="text-align:center">isVarArgs()</td>
+<td style="text-align:center">查看该构造方法是否允许带有可变数量的参数，如果允许则返回true，否则为false</td>
+</tr>
+<tr>
+<td style="text-align:center">getModifiers()</td>
+<td style="text-align:center">获得可以解析出该方法所采用修饰符的整数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-Annotation注解"><a href="#2-Annotation注解" class="headerlink" title="2.Annotation注解"></a><em>2.Annotation注解</em></h3><h4 id="1-内置注解"><a href="#1-内置注解" class="headerlink" title="1.内置注解"></a>1.内置注解</h4><p>1）@Override；限定重写父类方法</p>
+<p>2）@Deprecated:标识已过时</p>
+<p>3）@SuppressWarnings；抑制编译器警告</p>
+<h4 id="2-自定义注解"><a href="#2-自定义注解" class="headerlink" title="2.自定义注解"></a>2.自定义注解</h4><p>使用自定义注解主要分为以下三个步骤：</p>
+<p>1）自定义注解</p>
+<p>2）使用元注解对自定义注解进行设置</p>
+<p>3）反射注解</p>
+<h5 id="1-自定义注解"><a href="#1-自定义注解" class="headerlink" title="1.自定义注解"></a>1.自定义注解</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public @interface DefaultValueAnnotation&#123;</span><br><span class="line">    String describe() default &quot;&lt;默认值&gt;&quot;;</span><br><span class="line">    Class type() default void class;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-使用元注解对自定义注解进行设置"><a href="#2-使用元注解对自定义注解进行设置" class="headerlink" title="2.使用元注解对自定义注解进行设置"></a>2.使用元注解对自定义注解进行设置</h5><p>@Decumented:指示某一类型的注释通过javadoc和类似的默认工具进行文档化</p>
+<p>@Inherited:指示注释类型被自动继承</p>
+<p>@Rentention:指示注释类型的注释要保留多久</p>
+<p>@Target:指示注释类型所使用的程序元素种类</p>
+<h5 id="3-反射注解"><a href="#3-反射注解" class="headerlink" title="3.反射注解"></a>3.反射注解</h5><p>在AccessibleObject类中定义了三个关于Annotation的方法：</p>
+<p>1）isAnnotationPresent(Class&lt;?extends Annotation&gt; annotationClass)方法：查看是否添加了指定类型的annotation</p>
+<p>2）getAnnotation(Class<t> annotationClass)方法：获得指定类型的Annotation,如果存在则返回相应的对象，否则返回null</t></p>
+<p>3）getAnnotations()方法：获得所有的Annotation,该方法将返回一个Annotation数组。</p>
+
       
     </div>
     
@@ -678,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Class类与java反射"><span class="nav-number">1.</span> <span class="nav-text">1.Class类与java反射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-class类"><span class="nav-number">1.1.</span> <span class="nav-text">1.class类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-获取构造方法"><span class="nav-number">1.2.</span> <span class="nav-text">2.获取构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-获取成员变量"><span class="nav-number">1.3.</span> <span class="nav-text">3.获取成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-获取方法"><span class="nav-number">1.4.</span> <span class="nav-text">4.获取方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Annotation注解"><span class="nav-number">2.</span> <span class="nav-text">2.Annotation注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-内置注解"><span class="nav-number">2.1.</span> <span class="nav-text">1.内置注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-自定义注解"><span class="nav-number">2.2.</span> <span class="nav-text">2.自定义注解</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Class类与java反射"><span class="nav-number">1.</span> <span class="nav-text">1.Class类与java反射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-class类"><span class="nav-number">1.1.</span> <span class="nav-text">1.class类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-获取构造方法"><span class="nav-number">1.2.</span> <span class="nav-text">2.获取构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-获取成员变量"><span class="nav-number">1.3.</span> <span class="nav-text">3.获取成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-获取方法"><span class="nav-number">1.4.</span> <span class="nav-text">4.获取方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Annotation注解"><span class="nav-number">2.</span> <span class="nav-text">2.Annotation注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-内置注解"><span class="nav-number">2.1.</span> <span class="nav-text">1.内置注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-自定义注解"><span class="nav-number">2.2.</span> <span class="nav-text">2.自定义注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-自定义注解"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.自定义注解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用元注解对自定义注解进行设置"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.使用元注解对自定义注解进行设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-反射注解"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.反射注解</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
