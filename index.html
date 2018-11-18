@@ -232,6 +232,233 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/异常处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/异常处理/" itemprop="url">异常处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T16:31:48+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-异常概述"><a href="#1-异常概述" class="headerlink" title="1.异常概述"></a><em>1.异常概述</em></h3><p>在运行程序时可能出现的一些错误称为异常。</p>
+<h3 id="2-异常的分类"><a href="#2-异常的分类" class="headerlink" title="2.异常的分类"></a><em>2.异常的分类</em></h3><p>java类库中的每个包中都定义了异常类，所有这些类都是throwable类的子类。throwable类派生了两个子类，分别是Error和Exception类，其中Error类及其子类用来描述Java运行系统的内部错误以及资源耗尽的错误，这类错误比较严重。Exception类称为非致命性类，可以通过捕捉处理是程序继续执行。Exption根据错误发生的原因分为运行时异常和非运行时异常。</p>
+<h4 id="1-系统错误–error"><a href="#1-系统错误–error" class="headerlink" title="1.系统错误–error"></a>1.系统错误–error</h4><p>Error类及其子类用来描述java运行系统中的内部错误，该类定义了常规情况下不希望程序捕获的异常，这些错误发生时，Java虚拟机一般会选择线程终止。</p>
+<h4 id="2-异常–exeception"><a href="#2-异常–exeception" class="headerlink" title="2.异常–exeception"></a>2.异常–exeception</h4><h5 id="1-运行时异常"><a href="#1-运行时异常" class="headerlink" title="1.运行时异常"></a>1.运行时异常</h5><p>运行时异常是程序运行过程中产生的异常，它是RuntimeException类及其子类异常，这些异常一般是由程序逻辑错误引起的，所以应该从逻辑角度尽可能避免这类异常的发生。这些异常可通过try…catch语句捕获。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">异常类</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ClassCastException</td>
+<td style="text-align:center">类型转换异常</td>
+</tr>
+<tr>
+<td style="text-align:center">NullPointerException</td>
+<td style="text-align:center">空指针异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ArrayIndexOutOfBoundsException</td>
+<td style="text-align:center">数组下标越界异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ArithmeticException</td>
+<td style="text-align:center">算数异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ArrayStoreException</td>
+<td style="text-align:center">数组中包含不兼容的值抛出的异常</td>
+</tr>
+<tr>
+<td style="text-align:center">NumberFormatException</td>
+<td style="text-align:center">字符串转换为数字抛出的异常</td>
+</tr>
+<tr>
+<td style="text-align:center">IllegalArgumentException</td>
+<td style="text-align:center">非法参数异常</td>
+</tr>
+<tr>
+<td style="text-align:center">FileSystemNotFoundException</td>
+<td style="text-align:center">文件系统未找到异常</td>
+</tr>
+<tr>
+<td style="text-align:center">SecurityException</td>
+<td style="text-align:center">安全性异常</td>
+</tr>
+<tr>
+<td style="text-align:center">StringIndexOutOfBoundsException</td>
+<td style="text-align:center">字符串索引超出范围抛出的异常</td>
+</tr>
+<tr>
+<td style="text-align:center">NegativeArraySizeException</td>
+<td style="text-align:center">数组长度为负异常</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2-非运行时异常"><a href="#2-非运行时异常" class="headerlink" title="2.非运行时异常"></a>2.非运行时异常</h5><p>非运行时异常是RuntimeException类及其子类以外的异常，从程序语法角度上讲，这类异常是必须进行处理的异常，如果不处理，程序无法编译通过。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">异常类</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ClassNotFoundException</td>
+<td style="text-align:center">未找到相应类异常</td>
+</tr>
+<tr>
+<td style="text-align:center">SQLException</td>
+<td style="text-align:center">操作数据库异常</td>
+</tr>
+<tr>
+<td style="text-align:center">IOException</td>
+<td style="text-align:center">输入/输出流异常</td>
+</tr>
+<tr>
+<td style="text-align:center">TimeoutException</td>
+<td style="text-align:center">操作超时异常</td>
+</tr>
+<tr>
+<td style="text-align:center">FileNotFoundException</td>
+<td style="text-align:center">文件未找到异常</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-捕捉处理异常"><a href="#3-捕捉处理异常" class="headerlink" title="3.捕捉处理异常"></a><em>3.捕捉处理异常</em></h3><h4 id="1-try…catch代码块"><a href="#1-try…catch代码块" class="headerlink" title="1.try…catch代码块"></a>1.try…catch代码块</h4><p>当try代码块中的语句发生异常时，程序就会跳转到catch代码块中执行，执行完catch代码块中的程序代码后，将继续执行catch代码块后的其他代码，而不会执行try代码块发生异常语句后面的代码。</p>
+<h4 id="2-finally代码块"><a href="#2-finally代码块" class="headerlink" title="2.finally代码块"></a>2.finally代码块</h4><p>无论程序中有无异常发生，finally代码块中的代码都可以正常执行。</p>
+<p>在以下三种情况下，finally块不会被执行：</p>
+<p>1.在finally代码块中发生了异常</p>
+<p>2.在前面的代码中使用了System.exit()退出程序。</p>
+<p>3.程序所在的线程死亡。</p>
+<h3 id="4-在方法中抛出异常"><a href="#4-在方法中抛出异常" class="headerlink" title="4.在方法中抛出异常"></a><em>4.在方法中抛出异常</em></h3><h4 id="1-使用throws关键字抛出异常"><a href="#1-使用throws关键字抛出异常" class="headerlink" title="1.使用throws关键字抛出异常"></a>1.使用throws关键字抛出异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">返回值类型名 方法名(参数表) throws 异常类型名&#123;</span><br><span class="line">    方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果子类继承父类，子类重写方法抛出的异常和原父类的相同或其子类。</p>
+<h4 id="2-使用throw关键字抛出异常"><a href="#2-使用throw关键字抛出异常" class="headerlink" title="2.使用throw关键字抛出异常"></a>2.使用throw关键字抛出异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">throw new 异常类型名（异常信息）</span><br></pre></td></tr></table></figure>
+<p><strong>throws关键字和throw关键字的区别如下：</strong></p>
+<p>1）throws用在方法声明后面，表示抛出异常，由方法的调用者处理；而throw用在方法体内，用来制造一个异常，由方法内的语句处理。</p>
+<p>2）throws是声明这个方法会抛出这种类型的异常，以便使它的调用者知道要捕获这个异常，而throw是直接抛出一个异常实例。</p>
+<p>3）throws表示出现异常的一种可能性，并不一定会发生这些异常；而throw，就一定会产生某种异常。</p>
+<h3 id="5-自定义异常"><a href="#5-自定义异常" class="headerlink" title="5.自定义异常"></a><em>5.自定义异常</em></h3><p>大体可分成以下几步：</p>
+<p>1）创建自定义异常类</p>
+<p>2）在方法中通过throw关键字抛出异常对象</p>
+<p>3）如果在当前抛出异常的方法中处理异常，可以使用try…catch代码块捕获并处理异常，否则，在方法的声明处通过throws关键字指明要抛给方法调用者的异常，继续下一步操作。</p>
+<p>4）在出现异常方法的调用者中捕获并处理异常。</p>
+<p>### </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/多线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -307,7 +534,7 @@
 <p><strong>线程</strong>：程序在执行过程中，能够执行程序代码的一个执行单元。</p>
 <p><strong>多线程</strong>：Java语言提供了并发机制，程序员在程序中执行多个线程，每个线程实现一个功能，并与其它线程并发执行，这种机制被称为多线程。</p>
 <p><strong>进程</strong>：Windows操作系统是多任务操作系统，它以进程为单位，一个进程是一个包含有自身地址的程序，每个独立执行的程序都称为进程。比如正在运行的QQ是一个进程。每个进程都可以同时包含多个线程。</p>
-<h3 id="2-实现线程的两种方式"><a href="#2-实现线程的两种方式" class="headerlink" title="2.实现线程的两种方式"></a><em>2.实现线程的两种方式</em></h3><h4 id="1-继承Thread类，重写run-方法"><a href="#1-继承Thread类，重写run-方法" class="headerlink" title="1.继承Thread类，重写run()方法"></a>1.继承Thread类，重写run()方法</h4><p>Thread类是java.lang包中的一个类，本质上来说也是实现了Runnable接口的一个实例。它代表一个线程的实例。通过继承Thread类创建并执行一个线程的步骤如下：</p>
+<h3 id="2-实现线程的三种方式"><a href="#2-实现线程的三种方式" class="headerlink" title="2.实现线程的三种方式"></a><em>2.实现线程的三种方式</em></h3><h4 id="1-继承Thread类，重写run-方法"><a href="#1-继承Thread类，重写run-方法" class="headerlink" title="1.继承Thread类，重写run()方法"></a>1.继承Thread类，重写run()方法</h4><p>Thread类是java.lang包中的一个类，本质上来说也是实现了Runnable接口的一个实例。它代表一个线程的实例。通过继承Thread类创建并执行一个线程的步骤如下：</p>
 <p>(1)创建一个继承自Thred类的子类</p>
 <p>(2)重写Thread类的run()方法</p>
 <p>(3)创建线程类的一个对象</p>
@@ -375,7 +602,8 @@
 <p>出生状态是线程被创建时处于的状态，在用户调用该线程实例的start()方法之前都处于出生状态。</p>
 <p>就绪状态：当用户调用start()方法后，线程就处于就绪状态。</p>
 <p>运行状态：当线程得到系统资源后就进入运行状态。</p>
-<p>暂停状态：当处于运行状态下的线程调用sleep(),wait()方法或者发生阻塞时，会进入暂停状态。当在休眠结束，调用notify()方法，notifyAll()方法或者阻塞解除时，会重新进入就绪状态。当程序的run()方法执行完毕，或者线程发生错误，异常时，线程进入死亡状态。</p>
+<p>暂停状态：当处于运行状态下的线程调用sleep(),wait()方法或者发生阻塞时，会进入暂停状态。当在休眠结束，调用notify()方法，notifyAll()方法或者阻塞解除时，会重新进入就绪状态。</p>
+<p>死亡状态：当程序的run()方法执行完毕，或者线程发生错误，异常时，线程进入死亡状态。</p>
 <h3 id="4-操作线程的方法"><a href="#4-操作线程的方法" class="headerlink" title="4.操作线程的方法"></a><em>4.操作线程的方法</em></h3><h4 id="1-线程的休眠"><a href="#1-线程的休眠" class="headerlink" title="1.线程的休眠"></a>1.线程的休眠</h4><p>sleep方法的使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    Thread.sleep(2000);</span><br><span class="line">&#125;catch(InterruptedException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2-线程的加入"><a href="#2-线程的加入" class="headerlink" title="2.线程的加入"></a>2.线程的加入</h4><p>join方法：当某个线程使用join()方法加入另一个线程时，另一个线程会等待该线程执行完毕后再继续执行。</p>
@@ -389,6 +617,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">synchronized(Object)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="2-同步方法"><a href="#2-同步方法" class="headerlink" title="2.同步方法"></a>2.同步方法</h5><p>就是方法面前使用synchronized关键字修饰的方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synchronized void f()&#123; &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-lock"><a href="#3-lock" class="headerlink" title="3.lock"></a>3.lock</h5><p>1.lock():以阻塞方式获取锁，即如果获取了锁，立即返回；如果别的线程持有锁，当前线程等待，直到获取锁后返回。</p>
+<p>2.tryLock():以非阻塞的方式获取锁。只是尝试性的去获取一下锁，如果获取到锁，立即返回true,否则，立即返回false.</p>
+<p>3.tryLock(long timeout,TimeUnit unit):如果获取了锁，立即返回true,否则会等待参数给定的时间单元，在等待的过程中，如果获取了锁，立即返回true，如果等待超时，返回false.</p>
+<p>4.lockInterruptibly():如果获取了锁，立即返回；如果没有获取锁，当前线程处于休眠状态，直至获得锁。它与lock()方法最大的不同在于如果lock()方法获取不到锁，会一直处于阻塞状态，且会忽略interrupt()方法。</p>
 <h3 id="7-线程的暂停与恢复"><a href="#7-线程的暂停与恢复" class="headerlink" title="7.线程的暂停与恢复"></a><em>7.线程的暂停与恢复</em></h3><p>线程的暂停与恢复主要通过顶级父类Object提供的wait()方法与notify()方法实现，其中，wait()方法用来暂停线程，notify()用来唤醒正在等待的单个线程。</p>
 
           
@@ -2174,179 +2406,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/Servlet技术/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/03/Servlet技术/" itemprop="url">Servlet技术</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-03T11:02:21+08:00">
-                2018-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-servlet基础"><a href="#1-servlet基础" class="headerlink" title="1.servlet基础"></a><em>1.servlet基础</em></h2><p>servlet是运行在web服务器端的Java应用程序。</p>
-<h4 id="1-servlet的体系结构"><a href="#1-servlet的体系结构" class="headerlink" title="1.servlet的体系结构"></a>1.servlet的体系结构</h4><p>servlet 《interface》  servletConfig《interface》 serializable《interface》</p>
-<p>​                                    GenericServlet&lt;抽象类&gt;</p>
-<p>​                                        HttpServlet</p>
-<h4 id="2-servlet技术特点"><a href="#2-servlet技术特点" class="headerlink" title="2.servlet技术特点"></a>2.servlet技术特点</h4><ul>
-<li><p>功能强大</p>
-<p>由于servlet拥有Java提供的API,而且还可以调用servlet分装的servletAPI编程接口。</p>
-</li>
-<li><p>可移植性</p>
-<p>servlet继承了Java语言的优点，程序一次编码，多平台运行，拥有超强的可移植性。</p>
-</li>
-<li><p>性能高效</p>
-<p>servlet对象在servlet容器启动时被初始化，当第一次被请求时，servlet容器将其实例化，此时它贮存于内存中，如果存在多个请求，servlet不会再实例化。因此，    servlet对请求处理的性能是十分高效的。</p>
-</li>
-<li><p>安全性能高</p>
-<p>servlet使用了Java的安全框架，同时servlet容器还可以为servlet提供额外的功能，他的安全性能是非常高的。</p>
-</li>
-<li><p>可扩展</p>
-<p>servlet继承了Java的面向对象的优点，在业务处理中，可以通过封装，继承等来扩展实际的业务需要，其扩展性非常强。</p>
-</li>
-</ul>
-<h4 id="3-servlet与JSP的区别"><a href="#3-servlet与JSP的区别" class="headerlink" title="3.servlet与JSP的区别"></a>3.servlet与JSP的区别</h4><p>1.角色不同</p>
-<p>JSP页面存在HTML与Java代码并存的情况，而servlet需要承担客户请求与业务处理的中间角色，只有调用固定的方法才能将动态内容输出为静态的HTML。</p>
-<p>2.编程方法不同</p>
-<p>servlet开发需要遵从Java的标准，而JSP需要遵循一定的脚本语言规范。在servlet代码中，需要调用servlet提供的相关API接口方法，才可以对HTTP请求及业务进行处理。而JSP页面通过HTML代码与内置对象实现对HTTP请求及页面的处理。</p>
-<p>3.servlet需要编译后运行</p>
-<p>servlet需要在Java编译器编译后才能运行。而JSP由JSP Container对其进行管理，他的编辑过程也由JSP Container对JSP进行自动编辑。</p>
-<p>4.速度不同</p>
-<p>由于JSP Container在每次执行不同内容的动态JSP页面时都需对其自动编译，所以效率低于servlet的执行效率。</p>
-<h4 id="4-servlet的代码结构"><a href="#4-servlet的代码结构" class="headerlink" title="4.servlet的代码结构"></a>4.servlet的代码结构</h4><p>通常所说的servlet是指httpservlet对象。</p>
-<p>该类中包含六个方法，其中init()与destroy()方法为servlet初始化与生命周期结束所调用的方法，其余的四个方法为servlet针对不同的HTTP请求所提供的方法。（doGet(),doPost(),doPut(),doDelete()）</p>
-<h2 id="2-servlet-API-编程常用接口和类"><a href="#2-servlet-API-编程常用接口和类" class="headerlink" title="2.servlet API 编程常用接口和类"></a><em>2.servlet API 编程常用接口和类</em></h2><p>1.servlet接口</p>
-<p>2.servletConfig接口</p>
-<p>3.HttpServletRequest接口</p>
-<p>4.HttpServletResonse接口</p>
-<p>5.GenericServlet类</p>
-<p>6.HttpServlet类</p>
-<h2 id="3-servlet开发"><a href="#3-servlet开发" class="headerlink" title="3.servlet开发"></a><em>3.servlet开发</em></h2><p>1.servlet创建</p>
-<p>第一种方法：创建一个普通的Java类，使这个类继承HttpServlet类，再手动配置web.xml文件注册Servlet对象。</p>
-<p>第二种方法：直接通过IDE集成开发工具进行创建。</p>
-<p>2.servlet配置</p>
-<p>(1)声明servlet对象</p>
-<p>在web.xml中的声明语句如下：</p>
-<p>《servlet》</p>
-<p>《servlet-name》SimpleServlet《/servlet-name》</p>
-<p>《servlet-class》com.lyq.SimpleServlet《/servlet-class》</p>
-<p>《/servlet》</p>
-<p>(2)映射servlet</p>
-<p>在web.xml声明后，需要映射访问servlet的URL。</p>
-<p>其配置方法如下：</p>
-<p>《servlet-mapping&gt;</p>
-<p>​     《servlet-name》SimpleServlet《/servlet-name》</p>
-<p>​     《url-pattern》SimpleServlet《/url-patterns》</p>
-<p>《/servlet-mapping》</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2397,7 +2456,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.异常概述在运行程序时可能出现的一些错误称为异常。 2.异常的分类java类库中的每个包中都定义了异常类，所有这些类都是throwable类的子类。throwable类派生了两个子类，分别是Error和Exception类，其中Error类及其子类用来描述Java运行系统的内部错误以及资源耗尽的错误，这类错误比较严重。Exception类称为非致命性类，可以通过捕捉处理是程序继续执行。Expti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异常处理">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/异常处理/index.html">
+<meta property="og:site_name" content="小猪佩琪">
+<meta property="og:description" content="1.异常概述在运行程序时可能出现的一些错误称为异常。 2.异常的分类java类库中的每个包中都定义了异常类，所有这些类都是throwable类的子类。throwable类派生了两个子类，分别是Error和Exception类，其中Error类及其子类用来描述Java运行系统的内部错误以及资源耗尽的错误，这类错误比较严重。Exception类称为非致命性类，可以通过捕捉处理是程序继续执行。Expti">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-18T13:56:17.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="异常处理">
+<meta name="twitter:description" content="1.异常概述在运行程序时可能出现的一些错误称为异常。 2.异常的分类java类库中的每个包中都定义了异常类，所有这些类都是throwable类的子类。throwable类派生了两个子类，分别是Error和Exception类，其中Error类及其子类用来描述Java运行系统的内部错误以及资源耗尽的错误，这类错误比较严重。Exception类称为非致命性类，可以通过捕捉处理是程序继续执行。Expti">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/异常处理/"/>
+
+
+
+
+
+  <title>异常处理 | 小猪佩琪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小猪佩琪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小猪佩琪的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/异常处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">异常处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T16:31:48+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-异常概述"><a href="#1-异常概述" class="headerlink" title="1.异常概述"></a><em>1.异常概述</em></h3><p>在运行程序时可能出现的一些错误称为异常。</p>
+<h3 id="2-异常的分类"><a href="#2-异常的分类" class="headerlink" title="2.异常的分类"></a><em>2.异常的分类</em></h3><p>java类库中的每个包中都定义了异常类，所有这些类都是throwable类的子类。throwable类派生了两个子类，分别是Error和Exception类，其中Error类及其子类用来描述Java运行系统的内部错误以及资源耗尽的错误，这类错误比较严重。Exception类称为非致命性类，可以通过捕捉处理是程序继续执行。Exption根据错误发生的原因分为运行时异常和非运行时异常。</p>
+<h4 id="1-系统错误–error"><a href="#1-系统错误–error" class="headerlink" title="1.系统错误–error"></a>1.系统错误–error</h4><p>Error类及其子类用来描述java运行系统中的内部错误，该类定义了常规情况下不希望程序捕获的异常，这些错误发生时，Java虚拟机一般会选择线程终止。</p>
+<h4 id="2-异常–exeception"><a href="#2-异常–exeception" class="headerlink" title="2.异常–exeception"></a>2.异常–exeception</h4><h5 id="1-运行时异常"><a href="#1-运行时异常" class="headerlink" title="1.运行时异常"></a>1.运行时异常</h5><p>运行时异常是程序运行过程中产生的异常，它是RuntimeException类及其子类异常，这些异常一般是由程序逻辑错误引起的，所以应该从逻辑角度尽可能避免这类异常的发生。这些异常可通过try…catch语句捕获。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">异常类</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ClassCastException</td>
+<td style="text-align:center">类型转换异常</td>
+</tr>
+<tr>
+<td style="text-align:center">NullPointerException</td>
+<td style="text-align:center">空指针异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ArrayIndexOutOfBoundsException</td>
+<td style="text-align:center">数组下标越界异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ArithmeticException</td>
+<td style="text-align:center">算数异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ArrayStoreException</td>
+<td style="text-align:center">数组中包含不兼容的值抛出的异常</td>
+</tr>
+<tr>
+<td style="text-align:center">NumberFormatException</td>
+<td style="text-align:center">字符串转换为数字抛出的异常</td>
+</tr>
+<tr>
+<td style="text-align:center">IllegalArgumentException</td>
+<td style="text-align:center">非法参数异常</td>
+</tr>
+<tr>
+<td style="text-align:center">FileSystemNotFoundException</td>
+<td style="text-align:center">文件系统未找到异常</td>
+</tr>
+<tr>
+<td style="text-align:center">SecurityException</td>
+<td style="text-align:center">安全性异常</td>
+</tr>
+<tr>
+<td style="text-align:center">StringIndexOutOfBoundsException</td>
+<td style="text-align:center">字符串索引超出范围抛出的异常</td>
+</tr>
+<tr>
+<td style="text-align:center">NegativeArraySizeException</td>
+<td style="text-align:center">数组长度为负异常</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2-非运行时异常"><a href="#2-非运行时异常" class="headerlink" title="2.非运行时异常"></a>2.非运行时异常</h5><p>非运行时异常是RuntimeException类及其子类以外的异常，从程序语法角度上讲，这类异常是必须进行处理的异常，如果不处理，程序无法编译通过。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">异常类</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ClassNotFoundException</td>
+<td style="text-align:center">未找到相应类异常</td>
+</tr>
+<tr>
+<td style="text-align:center">SQLException</td>
+<td style="text-align:center">操作数据库异常</td>
+</tr>
+<tr>
+<td style="text-align:center">IOException</td>
+<td style="text-align:center">输入/输出流异常</td>
+</tr>
+<tr>
+<td style="text-align:center">TimeoutException</td>
+<td style="text-align:center">操作超时异常</td>
+</tr>
+<tr>
+<td style="text-align:center">FileNotFoundException</td>
+<td style="text-align:center">文件未找到异常</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-捕捉处理异常"><a href="#3-捕捉处理异常" class="headerlink" title="3.捕捉处理异常"></a><em>3.捕捉处理异常</em></h3><h4 id="1-try…catch代码块"><a href="#1-try…catch代码块" class="headerlink" title="1.try…catch代码块"></a>1.try…catch代码块</h4><p>当try代码块中的语句发生异常时，程序就会跳转到catch代码块中执行，执行完catch代码块中的程序代码后，将继续执行catch代码块后的其他代码，而不会执行try代码块发生异常语句后面的代码。</p>
+<h4 id="2-finally代码块"><a href="#2-finally代码块" class="headerlink" title="2.finally代码块"></a>2.finally代码块</h4><p>无论程序中有无异常发生，finally代码块中的代码都可以正常执行。</p>
+<p>在以下三种情况下，finally块不会被执行：</p>
+<p>1.在finally代码块中发生了异常</p>
+<p>2.在前面的代码中使用了System.exit()退出程序。</p>
+<p>3.程序所在的线程死亡。</p>
+<h3 id="4-在方法中抛出异常"><a href="#4-在方法中抛出异常" class="headerlink" title="4.在方法中抛出异常"></a><em>4.在方法中抛出异常</em></h3><h4 id="1-使用throws关键字抛出异常"><a href="#1-使用throws关键字抛出异常" class="headerlink" title="1.使用throws关键字抛出异常"></a>1.使用throws关键字抛出异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">返回值类型名 方法名(参数表) throws 异常类型名&#123;</span><br><span class="line">    方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果子类继承父类，子类重写方法抛出的异常和原父类的相同或其子类。</p>
+<h4 id="2-使用throw关键字抛出异常"><a href="#2-使用throw关键字抛出异常" class="headerlink" title="2.使用throw关键字抛出异常"></a>2.使用throw关键字抛出异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">throw new 异常类型名（异常信息）</span><br></pre></td></tr></table></figure>
+<p><strong>throws关键字和throw关键字的区别如下：</strong></p>
+<p>1）throws用在方法声明后面，表示抛出异常，由方法的调用者处理；而throw用在方法体内，用来制造一个异常，由方法内的语句处理。</p>
+<p>2）throws是声明这个方法会抛出这种类型的异常，以便使它的调用者知道要捕获这个异常，而throw是直接抛出一个异常实例。</p>
+<p>3）throws表示出现异常的一种可能性，并不一定会发生这些异常；而throw，就一定会产生某种异常。</p>
+<h3 id="5-自定义异常"><a href="#5-自定义异常" class="headerlink" title="5.自定义异常"></a><em>5.自定义异常</em></h3><p>大体可分成以下几步：</p>
+<p>1）创建自定义异常类</p>
+<p>2）在方法中通过throw关键字抛出异常对象</p>
+<p>3）如果在当前抛出异常的方法中处理异常，可以使用try…catch代码块捕获并处理异常，否则，在方法的声明处通过throws关键字指明要抛给方法调用者的异常，继续下一步操作。</p>
+<p>4）在出现异常方法的调用者中捕获并处理异常。</p>
+<p>### </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/18/多线程/" rel="next" title="多线程">
+                <i class="fa fa-chevron-left"></i> 多线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">佩琪</p>
+              <p class="site-description motion-element" itemprop="description">JAVA</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-异常概述"><span class="nav-number">1.</span> <span class="nav-text">1.异常概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-异常的分类"><span class="nav-number">2.</span> <span class="nav-text">2.异常的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-系统错误–error"><span class="nav-number">2.1.</span> <span class="nav-text">1.系统错误–error</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-异常–exeception"><span class="nav-number">2.2.</span> <span class="nav-text">2.异常–exeception</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-运行时异常"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.运行时异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-非运行时异常"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.非运行时异常</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-捕捉处理异常"><span class="nav-number">3.</span> <span class="nav-text">3.捕捉处理异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-try…catch代码块"><span class="nav-number">3.1.</span> <span class="nav-text">1.try…catch代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-finally代码块"><span class="nav-number">3.2.</span> <span class="nav-text">2.finally代码块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-在方法中抛出异常"><span class="nav-number">4.</span> <span class="nav-text">4.在方法中抛出异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用throws关键字抛出异常"><span class="nav-number">4.1.</span> <span class="nav-text">1.使用throws关键字抛出异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用throw关键字抛出异常"><span class="nav-number">4.2.</span> <span class="nav-text">2.使用throw关键字抛出异常</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-自定义异常"><span class="nav-number">5.</span> <span class="nav-text">5.自定义异常</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">佩琪</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
