@@ -232,6 +232,282 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/22/算法总结（二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/22/算法总结（二/" itemprop="url">算法总结（二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T09:26:51+08:00">
+                2018-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-用两个栈实现队列"><a href="#1-用两个栈实现队列" class="headerlink" title="1.用两个栈实现队列"></a>1.用两个栈实现队列</h4><p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p>
+<p>分析：入队列：入栈Ａ,入栈顺序与入队列顺序一致。</p>
+<p>　　　出队列：若栈Ａ与Ｂ为空则报异常，循环直至Ａ为空，将Ａ全部出栈进入Ｂ.</p>
+<p>​             然后Ｂ出栈。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">　　Stack&lt;Integer&gt; stack1 = new Stack&lt;Integer&gt;();</span><br><span class="line">    Stack&lt;Integer&gt; stack2 = new Stack&lt;Integer&gt;();</span><br><span class="line">     </span><br><span class="line">    public void push(int node) &#123;</span><br><span class="line">        stack1.push(node);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    public int pop() &#123;</span><br><span class="line">        if(stack1.empty()&amp;&amp;stack2.empty())&#123;</span><br><span class="line">            throw new RuntimeException(&quot;Queue is empty!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if(stack2.empty())&#123;</span><br><span class="line">            while(!stack1.empty())&#123;</span><br><span class="line">                stack2.push(stack1.pop());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return stack2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-旋转数组的最小数字"><a href="#2-旋转数组的最小数字" class="headerlink" title="2.旋转数组的最小数字"></a>2.旋转数组的最小数字</h4><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</p>
+<blockquote>
+<p>分析：采用二分法解答这个问题， </p>
+<p>  mid = low + (high - low)/2 </p>
+<p>  需要考虑三种情况： </p>
+<p>  (1)array[mid] &gt; array[high]: </p>
+<p>  出现这种情况的array类似[3,4,5,6,0,1,2]，此时最小数字一定在mid的右边。 </p>
+<p>  low = mid + 1 </p>
+<p>  (2)array[mid] == array[high]: </p>
+<p>  出现这种情况的array类似 [1,0,1,1,1]   或者[1,1,1,0,1]，此时最小数字不好判断在mid左边 </p>
+<p>  还是右边,这时只好一个一个试 ， </p>
+<p>  high = high - 1 </p>
+<p>  (3)array[mid] &lt; array[high]: </p>
+<p>  出现这种情况的array类似[2,2,3,4,5,6,6],此时最小数字一定就是array[mid]或者在mid的左 </p>
+<p>  边。因为右边必然都是递增的。 </p>
+<p>  high = mid</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int minNumberInRotateArray(int [] array) &#123;</span><br><span class="line">        int low = 0 ; int high = array.length - 1;   </span><br><span class="line">        while(low &lt; high)&#123;</span><br><span class="line">            int mid = low + (high - low) / 2;        </span><br><span class="line">            if(array[mid] &gt; array[high])&#123;</span><br><span class="line">                low = mid + 1;</span><br><span class="line">            &#125;else if(array[mid] == array[high])&#123;</span><br><span class="line">                high = high - 1;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                high = mid;</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        return array[low];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="３．斐波那契数列"><a href="#３．斐波那契数列" class="headerlink" title="３．斐波那契数列"></a>３．斐波那契数列</h4><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。</p>
+<p>n&lt;=39</p>
+<blockquote>
+<p>分析：动态规划</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(n&lt;=1)&#123;</span><br><span class="line">    return n;</span><br><span class="line">&#125;</span><br><span class="line">int[] record = new int[n+1];</span><br><span class="line">record[0] = 0;</span><br><span class="line">record[1] = 1;</span><br><span class="line">for(int i=2;i&lt;=n;i++)&#123;</span><br><span class="line">    record[i] = record[i-1] + record[i-2];</span><br><span class="line">&#125;</span><br><span class="line">return record[n];</span><br></pre></td></tr></table></figure>
+<h4 id="４．跳台阶"><a href="#４．跳台阶" class="headerlink" title="４．跳台阶"></a>４．跳台阶</h4><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
+<blockquote>
+<p>分析： </p>
+<p>对于本题,前提只有 一次 1阶或者2阶的跳法。  </p>
+<p>   a.如果两种跳法，1阶或者2阶，那么假定第一次跳的是一阶，那么剩下的是n-1个台阶，跳法是f(n-1);  </p>
+<p>   b.假定第一次跳的是2阶，那么剩下的是n-2个台阶，跳法是f(n-2)  </p>
+<p>   c.由a\b假设可以得出总跳法为: f(n) = f(n-1) + f(n-2)   </p>
+<p>   d.然后通过实际的情况可以得出：只有一阶的时候 f(1) = 1 ,只有两阶的时候可以有 f(2) = 2</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public int JumpFloor(int target) &#123;</span><br><span class="line">       if (target &lt;= 0) &#123;</span><br><span class="line">           return -1;</span><br><span class="line">       &#125; else if (target == 1) &#123;</span><br><span class="line">           return 1;</span><br><span class="line">       &#125; else if (target ==2) &#123;</span><br><span class="line">           return 2;</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           return  JumpFloor(target-1)+JumpFloor(target-2);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="５．变态跳台阶"><a href="#５．变态跳台阶" class="headerlink" title="５．变态跳台阶"></a>５．变态跳台阶</h4><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+<blockquote>
+<p>分析：</p>
+<p>关于本题，前提是n个台阶会有一次n阶的跳法。分析如下: </p>
+<p>  f(1) = 1 </p>
+<p>  f(2) = f(2-1) + f(2-2)         //f(2-2) 表示2阶一次跳2阶的次数。 </p>
+<p>  f(3) = f(3-1) + f(3-2) + f(3-3)  </p>
+<p>  … </p>
+<p>  f(n) = f(n-1) + f(n-2) + f(n-3) + … + f(n-(n-1)) + f(n-n)  </p>
+<p>  说明：  </p>
+<p>  1）这里的f(n) 代表的是n个台阶有一次1,2,…n阶的 跳法数。 </p>
+<p>  2）n = 1时，只有1种跳法，f(1) = 1 </p>
+<p>  3) n = 2时，会有两个跳得方式，一次1阶或者2阶，这回归到了问题（1） ，f(2) = f(2-1) + f(2-2)  </p>
+<p>  4) n = 3时，会有三种跳得方式，1阶、2阶、3阶， </p>
+<p>​        那么就是第一次跳出1阶后面剩下：f(3-1);第一次跳出2阶，剩下f(3-2)；第一次3阶，那么剩下f(3-3) </p>
+<p>​       因此结论是f(3) = f(3-1)+f(3-2)+f(3-3) </p>
+<p>  5) n = n时，会有n中跳的方式，1阶、2阶…n阶，得出结论： </p>
+<p>​       f(n) = f(n-1)+f(n-2)+…+f(n-(n-1)) + f(n-n) =&gt;   f(0) + f(1) + f(2) + f(3) + … + f(n-1) </p>
+<p>  6) 由以上已经是一种结论，但是为了简单，我们可以继续简化： </p>
+<p>​       f(n-1) = f(0) + f(1)+f(2)+f(3) + … + f((n-1)-1) =   f(0) + f(1) + f(2) + f(3) + … + f(n-2) </p>
+<p>​       f(n) = f(0) + f(1) + f(2) + f(3) + … + f(n-2) +   f(n-1) = f(n-1) + f(n-1) </p>
+<p>​       可以得出： </p>
+<p>​       f(n) = 2*f(n-1)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int JumpFloorII(int target) &#123;</span><br><span class="line">        if (target &lt;= 0) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125; else if (target == 1) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return 2 * JumpFloorII(target - 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="６．矩形覆盖"><a href="#６．矩形覆盖" class="headerlink" title="６．矩形覆盖"></a>６．矩形覆盖</h4><p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p>
+<blockquote>
+<p>分析：依旧是斐波那契数列 </p>
+<p>  2<em>n的大矩形，和n个2</em>1的小矩形 </p>
+<p>  其中target*2为大矩阵的大小 </p>
+<p>  有以下几种情形： </p>
+<p>  1⃣️target &lt;= 0 大矩形为&lt;= 2*0,直接return 1； </p>
+<p>  2⃣️target = 1大矩形为2*1，只有一种摆放方法，return1； </p>
+<p>  3⃣️target = 2 大矩形为2*2，有两种摆放方法，return2； </p>
+<p>  4⃣️target = n 分为两步考虑： </p>
+<table>
+<thead>
+<tr>
+<th>√</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>  因为，摆放了一块1<em>2的小矩阵（用√√表示），对应下方的1</em>2（用××表示）摆放方法就确定了，所以为f(targte-2) </p>
+<table>
+<thead>
+<tr>
+<th>√</th>
+<th>√</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int RectCover(int target) &#123;</span><br><span class="line">      if(target  &lt;= 1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(target*2 == 2)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;else if(target*2 == 4)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return RectCover((target-1))+RectCover(target-2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="７．二进制中1的个数"><a href="#７．二进制中1的个数" class="headerlink" title="７．二进制中1的个数"></a>７．二进制中1的个数</h4><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+<blockquote>
+<p>分析：思想一：用1（1自身左移运算或本身无符号右运算，其实后来就不是1了）和n的每位进行位与，来判断1的个数</p>
+<p>思想二：把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0.那么一个整数的二进制有多少个1，就可以进行多少次这样的操作。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">private static int NumberOf1_low(int n) &#123;</span><br><span class="line">       int count = 0;</span><br><span class="line">       int flag = 1;</span><br><span class="line">       while (flag != 0) &#123;</span><br><span class="line">           if ((n &amp; flag) != 0) &#123;</span><br><span class="line">               count++;</span><br><span class="line">           &#125;</span><br><span class="line">           flag = flag &lt;&lt; 1;</span><br><span class="line">       &#125;</span><br><span class="line">       return count;</span><br><span class="line">   &#125;</span><br><span class="line">   //--------------------最优解----------------------------</span><br><span class="line">   public static int NumberOf1(int n) &#123;</span><br><span class="line">       int count = 0;</span><br><span class="line">       while (n != 0) &#123;</span><br><span class="line">           ++count;</span><br><span class="line">           n = (n - 1) &amp; n;</span><br><span class="line">       &#125;</span><br><span class="line">       return count;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="８．数值的整数次方"><a href="#８．数值的整数次方" class="headerlink" title="８．数值的整数次方"></a>８．数值的整数次方</h4><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
+<blockquote>
+<p>分析：１．全面考察指数的正负、底数是否为零等情况。</p>
+<p> 2.写出指数的二进制表达，例如13表达为二进制1101。</p>
+<p>３.举例:10^1101 = 10^0001<em>10^0100</em>10^1000。</p>
+<p>４.通过&amp;1和&gt;&gt;1来逐位读取1101，为1时将该位代表的乘数累乘到最终结果。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int n) &#123;</span><br><span class="line">      double base1=base;</span><br><span class="line"> double res=1;</span><br><span class="line"> int n1;</span><br><span class="line"> if(n&gt;0) &#123;</span><br><span class="line">	 n1=n;</span><br><span class="line"> &#125;else if(n&lt;0) &#123;</span><br><span class="line">	 n1=-n;</span><br><span class="line">	 if(base==0) &#123;</span><br><span class="line">		 throw new RuntimeException(&quot;分母不能为0&quot;);</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;else &#123;</span><br><span class="line">	 return 1;</span><br><span class="line"> &#125;</span><br><span class="line"> while(n1!=0) &#123;</span><br><span class="line">	 if((n1&amp;1)==1)</span><br><span class="line">		 res*=base1;</span><br><span class="line">	 base1*=base1;//翻倍</span><br><span class="line">	 n1&gt;&gt;=1;</span><br><span class="line"> &#125;</span><br><span class="line"> return n&gt;0?res:(1/res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="９．调整数组顺序使奇数位于偶数前面"><a href="#９．调整数组顺序使奇数位于偶数前面" class="headerlink" title="９．调整数组顺序使奇数位于偶数前面"></a>９．调整数组顺序使奇数位于偶数前面</h4><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p>
+<blockquote>
+<p>分析：</p>
+<p>第一个思路：类似冒泡算法，前偶后奇数就交换；</p>
+<p>第二个思路：再创建一个数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public void reOrderArray(int [] array) &#123;</span><br><span class="line">        if(array.length==0||array.length==1) return;</span><br><span class="line">        int oddCount=0,oddBegin=0;</span><br><span class="line">        int[] newArray=new int[array.length];</span><br><span class="line">        for(int i=0;i&lt;array.length;i++)&#123;</span><br><span class="line">            if((array[i]&amp;1)==1) oddCount++;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;array.length;i++)&#123;</span><br><span class="line">            if((array[i]&amp;1)==1) newArray[oddBegin++]=array[i];</span><br><span class="line">            else newArray[oddCount++]=array[i];</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;array.length;i++)&#123;</span><br><span class="line">            array[i]=newArray[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="10-链表中倒数第k个结点"><a href="#10-链表中倒数第k个结点" class="headerlink" title="10.链表中倒数第k个结点"></a>10.链表中倒数第k个结点</h4><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<blockquote>
+<p>分析：两个指针，先让第一个指针和第二个指针都指向头结点，然后再让第一个指正走(k-1)步，到达第k个节点。然后两个指针同时往后移动，当第一个结点到达末尾的时候，第二个结点所在位置就是倒数第k个节点了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode FindKthToTail(ListNode head,int k) &#123;</span><br><span class="line">        if(head==null||k&lt;=0)&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode pre=head;</span><br><span class="line">        ListNode last=head;       </span><br><span class="line">        for(int i=1;i&lt;k;i++)&#123;</span><br><span class="line">            if(pre.next!=null)&#123;</span><br><span class="line">                pre=pre.next;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                return null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(pre.next!=null)&#123;</span><br><span class="line">            pre = pre.next;</span><br><span class="line">            last=last.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return last;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="11-反转链表"><a href="#11-反转链表" class="headerlink" title="11.反转链表"></a>11.反转链表</h4><p>输入一个链表，反转链表后，输出新链表的表头。</p>
+<blockquote>
+<p>分析：入栈出栈</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/算法总结（一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1322,126 +1598,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/左旋转字符串/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/左旋转字符串/" itemprop="url">左旋转字符串</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T09:12:49+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S-”abcXYZdef”-要求输出循环左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！"><a href="#汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S-”abcXYZdef”-要求输出循环左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！" class="headerlink" title="汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！"></a>汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.Queue;</span><br><span class="line"></span><br><span class="line">public class LeftRotateString &#123;</span><br><span class="line">	// 左旋转字符串</span><br><span class="line">	/**</span><br><span class="line">	 * 方法一：队列</span><br><span class="line">	 * </span><br><span class="line">	 * @param str</span><br><span class="line">	 * @param n</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	public String LeftRotateString(String str, int n) &#123;</span><br><span class="line">		char[] c = str.toCharArray();</span><br><span class="line">		String s1 = &quot;&quot;;</span><br><span class="line">		Queue&lt;Character&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">		for (int i = 0; i &lt; c.length; i++) &#123;</span><br><span class="line">			queue.add(c[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">			Character ch = queue.poll();</span><br><span class="line">			queue.add(ch);</span><br><span class="line">		&#125;</span><br><span class="line">		for (int i = 0; i &lt; c.length; i++) &#123;</span><br><span class="line">			Character ch1 = queue.poll();</span><br><span class="line">			s1 = s1 + ch1.toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return s1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 方法二：字符串的截取</span><br><span class="line">	 * substring(x)是从字符串的的第x个字符截取</span><br><span class="line">       substring(x,y）是从x到y前的位置停止(不包括y)0表示第一个数</span><br><span class="line">	 * @param args</span><br><span class="line">	 */</span><br><span class="line">	public String LeftRotateString1(String str, int n) &#123;</span><br><span class="line">		if(n&gt;str.length())</span><br><span class="line">			return &quot;&quot;;</span><br><span class="line">		String s1=str.substring(0, n);</span><br><span class="line">		String s2=str.substring(n,str.length());</span><br><span class="line">		return s2+s1;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(new LeftRotateString().LeftRotateString(&quot;abcXYZdef&quot;, 3));</span><br><span class="line">		System.out.println(new LeftRotateString().LeftRotateString1(&quot;abcXYZdef&quot;, 3));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1492,7 +1648,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

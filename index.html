@@ -232,6 +232,506 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/I-O/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="佩琪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猪佩琪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/I-O/" itemprop="url">I/O</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T15:37:53+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-流概述"><a href="#1-流概述" class="headerlink" title="1.流概述"></a><em>1.流概述</em></h3><p><strong>流</strong>：将不同输入输出设备之间的数据传输抽象为流。</p>
+<p>根据流中传输的数据类型可分为字节流和字符流。</p>
+<p>而根据流的操作模式可以分为输入流和输出流。</p>
+<p><strong>输入流</strong>：是指打开一个从某数据源到程序的流，并从这个流中读取数据。</p>
+<p><strong>输出流</strong>：将程序中的数据传输到某个目的地，在传输过程中，需要将数据写入这个流中。</p>
+<h3 id="2-输入-输出流"><a href="#2-输入-输出流" class="headerlink" title="2.输入/输出流"></a><em>2.输入/输出流</em></h3><h4 id="1-输入流"><a href="#1-输入流" class="headerlink" title="1.输入流"></a>1.输入流</h4><h5 id="1-InputStream"><a href="#1-InputStream" class="headerlink" title="1.InputStream"></a>1.InputStream</h5><p>InputStream类是字节输入流的抽象类，是所有字节输入流的父类。</p>
+<p>InputStream类中所有方法遇到错误时都会引发IOException异常，该类的常用方法及说明如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">返回值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">read()</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">从输入流中读取数据的下一个字节。返回0~255范围内的int字节值。如果因为已经到达流末尾而没有可用的字节，则返回-1</td>
+</tr>
+<tr>
+<td style="text-align:center">read(byte[] b)</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">从输入流中读入一定长度的字节，并以整数的形式返回字节数</td>
+</tr>
+<tr>
+<td style="text-align:center">mark(int readlimit)</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">在输入流的当前位置放置一个标记，readlimit参数告知此输入流在标记位置失效前允许读取的字节数</td>
+</tr>
+<tr>
+<td style="text-align:center">reset()</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">将输入指针返回到当前所做的标记处</td>
+</tr>
+<tr>
+<td style="text-align:center">skip(long n)</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">跳过输入流上的n个字节并返回实际跳过的字节数</td>
+</tr>
+<tr>
+<td style="text-align:center">markSupported()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">如果当前流支持mark()/reset()操作就返回true</td>
+</tr>
+<tr>
+<td style="text-align:center">close()</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">关闭此输入流并释放与该流关联的所有系统资源</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2-Reader"><a href="#2-Reader" class="headerlink" title="2.Reader"></a>2.Reader</h5><p>java中的字符是Unicode编码，是双字节的，所以Java为字符文本的输入专门提供了一套单独的Reader类。该类与InputStream类中的方法类似，但需要注意一点的是，Reader中的read()方法的参数为char类型的数组，除上表所提供的方法外，还提供了一个ready()方法，用来判断是否准备读取流，返回结果为boolean型。</p>
+<h4 id="2-输出流"><a href="#2-输出流" class="headerlink" title="2.输出流"></a>2.输出流</h4><h5 id="1-OutputStream"><a href="#1-OutputStream" class="headerlink" title="1.OutputStream"></a>1.OutputStream</h5><p>OutputStream类中所有方法均返回void,在遇到错误时都会引发IOException异常，该类的常用方法及说明如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">write(int b)</td>
+<td style="text-align:center">将指定的字节写入此输入流</td>
+</tr>
+<tr>
+<td style="text-align:center">write(byte[] b)</td>
+<td style="text-align:center">将b个字节从指定的byte数组写入此输入流</td>
+</tr>
+<tr>
+<td style="text-align:center">write(byte[] b,int off,int len)</td>
+<td style="text-align:center">将指定byte数组中从偏移量of开始的len个字节写入此输入流</td>
+</tr>
+<tr>
+<td style="text-align:center">flush()</td>
+<td style="text-align:center">彻底完成输出并清空缓冲区</td>
+</tr>
+<tr>
+<td style="text-align:center">close()</td>
+<td style="text-align:center">关闭输出流</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2-Writer"><a href="#2-Writer" class="headerlink" title="2.Writer"></a>2.Writer</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">append(char c)</td>
+<td style="text-align:center">将指定字符添加到此write</td>
+</tr>
+<tr>
+<td style="text-align:center">append(CharSequence csq)</td>
+<td style="text-align:center">将指定字符序列添加到此writer</td>
+</tr>
+<tr>
+<td style="text-align:center">append(CharSequence csq,int start,int end)</td>
+<td style="text-align:center">将指定字符序列的子序列添加到此write</td>
+</tr>
+<tr>
+<td style="text-align:center">close()</td>
+<td style="text-align:center">关闭此流，但要先刷新它</td>
+</tr>
+<tr>
+<td style="text-align:center">flush()</td>
+<td style="text-align:center">刷新该流的缓冲</td>
+</tr>
+<tr>
+<td style="text-align:center">write(char[] cbuf)</td>
+<td style="text-align:center">写入字符数组</td>
+</tr>
+<tr>
+<td style="text-align:center">write(char[] cbuf,int off,int len)</td>
+<td style="text-align:center">写入字符数组的某一部分</td>
+</tr>
+<tr>
+<td style="text-align:center">write(int c)</td>
+<td style="text-align:center">写入单个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">write(String str)</td>
+<td style="text-align:center">写入字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">write(String str,int off,int len)</td>
+<td style="text-align:center">写入字符串的某一部分</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-File类"><a href="#3-File类" class="headerlink" title="3.File类"></a><em>3.File类</em></h3><p>File类是java.io包中唯一代表磁盘本身的对象</p>
+<h4 id="1-创建File对象"><a href="#1-创建File对象" class="headerlink" title="1.创建File对象"></a>1.创建File对象</h4><p>通常采用以下三种构造方法来创建文件对象</p>
+<p>new File(String pathName)</p>
+<p>new File(String parent,String child)</p>
+<p>new File(File parent,String child)</p>
+<h4 id="2-文件操作"><a href="#2-文件操作" class="headerlink" title="2.文件操作"></a>2.文件操作</h4><p>File类中对文件进行操作的常用方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">返回值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">canRead()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">判断文件是否是可读的</td>
+</tr>
+<tr>
+<td style="text-align:center">canWrite()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">判断文件是否可被写入</td>
+</tr>
+<tr>
+<td style="text-align:center">createNewFile()</td>
+<td style="text-align:center">booean</td>
+<td style="text-align:center">当且仅当不存在具有指定名称的文件时，创建一个新的空文件</td>
+</tr>
+<tr>
+<td style="text-align:center">createTempFile(String prefix,String suffix)</td>
+<td style="text-align:center">File</td>
+<td style="text-align:center">在默认临时文件夹中创建一个空文件，使用给定前缀和后缀生成其名称</td>
+</tr>
+<tr>
+<td style="text-align:center">createTempFile(String prefix,String suffix,File directory)</td>
+<td style="text-align:center">File</td>
+<td style="text-align:center">在指定文件夹中创建一个新的空文件，使用给定的前缀和后缀生成其名称</td>
+</tr>
+<tr>
+<td style="text-align:center">delete()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">删除指定的文件或文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">exists()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">测试指定的文件或文件夹是否存在</td>
+</tr>
+<tr>
+<td style="text-align:center">getAbsoluteFile()</td>
+<td style="text-align:center">File</td>
+<td style="text-align:center">返回抽象路径名的绝对路径名形式</td>
+</tr>
+<tr>
+<td style="text-align:center">getAbsolutePath()</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">获取文件的绝对路径</td>
+</tr>
+<tr>
+<td style="text-align:center">getName()</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">获取文件或文件夹的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">getParent()</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">获取文件的父路径</td>
+</tr>
+<tr>
+<td style="text-align:center">getPath()</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">获取路径名字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">getFreeSpace()</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">返回此抽象路径名指定的分区中未分配的字节数</td>
+</tr>
+<tr>
+<td style="text-align:center">getTotalSpace()</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">返回此抽象路径名指定的分区大小</td>
+</tr>
+<tr>
+<td style="text-align:center">length()</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">获取文件的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">isFile()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">判断是不是文件</td>
+</tr>
+<tr>
+<td style="text-align:center">isHidden()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">判断文件是不是隐藏文件</td>
+</tr>
+<tr>
+<td style="text-align:center">lastModified()</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">获取文件最后修改时间</td>
+</tr>
+<tr>
+<td style="text-align:center">renameTo(File dest)</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">重新命名文件</td>
+</tr>
+<tr>
+<td style="text-align:center">setLastModified(long time)</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">设置文件或文件夹的最后一次修改时间</td>
+</tr>
+<tr>
+<td style="text-align:center">setReadOnly</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">将文件或文件夹设置为只读</td>
+</tr>
+<tr>
+<td style="text-align:center">toURI()</td>
+<td style="text-align:center">URI</td>
+<td style="text-align:center">构造一个表示此抽象路径的file:URL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-文件夹操作"><a href="#3-文件夹操作" class="headerlink" title="3.文件夹操作"></a>3.文件夹操作</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">返回值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">isDirectory()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">判断是否为文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">list()</td>
+<td style="text-align:center">String[]</td>
+<td style="text-align:center">返回字符串数组，这些字符串指定此抽象路径名表示的目录中的文件和目录</td>
+</tr>
+<tr>
+<td style="text-align:center">list(FilenameFilter filter)</td>
+<td style="text-align:center">String[]</td>
+<td style="text-align:center">返回字符串数组，这些字符串指定此抽象路径名表示的目录中满足指定过滤器的文件和目录</td>
+</tr>
+<tr>
+<td style="text-align:center">listFiles()</td>
+<td style="text-align:center">File[]</td>
+<td style="text-align:center">返回抽象路径名数组，这些字符串指定此抽象路径名表示的目录中的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">listFiles(FileFilter filter)</td>
+<td style="text-align:center">File[]</td>
+<td style="text-align:center">返回抽象路径名数组，这些字符串指定此抽象路径名表示的目录中满足指定过滤器的文件和目录</td>
+</tr>
+<tr>
+<td style="text-align:center">listFiles(FilenameFilter filter)</td>
+<td style="text-align:center">File[]</td>
+<td style="text-align:center">返回抽象路径名数组，这些字符串指定此抽象路径名表示的目录中满足指定过滤器的文件和目录</td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">创建此抽象路径名指定的目录</td>
+</tr>
+<tr>
+<td style="text-align:center">mkdirs()</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">创建此抽象路径名指定的目录，包括所有必须但不存在的父目录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-文件输入-输出流"><a href="#4-文件输入-输出流" class="headerlink" title="4.文件输入/输出流"></a><em>4.文件输入/输出流</em></h3><h4 id="1-FileInputStream类与FileOutputStream类"><a href="#1-FileInputStream类与FileOutputStream类" class="headerlink" title="1.FileInputStream类与FileOutputStream类"></a>1.FileInputStream类与FileOutputStream类</h4><p><strong>FileInputStream类常用的构造方法：</strong></p>
+<p>FileInputStream(String name)</p>
+<p>FileInputStream(File file)</p>
+<p><strong>FileOutputStream类的构造方法：</strong></p>
+<p>FileOutputStream(File file)</p>
+<p>FileOutputStream(File file,boolean append)第二个参数若为true，则表示将字节写入到文件末尾处。</p>
+<p>FileOutputStream(String name)</p>
+<p>FileOutputStream(String name,boolean append)</p>
+<h4 id="2-FileReader类与FileWriter类"><a href="#2-FileReader类与FileWriter类" class="headerlink" title="2.FileReader类与FileWriter类"></a>2.FileReader类与FileWriter类</h4><p>FileReader类与FileWriter类的构造方法与FileInputStream类与FileOutputStream类的类似</p>
+<h3 id="5-带缓冲的输入-输出流"><a href="#5-带缓冲的输入-输出流" class="headerlink" title="5.带缓冲的输入/输出流"></a><em>5.带缓冲的输入/输出流</em></h3><h5 id="1-BufferedInputStream类与BufferedOutputStream类"><a href="#1-BufferedInputStream类与BufferedOutputStream类" class="headerlink" title="1.BufferedInputStream类与BufferedOutputStream类"></a>1.BufferedInputStream类与BufferedOutputStream类</h5><p><strong>BufferedInputStream类有两个构造方法：</strong></p>
+<p>BufferedInputStream(InputStream in):创建了一个带有32个字节的缓冲输入流</p>
+<p>BufferedInputStream(InputStream in,int size):按指定大小来创建缓存输入流</p>
+<p><strong>BufferedOutputStream类有两个构造方法：</strong></p>
+<p>BufferedOutputStream(OutputStream out):创建了一个带有32个字节的缓冲输出流</p>
+<p>BufferedOutputStream(OutputStream out,int size):按指定大小来创建缓存输出流</p>
+<h5 id="2-BufferedReader类与BufferWriter类"><a href="#2-BufferedReader类与BufferWriter类" class="headerlink" title="2.BufferedReader类与BufferWriter类"></a>2.BufferedReader类与BufferWriter类</h5><p>BufferedReader类的常用方法如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">返回值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">read()</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">读取单个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">readLine()</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">读取一个文本行，并将其返回为字符串，若无数据可读，则返回null</td>
+</tr>
+</tbody>
+</table>
+<p>BufferWriter类的常用方法如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">返回值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">write(String s,int off,int len)</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">写入字符串的某一部分</td>
+</tr>
+<tr>
+<td style="text-align:center">flush()</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">刷新该流的缓存</td>
+</tr>
+<tr>
+<td style="text-align:center">newLine()</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">写入一个行分隔符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-数据输入-输出流"><a href="#6-数据输入-输出流" class="headerlink" title="6.数据输入/输出流"></a><em>6.数据输入/输出流</em></h3><p>数据输入/输出流允许程序从输入流中读取Java基本数据类型的数据。</p>
+<p>DataInputStream类与DataOutputStream类的构造方法如下：</p>
+<p>DataInputStream(InputStream in):使用指定的基础InputStream创建一个DataInputStream</p>
+<p>DataOutputStream(OutputStream in):使用指定的基础OutputStream创建一个DataOutputStream</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/异常处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2234,234 +2734,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/过滤器和监听器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佩琪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猪佩琪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/03/过滤器和监听器/" itemprop="url">过滤器和监听器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-03T21:42:07+08:00">
-                2018-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-Sevlet过滤器"><a href="#1-Sevlet过滤器" class="headerlink" title="1.Sevlet过滤器"></a><em>1.Sevlet过滤器</em></h3><h4 id="1-什么是过滤器"><a href="#1-什么是过滤器" class="headerlink" title="1.什么是过滤器"></a>1.什么是过滤器</h4><p>servlet过滤器与servlet十分相似，但它具有拦截客户端请求的功能。</p>
-<p>过滤器实质上是在web应用服务器上的web应用组件，用于拦截客户端资源与目标资源的请求。</p>
-<h4 id="2-过滤器核心对象"><a href="#2-过滤器核心对象" class="headerlink" title="2.过滤器核心对象"></a>2.过滤器核心对象</h4><p>过滤器对象放置在javax.servlet包中。</p>
-<ul>
-<li><p>FilterConfig《interface》</p>
-<p>该接口由servlet容器实现，主要用于获取过滤器中的配置信息。</p>
-</li>
-<li><p>Filter《interface》  </p>
-<p>每个过滤对象都要直接或间接地实现Filter接口，在filter中定义了三个方法，分别是init(),doFilter(),destroy()方法。</p>
-</li>
-<li><p>FilterChain《interface》</p>
-<p>该接口仍然由servlet容器实现。</p>
-</li>
-</ul>
-<h4 id="3-过滤器的创建与配置"><a href="#3-过滤器的创建与配置" class="headerlink" title="3.过滤器的创建与配置"></a>3.过滤器的创建与配置</h4><p><strong>创建：</strong></p>
-<p>创建一个过滤器对象需要实现Javax.servlet,Filter接口，同时实现Filter接口的三个方法。init():用于对过滤器的初始化进行处理。destroy():过滤器的销毁方法。</p>
-<p>doFilter():用于过滤处理的业务逻辑。</p>
-<p><strong>配置：</strong></p>
-<p>《!–过滤器的声明–》</p>
-<p>《filter》</p>
-<p>《filter-name》MyFilter《/filter-name》</p>
-<p>《filter-class》com.lyq.MyFilter《/filter-class》</p>
-<p>《/filter》</p>
-<p>《!–过滤器映射–》</p>
-<p>《filter-mapping》</p>
-<p>《filter-name》MyFilter《/filter-name》</p>
-<p>《url-pattern》/MyFilter《/url-pattern》</p>
-<p>《/filter-mapping》</p>
-<h3 id="2-servlet监听器"><a href="#2-servlet监听器" class="headerlink" title="2.servlet监听器"></a><em>2.servlet监听器</em></h3><h4 id="1-servlet监听器简介"><a href="#1-servlet监听器简介" class="headerlink" title="1.servlet监听器简介"></a>1.servlet监听器简介</h4><p>监听器的作用是监听web容器中的有效事件，因此它是由容器管理的。</p>
-<h4 id="2-servlet监听器的原理"><a href="#2-servlet监听器的原理" class="headerlink" title="2.servlet监听器的原理"></a>2.servlet监听器的原理</h4><p>servlet监听器是当今web开发的重要组成部分，它是在servlet2.3规范中和servlet过滤器一起引入的，并且在servlet2.4规范中进行较大的改进，主要用来对web应用进行监听和控制的，极大增强了web应用处理能力。</p>
-<h4 id="3-servlet上下文监听"><a href="#3-servlet上下文监听" class="headerlink" title="3.servlet上下文监听"></a>3.servlet上下文监听</h4><p>servlet上下文监听可以监听servletContext对象的创建，删除以及属性的添加，删除和修改操作，该监听器需要用到如下两个接口。</p>
-<p><strong>ServletContextListener接口</strong></p>
-<p>该接口存放在javax.servlet包中，主要实现ServletContext的创建和删除。该接口提供了两个方法，也被称为“web应用程序的生命周期方法”</p>
-<p>(1).contextInitialized(ServletContextEvent event)方法：通知正在收听的对象，应用程序已经被加载及初始化。</p>
-<p>(2).contextDestroy(ServletContextEvent event)方法：通知正在收听的对象，应用程序已经被载出，即关闭。</p>
-<p><strong>ServletContextAttributeListener接口</strong></p>
-<p>该接口主要存放在javax.servlet包中，主要实现监听ServletContext属性的挺假，删除和修改。ServletContextAttributeListener接口提供了三个方法。</p>
-<p>(1).attributeAdded(ServletContextAttributeEvent event)方法：当有对象加入到Application的范围时，通知正在收听的对象。</p>
-<p>(2).attributeReplace(ServletContextAttributeEvent event)方法：当在application的范围中有对象取代另一个对象时，通知正在收听的对象。</p>
-<p>(3).attributeRemove(ServletContextAttributeEvent event)方法：当有对象从application范围中移除时，通知正在收听的对象。</p>
-<p><strong>创建监听器</strong>：</p>
-<p>要让web容器启动时通知自定义的监听器，需要在web.xml中使用《listener》元素来配置监听器类。</p>
-<p>eg:</p>
-<p>《listener》</p>
-<p>《listener-class》com.listener.MyContentListener《/listener-class》</p>
-<p>《/listener》</p>
-<h4 id="4-HTTP会话监听"><a href="#4-HTTP会话监听" class="headerlink" title="4.HTTP会话监听"></a>4.HTTP会话监听</h4><p>HTTP会话监听信息，有四个接口可以进行监听。</p>
-<ul>
-<li><p>HttpSessionListener接口</p>
-<p>该接口实现HTTP会话的创建和销毁。该接口提供了以下两个方法：</p>
-<p>(1).sessionCreated(HttpSessionEvent event)方法：通知正在收听的对象，session已经被加载及初始化。</p>
-<p>(2).sessionDestroyed(HttpSessionEvent event)方法：通知正在收听的对象，session已经被载出。</p>
-</li>
-<li><p>HttpSessionActivationListener接口</p>
-</li>
-<li><p>该接口实现监听HTTP会话active和passivate。该接口提供了三个方法：</p>
-<p>(1).attributeAdded(HttpSessionBindingEvent event)方法：当有对象加入到session的范围时，通知正在收听的对象。</p>
-<p>(2).attributeReplaced(HttpSessionBindingEvent event)方法：当在session范围内有对象取代另一个对象时，通知正在收听的对象。</p>
-<p>(3).attributeRemove(HttpSessionBindingEvent event)方法：当有对象从session范围在移除时，通知正在收听的对象。</p>
-</li>
-<li><p>HttpBindingListener接口</p>
-<p>HttpBindingListener接口实现监听HTTP会话中对象的绑定信息。它是唯一不需要在web.xml中设定Listener的。该接口提供了以下两个方法。</p>
-<p>(1).valueBound(HttpSessionBindingEvent event)方法：当有对象加入到session范围时会被自动调用。</p>
-<p>(2).valueUnBound(HttpSessionBindingEvent event)方法：当有对象从session范围内移除时会被自动调用。</p>
-</li>
-<li><p>HttpSessionAttributeListener接口</p>
-<p>该接口实现监听HTTP会话中属性的设置请求。</p>
-<p>(1).sessionDidActivate(HttpSessionEvent event)方法：通知正在收听的对象，他的session已经变为有效状态。</p>
-<p>(2).sessionWillPassivate(HttpSession event)方法：通知正在收听的对象，他的session已经变为无效状态。</p>
-</li>
-</ul>
-<h4 id="5-servlet请求监听"><a href="#5-servlet请求监听" class="headerlink" title="5.servlet请求监听"></a>5.servlet请求监听</h4><ul>
-<li><p>SevletRequestListener接口</p>
-<p>该接口提供了以下两个方法：</p>
-<p>(1).requestInitalized(ServletRequestEvent event)方法:通知正在收听的对象，ServletRequest已经被加载及初始化。</p>
-<p>(2).requestDestroyed(ServletRequestEvent event)方法：通知正在收听的对象，ServletRequest对象已经被载出，即关闭。</p>
-</li>
-<li><p>ServletRequestAttributeListener接口</p>
-<p>该接口提供了以下三个方法：</p>
-<p>(1).attributeAdded(ServletRequestAttributeEvent event)方法：当有对象加入到request的范围时，通知正在收听的对象。</p>
-<p>(2).attributeReplaced(ServletRequestAttributeEvent event)方法：当在request范围内有对象取代另一个对象时，通知正在收听的对象。</p>
-<p>(3).attributeRemove(ServletRequestAttributeEvent event)方法：当有对象从request范围在移除时，通知正在收听的对象。</p>
-</li>
-</ul>
-<h3 id="3-servlet3-0的新特性"><a href="#3-servlet3-0的新特性" class="headerlink" title="3.servlet3.0的新特性"></a><em>3.servlet3.0的新特性</em></h3><p>1.新增注释</p>
-<ul>
-<li><p>@WebServlet</p>
-<p>eg:@WebServlet(name=”saveSErvlet” urlPatterns=”/SaveServlet”)</p>
-</li>
-<li><p>@WebFilter</p>
-<p>eg:@WebFilter(filterName=”char”,urlPatterns=”/*”)</p>
-</li>
-<li><p>@WebListener</p>
-<p>eg:@WebListener(“This is only a demo listener”)</p>
-</li>
-<li><p>@WebInitParam</p>
-<p>eg:@WebServlet(urlPatterns=”/simple”,name=”SimpleServlet”,</p>
-<p>initParam={@WebInitParam(name=”username”,value=”tom”)})</p>
-</li>
-</ul>
-<p>2.对文件上传的支持</p>
-<p>实现文件上传需要实现两件事：</p>
-<p>需要添加@MultipartConfig注释</p>
-<p>从request对象中获取Part文件对象</p>
-<p>3.异步处理</p>
-<p>在servlet3.0之前,一个servlet的工作流程是：首先，servlet接收到请求后，需要对请求携带的数据进行一些预处理。接着调用业务接口的某些方法，以完成业务处理。最后，根据处理的结果提交响应。</p>
-<p>现在通过servlet3.0的异步处理机制可以将处理流程调整为以下流程：首先，servlet接收到请求后，需要对请求携带的数据进行一些预处理。接着servlet线程将请求转交给异步线程来执行业务处理，线程本身返回至容器。</p>
-<p>这样，Servlet线程不在一直处于阻塞状态以等待业务逻辑的处理，而是启动异步后可以立即返回。</p>
-<p>异步处理机制可应用于servlet和过滤器两种组件。@WebServlet和@WebFilter注释提供了asyncSupported属性，默认该属性的取值为false,要启动异步处理支持，只需将属性设置为true即可。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2512,7 +2784,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
